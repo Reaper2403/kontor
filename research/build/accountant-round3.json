@@ -1,5 +1,5 @@
 {
-  "evaluator": "Independent accountant usability evaluator",
+  "evaluator": "AI accountant-persona agent usability evaluator",
   "round": 3,
   "scope": "Browser-only fresh evaluation; no source, repository contents, app APIs, or earlier reports inspected. Technical filesystem isolation unavailable; instruction isolation used.",
   "viewports": [{"width":1440,"height":1000},{"width":390,"height":844}],

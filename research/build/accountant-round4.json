@@ -1,5 +1,5 @@
 {
-  "reviewer": "Independent accountant, round 4",
+  "reviewer": "AI accountant-persona agent, round 4",
   "method": "Fresh browser context; browser harness actions and own screenshots only. No source, APIs, repository or earlier reports inspected. Browser-only restriction was instructional, not technical isolation.",
   "starting_state": "Payables list, Lena Fischer selected. Northform Studio NF-2026-041 had an outstanding confirmation for Mara Weber's approval of 800 Test USD. Credit CN-204 and original approvals already existed.",
   "comparability_limits": [
