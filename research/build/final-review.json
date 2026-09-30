@@ -1,0 +1,32 @@
+{
+  "kind": "controller-final-acceptance",
+  "actor": "/root",
+  "date": "2026-09-30T18:28:50.431Z",
+  "improvementCyclesCompleted": 3,
+  "additionalCyclesAuthorized": 2,
+  "additionalCyclesUsed": 1,
+  "review": "research/build/accountant-round4.json",
+  "score": 19,
+  "maximum": 20,
+  "comparisonLimit": "Recovery continuation; not directly comparable to a fresh complete-invoice review. Browser-only instruction, no enforced isolation, explicitly accepted by user.",
+  "result": "No remaining blocking finding within the approved demonstration scope.",
+  "deferred": [
+    "ACC4-04 event-specific accessible transaction link names",
+    "ACC4-05 secondary text readability; full contrast audit not performed"
+  ],
+  "exportChecks": {
+    "scenario": "c3f46241-966e-4264-ac88-035ed095ca23",
+    "settlement": 800,
+    "reconciledApprovalCount": 1,
+    "confirmedPaymentCount": 1,
+    "tokenDeltasBaseUnits": [
+      -800000000,
+      800000000
+    ],
+    "stalePaymentTokenMovement": 0
+  },
+  "risks": [
+    "Approval recovery only; other uncertain actions stay locked for operator assistance.",
+    "Test USD, server-held demo keys, no security audit or production accounting acceptance."
+  ]
+}

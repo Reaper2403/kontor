@@ -11,7 +11,7 @@ export interface State {
  approvals:Approval[];evidence:Evidence[];
  settlement:null|{amount:number;signature:string|null;at:string;recipient:string;mode:'devnet'|'rehearsal'};
  previousInstruction:null|{revision:number;amount:number;capturedAt:string;tested:boolean;outcome?:string};
- operation:null|{type:string;status:'pending'|'unknown';message:string};
+ operation:null|{type:string;status:'pending'|'unknown';message:string;actor?:Actor;amount?:number;signature?:string;recoverySupported?:boolean;lastCheckedAt?:string;lastCheckMessage?:string};
  people:{id:Actor;name:string;role:string}[];
  chain:{programId:string|null;obligation:string|null;vault:string|null;recipientBalance:number|null;vaultBalance:number|null};
 }

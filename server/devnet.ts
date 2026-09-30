@@ -6,18 +6,20 @@ import {createClient} from '../chain/client.mjs';
 import {invoiceDocument,invoiceDocumentDigest} from '../chain/invoice.mjs';
 import {loadOrCreateKeys,fundScenario} from '../chain/bootstrap.mjs';
 import type {State,Action} from '../contracts/api.js';
-import {DomainError,initialState,type ChainEffect} from './engine.js';
+import {DomainError,initialState,type ChainEffect,type PendingIntent,type PreparedTransaction} from './engine.js';
+import {validateApprovalIntent,verifyApprovalMessage} from './recovery.js';
 const atomic=async(file:string,value:unknown)=>{await mkdir(dirname(file),{recursive:true,mode:0o700});await writeFile(file+'.tmp',JSON.stringify(value,null,2),{mode:0o600});await rename(file+'.tmp',file);};
 const hash=(s:string)=>createHash('sha256').update(s).digest('hex');
+const hashBytes=(s:string)=>createHash('sha256').update(Buffer.from(s,'base64')).digest('hex');
 export async function devnetAdapter(manifestPath:string){
  const manifest:any=JSON.parse(await readFile(manifestPath,'utf8'));
  if(manifest.rpcUrl!=='https://api.devnet.solana.com')throw Error('Only the explicit public devnet endpoint is supported by this adapter.');
  const directory=dirname(manifestPath);const keys=await loadOrCreateKeys(manifest.keyDir||join(directory,'keys'));
- let lastPrepared:any=null;const proofPath=join(directory,'public-proof.json');let proofs:any[]=[];try{proofs=JSON.parse(await readFile(proofPath,'utf8'));}catch(e:any){if(e.code!=='ENOENT')throw e;}
- const client=createClient({...manifest,keys,onPrepared:async(tx:any)=>{lastPrepared=tx;await atomic(join(directory,'journal',tx.signature+'.json'),{...tx,status:'prepared',at:new Date().toISOString()});}});
+ let persistActive:((prepared:PreparedTransaction)=>Promise<void>)|undefined;let lastPrepared:any=null;const proofPath=join(directory,'public-proof.json');let proofs:any[]=[];try{proofs=JSON.parse(await readFile(proofPath,'utf8'));}catch(e:any){if(e.code!=='ENOENT')throw e;}
+ const client=createClient({...manifest,keys,onPrepared:async(tx:any)=>{const prepared={...tx,sha256:hashBytes(tx.transactionBase64)};lastPrepared=prepared;await atomic(join(directory,'journal',tx.signature+'.json'),{...prepared,status:'prepared',at:new Date().toISOString()});await persistActive?.(prepared);}});
  let handle=manifest.handle??manifest.scenario; if(!handle)throw Error('Manifest requires a setup scenario handle.');
  async function balances(){const [v,r]=await Promise.all([client.connection.getTokenAccountBalance(new PublicKey(handle.vault)),client.connection.getTokenAccountBalance(new PublicKey(handle.recipient))]);return{vaultBalance:Number(v.value.amount)/1e6,recipientBalance:Number(r.value.amount)/1e6};}
- async function link(s:State):Promise<State>{const c=await client.read(handle);
+ async function link(s:State,verifiedState?:Awaited<ReturnType<typeof client.read>>):Promise<State>{const c=verifiedState??await client.read(handle);
  const canonical=client.addresses(handle,0);
  for(const [field,address] of Object.entries({config:canonical.config,obligation:canonical.obligation,vault:canonical.vault,mint:canonical.mint,recipient:canonical.recipient,revisionAddress:canonical.revision}))if(handle[field]!==address.toBase58())throw Error('Manifest scenario account mismatch: '+field);
  if(c.invoiceDigest!==invoiceDocumentDigest)throw Error('On-chain invoice digest does not match the exported original document.');
@@ -30,8 +32,8 @@ export async function devnetAdapter(manifestPath:string){
  if(c.revision>0){const latest=c.history.at(-1);if(!latest||!s.creditNote||s.creditNote.amount!==s.credit||latest.creditDigest!==hash(JSON.stringify({reference:s.creditNote.reference,amount:s.creditNote.amount}))||latest.reasonDigest!==hash(s.creditNote.reason))throw Error('Saved credit does not match the on-chain document digests.');}
  else if(s.creditNote)throw Error('Saved credit has no matching on-chain revision.');
  const b=await balances();return {...s,mode:'devnet',revision:c.revision+1,asset:{symbol:'Test USD',decimals:6,mint:manifest.mint,cluster:'devnet'},invoice:{...s.invoice,recipient:manifest.recipient},chain:{programId:manifest.programId,obligation:handle.obligation,vault:handle.vault,...b}};}
- const effect:ChainEffect=async(a:Action,before:State,after:State)=>{
-  lastPrepared=null;let result:any;
+ const effect:ChainEffect=async(a:Action,before:State,after:State,persistPrepared)=>{
+  persistActive=persistPrepared;lastPrepared=null;let result:any;
   try{
    if(a.type==='reset'){
     handle=await client.createScenario();await fundScenario({client,handle,keys});manifest.handle=handle;delete manifest.capture;await atomic(manifestPath,manifest);return await link(after);
@@ -48,19 +50,28 @@ export async function devnetAdapter(manifestPath:string){
     result=await client.testPrevious(handle,manifest.capture);
    }
    if(a.type==='pay')result=await client.pay(handle,{expectedRevision:a.expectedRevision-1});
-   const c=await client.read(handle);
+   const c=result?.state??await client.read(handle);
    if(c.revision+1!==after.revision||Number(c.amountDue)/1e6!==after.amountDue||c.paid!==(after.status==='paid'))throw new DomainError('CONFIRMATION_UNKNOWN','The network state needs reconciliation before another payment.');
-   const state=await link(after);const last=state.evidence.at(-1);if(result?.signature&&last){last.signature=result.signature;last.outcome=result.confirmation==='failed'?'failed':'confirmed';}
+   const state=await link(after,c);const last=state.evidence.at(-1);if(result?.signature&&last){last.signature=result.signature;last.outcome=result.confirmation==='failed'?'failed':'confirmed';}
    if(state.settlement&&result?.signature){state.settlement.signature=result.signature;state.settlement.mode='devnet';}
-   if(result){proofs.push({action:a.type,scenarioId:before.scenarioId,signature:result.signature,confirmation:result.confirmation,evidence:result.evidence??null,recordedAt:new Date().toISOString()});await atomic(proofPath,proofs);}
+   if(result){const nextProofs=[...proofs,{action:a.type,scenarioId:before.scenarioId,signature:result.signature,confirmation:result.confirmation,evidence:result.evidence??null,recordedAt:new Date().toISOString()}];await atomic(proofPath,nextProofs);proofs=nextProofs;}
    if(lastPrepared)await atomic(join(directory,'journal',lastPrepared.signature+'.json'),{...lastPrepared,status:result?.confirmation??'confirmed',at:new Date().toISOString()});
    return state;
   }catch(e:any){
-   if(lastPrepared&&e.confirmation!=='failed')throw new DomainError('CONFIRMATION_UNKNOWN',`Network outcome requires reconciliation for ${lastPrepared.signature}. No new payment will be sent.`,true);
+   if(lastPrepared&&e.confirmation!=='failed')throw new DomainError('CONFIRMATION_UNKNOWN','The operation needs a safe status check. Further actions are paused.',true,lastPrepared.signature);
    if(e instanceof DomainError)throw e;
    throw new DomainError(e.code??'NETWORK_ERROR',e.code==='CaptureExpired'?'The earlier signed instruction expired before the test. Start a new scenario to repeat the control demonstration.':e.message,true);
-  }
+  }finally{persistActive=undefined;}
  };
- const init=await client.read(handle);if(init.paid||init.approvalMask||init.revision) return {effect,link,proofs:()=>proofs,requiresExistingState:true};
- return {effect,link,proofs:()=>proofs,requiresExistingState:false};
+ async function reconcile(intent:PendingIntent){
+  await validateApprovalIntent(intent);verifyApprovalMessage(intent,client,keys,handle);
+  const result=await client.inspectPrepared(intent.prepared!);
+  const c=await client.read(handle,{minContextSlot:result.evidence.slot});
+  if(c.paid||c.revision!==intent.before.revision-1||c.expiry<=Math.floor(Date.now()/1000))throw new DomainError('RECOVERY_MISMATCH','This approval cannot safely restore the current payable. Operator assistance is required.');
+  const state=await link(structuredClone(intent.intendedAfter),c);const last=state.evidence.at(-1)!;last.signature=result.evidence.signature;last.outcome='confirmed';state.operation=null;
+  if(!proofs.some(p=>p.signature===result.evidence.signature)){const nextProofs=[...proofs,{action:'approve',scenarioId:intent.before.scenarioId,signature:result.evidence.signature,confirmation:'confirmed',evidence:result.evidence,reconciled:true,legacyBinding:intent.legacyBinding??null,recordedAt:new Date().toISOString()}];await atomic(proofPath,nextProofs);proofs=nextProofs;}
+  return state;
+ }
+ const init=await client.read(handle);if(init.paid||init.approvalMask||init.revision) return {effect,link,reconcile,proofs:()=>proofs,requiresExistingState:true};
+ return {effect,link,reconcile,proofs:()=>proofs,requiresExistingState:false};
 }

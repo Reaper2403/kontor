@@ -1,0 +1,95 @@
+{
+  "kind": "independent-source-aware-recovery-test-result",
+  "date": "2026-09-30",
+  "actor": "/root/integration_test",
+  "decisionId": "KONTOR-RECOVERY-01",
+  "decisionReference": "https://github.com/Reaper2403/kontor/issues/1#issuecomment-5917050690",
+  "status": "passed-with-explicit-scope-limits",
+  "scope": "Approval-only reconciliation of an exactly bound durable intent, signed transaction and confirmed canonical state. Independent local orchestration, signed-message, read-only transport and adapter tests; no live-scenario or browser mutation.",
+  "checks": [
+    {
+      "command": "./node_modules/.bin/tsx --test tests/recovery-*.test.ts",
+      "tests": 65,
+      "passed": 65,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "result": "passed"
+    },
+    {
+      "command": "npm test",
+      "tests": 109,
+      "passed": 109,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "result": "passed"
+    },
+    {"command": "npm run typecheck", "result": "passed"}
+  ],
+  "independentSuites": [
+    {
+      "file": "tests/recovery-engine.test.ts",
+      "tests": 15,
+      "coverage": [
+        "Exact first and second revised approvals reconcile once without outbound effects",
+        "Repeated and concurrent checks, restart before/after recovery and original request retry preserve one event and approval identity",
+        "Unseen, unconfirmed, failed, rate-limited, stale-snapshot and signature-mismatch failures retain accounting state, operation lock and durable intent",
+        "Illegal settlement delta and unsupported credit intent cannot reach approval verifier",
+        "Final persistence failure retains both in-memory and durable operation lock",
+        "Current scenario must match the durable intent before-state",
+        "Public unresolved metadata excludes private snapshots, signed bytes and keys",
+        "A payment queued behind first-approval recovery cannot bypass the second approval"
+      ]
+    },
+    {
+      "file": "tests/recovery-message.test.ts",
+      "tests": 27,
+      "coverage": [
+        "Independently constructed signed approval matches reconstructed compiled message despite fee-payer privilege normalization",
+        "Saved actor, action, revision, scenario account, prepared kind, recipient and fingerprint mismatches reject",
+        "Wrong program/tag/revision/obligation/revision account, extra account, extra transfer, second business instruction, wrong compute instruction and wrong fee payer reject",
+        "Intended-after mutations to history, settlement, extra approver, amount, recipient, event count, reused event ID and event/approval times reject"
+      ]
+    },
+    {
+      "file": "tests/recovery-transport.test.ts",
+      "tests": 14,
+      "coverage": [
+        "Exact signed-byte identity is inspected using confirmed base64 getTransaction only",
+        "Tampered signature, hash, blockhash and serialized bytes reject before RPC",
+        "Unseen, failed, different-wire, missing metadata/error, invalid slot and unknown encoding reject",
+        "429 inspection remains bounded and never uses a send RPC",
+        "Durable preparation failure aborts before transaction broadcast"
+      ]
+    },
+    {
+      "file": "tests/recovery-adapter.test.ts",
+      "tests": 9,
+      "coverage": [
+        "Exact successful approval snapshot uses confirmed minimum context slot at least the confirmed transaction slot on every program-account read",
+        "Independent spies reject any signing or sending during reconciliation",
+        "Missing expected approval, additional later approval, advanced revision, paid state, expired readiness, changed amount and changed credit digest reject despite a successful exact signature",
+        "Auxiliary proof persistence failure does not poison deduplication; retry persists exactly one proof"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "issue": "Adapter appended a recovery proof to its in-memory array before awaiting the proof-file write. A failed write left an in-memory signature that could suppress persistence on a later status check and permit clearing the authoritative lock without a durable auxiliary proof.",
+      "reportedTo": "/root",
+      "resolution": "Parent changed normal-effect and reconciliation proof handling to construct a candidate list, await the atomic file write, and only then replace the in-memory list.",
+      "verification": "The independent auxiliary-proof failure test forces the first write to fail, confirms the in-memory list remains empty, retries successfully, verifies the durable signature and checks repeated reconciliation leaves one proof.",
+      "status": "fixed-and-verified"
+    }
+  ],
+  "conclusion": "No remaining blocking finding was identified within the accepted approval-only recovery scope at completion of this bounded review.",
+  "limits": [
+    "Fixtures use temporary synthetic keys/state, independently constructed signed transactions, mocked read-only RPC records and program accounts. They do not constitute a new compiled SBF audit or independent live devnet observation.",
+    "Engine orchestration cases intentionally mock the verifier; message, transport and adapter cases separately validate the proof boundaries.",
+    "Automatic credit, payment, reset, capture and failed stale-replay recovery remains unsupported and locked, as required by the accepted decision.",
+    "Parent owns the controller-attested legacy-journal binding, real interrupted-scenario recovery, control-plane mutations, build and final remote verification. This tester did not mutate the live scenario or perform those operations.",
+    "Browser wording, desktop/mobile layout and accountant workflow completion belong to a separate fresh-context evaluator; this source-aware report does not claim blind usability validation or production accounting acceptance.",
+    "The full 109-test count includes other authors' suites; only the 65 cases in the four listed recovery files are attributed to this independent recovery assignment."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "reviewer": "Independent accountant, round 4",
+  "method": "Fresh browser context; browser harness actions and own screenshots only. No source, APIs, repository or earlier reports inspected. Browser-only restriction was instructional, not technical isolation.",
+  "starting_state": "Payables list, Lena Fischer selected. Northform Studio NF-2026-041 had an outstanding confirmation for Mara Weber's approval of 800 Test USD. Credit CN-204 and original approvals already existed.",
+  "comparability_limits": [
+    "This is a continuation from a pending approval, not an untouched invoice. Original approvals, credit application and blocked payment were reviewed as recorded evidence, not personally executed.",
+    "Completed the remaining approval and payment in synthetic Solana devnet Test USD; no real monetary value.",
+    "Desktop 1440x1000 and mobile 390x844 were tested. Screenshots are full-page captures at those widths.",
+    "Export download completed with failure:null, but file contents were not inspected; external explorer transaction pages were not independently verified.",
+    "Keyboard and accessible-DOM sampling is not a full assistive-technology or contrast audit."
+  ],
+  "actions": [
+    "Checked pending approval status once. App explained that no transaction was being sent; later confirmed it was recorded without resubmission.",
+    "Opened the current payable; reconciled original invoice 1,000 minus credit CN-204 of 200 to 800 Test USD.",
+    "Selected Jonas Berg via visible Demo role and approved 800 Test USD. App changed to Ready to pay with 2 of 2 approvals.",
+    "Selected Alex Morgan. On mobile, opened Pay 800 Test USD, reviewed recipient and confirmed 800 Test USD once.",
+    "Observed Paid status and automatic Evidence tab containing eight events, including current approvals and confirmed payment.",
+    "Downloaded kontor-NF-2026-041-evidence.json through Export evidence (JSON), with failure:null.",
+    "Expanded Technical identifiers with Tab/Enter and activated Copy Recipient; app reported Copied to clipboard.",
+    "Returned to Payables and selected Paid 1; confirmed To pay 0, amount paid 800, and settled-this-session 800 at both viewport sizes."
+  ],
+  "scores": {
+    "find_understand_amount_document_context": {"score": 4, "reason": "Supplier, invoice number, service period, issue/due dates, original amount, named credit and current amount reconcile plainly in document and review panel."},
+    "complete_available_approval_credit_steps": {"score": 4, "reason": "Available remaining approval and payment were completed using visible role guidance and explicit amount-specific buttons. Credit was already applied at entry; that interaction cannot be scored independently."},
+    "understand_earlier_approval_authority": {"score": 4, "reason": "Earlier approvals explicitly expired after CN-204; history shows version 1 superseded, current approvals version 2, and blocked earlier payment moved no Test USD."},
+    "interpret_final_payment_evidence": {"score": 4, "reason": "Final Paid record, original-minus-credit equation, actor/time, distinct rejected versus confirmed events, explorer links and export are straightforward."},
+    "readability_navigation_accessibility_recovery": {"score": 3, "reason": "Recovery succeeded safely and responsive layout prioritizes payment review. Secondary text is small and pale; repeated View transaction link names give little distinction outside their surrounding event articles."}
+  },
+  "total": 19,
+  "maximum": 20,
+  "findings": [
+    {"id": "ACC4-01", "type": "positive", "title": "Pending approval recovery is actionable and bounded", "observation": "Check status explicitly said it verifies an already submitted approval without resubmitting; successful result unlocked role selection and retained one remaining approval."},
+    {"id": "ACC4-02", "type": "positive", "title": "Revised obligation and authority are clear", "observation": "Invoice 1,000 minus CN-204 200 equals current payable 800. Earlier approvals are marked expired, and both version-2 approvers are individually shown."},
+    {"id": "ACC4-03", "type": "positive", "title": "Final record distinguishes settlement from rejected attempt", "observation": "Eight-event evidence timeline preserves the rejected 1,000 attempt with no funds moved and separately records a confirmed 800 payment. Paid list uses AMOUNT PAID and To pay count is zero."},
+    {"id": "ACC4-04", "type": "minor", "title": "Transaction link names repeat", "observation": "All seven transaction links have accessible name View transaction. Article context distinguishes them in sequence, but a links-only navigation view would not identify the associated event.", "suggestion": "Use event-specific accessible names, such as View transaction for Jonas Berg approval of 800 Test USD."},
+    {"id": "ACC4-05", "type": "minor", "title": "Secondary text could be easier to read", "observation": "Muted green metadata, event explanations and technical identifiers are visibly small relative to the strong amount and heading hierarchy, especially on mobile. No clipping was observed.", "suggestion": "Increase supporting-text size or contrast while preserving the current hierarchy; measure contrast before claiming compliance."}
+  ],
+  "final_accounting_record": {
+    "supplier": "Northform Studio",
+    "invoice": "NF-2026-041",
+    "description": "Product design support, September 2026",
+    "original_invoice_test_usd": 1000,
+    "supplier_credit": "CN-204: Accepted service credit",
+    "credit_test_usd": 200,
+    "net_settled_test_usd": 800,
+    "status": "Paid",
+    "approvals": "Mara Weber and Jonas Berg approved 800 Test USD for current invoice version 2; original version-1 approvals for 1,000 expired after the credit.",
+    "payment_operator": "Alex Morgan",
+    "payment_time_as_displayed": "30 Sept 2026, 20:24",
+    "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+    "payment_transaction": "mEzYqsk328ch5SeDtwpjN1coekQ8fsoJcvSeReob5mrrZanATzvSRmYRLKQckTWTuyE2agiRbCdkg8m97Ly1pxL",
+    "scenario": "c3f46241-966e-4264-ac88-035ed095ca23",
+    "obligation": "55RMd3nHEVaGognxKWs21JAse2Xp7UTohJfevuWenW4S",
+    "remaining_payables_to_pay": 0,
+    "interpretation": "The synthetic obligation is settled at its revised amount. The rejected earlier 1,000 instruction is not another payment. The UI does not present a general-ledger journal, and none is inferred."
+  },
+  "screenshots": ["accountant-r4-desktop.png", "accountant-r4-mobile.png", "accountant-r4-confirm.png", "accountant-r4-evidence.png", "accountant-r4-paid-mobile.png", "accountant-r4-paid-desktop.png"],
+  "end_state": "Paid filter selected on desktop 1440x1000. Alex Morgan role. Existing payable preserved and settled; no reset or new payable created."
+}

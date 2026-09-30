@@ -51,7 +51,7 @@ Run service/client tests with `npm test`, and the UI/typecheck with `npm run bui
 - The protected boundary is a program-controlled payable and its vault. External wallets and other payment rails are outside that boundary.
 - Role switching uses server-held demonstration keys. This is not production authentication or custody. A trusted program upgrade authority remains.
 - This prototype supports one credit per payable, whole display units, one synthetic invoice, and JSON evidence export. It does not implement invoice extraction, DATEV integration, ramps, swaps or certified accounting treatment.
-- Unknown network outcomes block further actions. `scripts/chain-reconcile.mjs` is a read-only investigation tool; it does not automatically repair evidence or resend payments.
+- Unknown network outcomes block further actions. For an approval with a durable saved transaction, **Check status** verifies the exact confirmed bytes, actor, invoice revision and resulting state, then records that approval once without resending it. Uncertain payments, credits, resets and control-check attempts require operator assistance; the app does not retry or unlock them automatically. `scripts/chain-reconcile.mjs` provides read-only investigation.
 - The program has not been independently security audited.
 
 ## Fleet and review provenance

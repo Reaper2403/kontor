@@ -12,3 +12,23 @@
 /* State-specific guidance and historical display annotations. */
 .credit-role-hint{font-size:10px;line-height:1.6;color:#637858;margin:9px 0 0;text-align:center}
 .history-event p.approval-annotation,.evidence-item p.approval-annotation{color:#596f4e;font-weight:550;margin-top:6px}
+
+/* Recovery content stays within the financial workbench at narrow widths. */
+.main-shell,main,.document-column,.approval-panel,.message,.change-note,.rail-action{min-width:0}
+.message>span,.change-note p,.waiting-message,.action-help{min-width:0;overflow-wrap:anywhere}
+.message{flex-wrap:wrap}.message>span{flex:1 1 180px}
+.recovery-panel{border:1px solid #d4ddc3;background:#f5f7eb;border-radius:6px;padding:20px 22px;margin-bottom:25px;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.recovery-header{display:flex;align-items:flex-start;gap:12px;color:#657c51}.recovery-header>div{min-width:0}
+.recovery-header h2{font-size:15px;font-weight:550;line-height:1.5;margin-top:4px;color:#3f5934}
+.recovery-panel>p{font-size:11px;color:#697d59;line-height:1.7;margin:9px 0 0}
+.recovery-actions{margin-top:16px}.recovery-actions .button{min-width:145px}
+.recovery-result{margin-top:14px;font-size:11px;color:#677d56;line-height:1.65;min-width:0}
+.recovery-result strong{font-size:10px;font-weight:550}.recovery-result small{font-size:10px;color:#7b8c6b;display:block;margin-top:5px}
+.recovery-identifier{border-top:1px solid #dbe3ce;margin-top:15px;padding-top:12px;min-width:0}
+.recovery-identifier summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;font-size:10px;color:#6e835b}
+.recovery-identifier>div{display:flex;align-items:flex-start;gap:10px;margin-top:12px;min-width:0}
+.recovery-identifier code{font-size:10px;line-height:1.65;white-space:normal;overflow-wrap:anywhere;word-break:break-word;min-width:0;flex:1;color:#5b7248}
+.recovery-identifier button{flex-shrink:0}
+.unresolved-evidence{border:1px dashed #bacb9f;background:#f1f5e7;border-radius:5px;padding:16px;margin:20px 0;min-width:0;overflow-wrap:anywhere}
+.unresolved-evidence h3{font-size:12px;font-weight:550;margin:8px 0;color:#4f673e}.unresolved-evidence p{font-size:11px;line-height:1.65;color:#748966;margin-top:6px}
+@media(max-width:620px){.recovery-panel{padding:16px}.recovery-header h2{font-size:14px}.recovery-header{gap:9px}.recovery-actions .button{width:100%}.recovery-identifier code{font-size:10px}}

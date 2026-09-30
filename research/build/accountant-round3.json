@@ -1,0 +1,39 @@
+{
+  "evaluator": "Independent accountant usability evaluator",
+  "round": 3,
+  "scope": "Browser-only fresh evaluation; no source, repository contents, app APIs, or earlier reports inspected. Technical filesystem isolation unavailable; instruction isolation used.",
+  "viewports": [{"width":1440,"height":1000},{"width":390,"height":844}],
+  "outcome": "Incomplete: original approvals and supplied credit succeeded, earlier payment was visibly blocked, but first revised approval entered persistent Confirmation needed. No final payment attempted or claimed.",
+  "score": 12,
+  "maximum": 20,
+  "rubric": [
+    {"id":"R1","criterion":"Find/understand amount due and document context","score":4,"observation":"Supplier, invoice NF-2026-041, service period, due date, original 1,000 Test USD and credit CN-204 are clear. Reconciled amount due is consistently 800 Test USD; credit reason is Accepted service credit."},
+    {"id":"R2","criterion":"Complete approval and credit without guidance","score":1,"observation":"Visible role guidance made both original approvals, credit application and stale-payment test straightforward. First revised approval by Mara did not resolve; roles and approval controls stayed disabled, preventing completion despite status checks and page reload."},
+    {"id":"R3","criterion":"Understand why prior approval does or does not authorize payment","score":4,"observation":"Dialog warns that approvals expire; original events explicitly say Invoice version 1 / Expired after CN-204; both approvers return to Pending. Demo test records that attempted 1,000 payment was rejected and no Test USD moved."},
+    {"id":"R4","criterion":"Interpret final payment and supporting evidence","score":2,"observation":"Evidence clearly reconciles 1,000 minus 200 to 800, identifies actors, dates, expired approvals and blocked payment, and links transactions. Export download succeeded as kontor-NF-2026-041-evidence.json with null failure. Final payment and receipt cannot be assessed because workflow stopped during revised approval."},
+    {"id":"R5","criterion":"Readability, navigation, accessibility and recovery","score":1,"observation":"Normal desktop/mobile credit dialog fits and labels inputs clearly; focus outline visible. Recovery repeats a long unbroken signature, causes mobile horizontal overflow, gives no accounting-friendly next step if Check status does not resolve, and leaves all operational controls disabled."}
+  ],
+  "observed_sequence": [
+    "Opened current prepared invoice; did not reset scenario.",
+    "Mara Weber and Jonas Berg approved original 1,000 Test USD.",
+    "Lena applied supplied 200 Test USD credit CN-204 with reason Accepted service credit at mobile viewport.",
+    "Observed revised 800 payable and explicit expiration of both original approvals.",
+    "Alex ran Test previous approval; activity says payment program rejected earlier 1,000 instruction and no Test USD moved.",
+    "Mara clicked Approve 800 Test USD. After updating state, UI reported Network outcome requires reconciliation for a transaction signature. No new payment will be sent.",
+    "Tried Check status repeatedly and normal page reload; Confirmation needed persisted with roles disabled.",
+    "Inspected Evidence 5 and downloaded JSON successfully. No final settlement occurred through evaluator actions."
+  ],
+  "findings": [
+    {"id":"AC-R3-001","severity":"high","title":"Revised approval stalls without a usable recovery path","evidence":"First Approve 800 Test USD led to persistent Confirmation needed and 0 of 2 current approvals. Check status calls and page reload retained state. Demo role and approval controls disabled.","recommendation":"Provide an action-specific recovery state naming the pending approval, show status-check progress and last result, and offer a safe escalation or recovery path when confirmation remains unresolved. Preserve prevention of duplicate submissions."},
+    {"id":"AC-R3-002","severity":"medium","title":"Unbroken recovery signature breaks responsive layout","evidence":"390px viewport recovery screenshot has 653px content width; repeated raw signature stretches banner and payment card. Desktop after resizing likewise has overflow. Normal credit dialog did not have this problem.","recommendation":"Use plain-language summary, put identifier in a separate collapsible or copyable field, enforce wrapping and min-width constraints on banners and payment card."},
+    {"id":"AC-R3-003","severity":"medium","title":"Approval recovery message sounds like a payment failure","evidence":"After an approval action the message says Network outcome requires reconciliation and No new payment will be sent, without saying whether Mara approval was received. Evidence remains at five events and lacks a pending-approval event.","recommendation":"Say which operation is awaiting confirmation and distinguish approval status from money movement; include pending operation in supporting evidence so an accountant can explain the unresolved record."}
+  ],
+  "accounting_interpretation": "Recorded original supplier invoice 1,000 Test USD, accepted credit CN-204 200, net payable 800. Original 1,000 approvals are historical and superseded, not authorization for the revised invoice. Earlier payment test was blocked. Revised approval is unresolved, so this remains an unpaid payable; a final payment record cannot be asserted.",
+  "evidence_paths": [
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-round3-credit-desktop.png",
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-round3-credit-mobile.png",
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-round3-recovery-mobile.png",
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-round3-evidence-desktop.png"
+  ],
+  "limits": ["No underlying chain or API verification; UI statements observed only.","Export success verified through browser download filename/failure, contents not inspected.","No final paid state or receipt available in this run.","Initial role-select harness attempt used a nonmatching value, then succeeded with visible option label; not counted as product defect.","No full assistive-technology or contrast audit; accessible labels and visible focus inspected."]
+}
