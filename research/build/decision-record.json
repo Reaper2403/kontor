@@ -1,0 +1,40 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "DecisionRecord",
+  "decisionId": "KONTOR-BUILD-20260930",
+  "proposalId": "KONTOR-BUILD-20260930",
+  "title": "Build Kontor's polished credit-aware payable and test-network settlement proof",
+  "status": "accepted",
+  "date": "2026-09-30",
+  "trigger": "User-authorized HackFleet build. Controller-attested pre-build research exchange: independent UX /root/build_ux, PM /root/build_pm and SDE /root/build_sde assessments; UX proposal, PM triage, SDE feasibility and final PM acceptance in one engineering round. This schema-valid decision is a pre-build research decision, not browser-sourced evidence or an ABU-11/17 workflow receipt. Canonical persistence is the parent controller's responsibility.",
+  "productRationale": "Accept the focused two-route payable workbench with Overview/Evidence views, credit/payment confirmations and clearly separated demo controls. The meaningful outcome is understandable prevention of a stale payment after an accepted credit: 1,000 approved by two people, 200 credit accepted, old authorization invalidated and rejected, fresh two-person approval for 800, then exactly one evidenced settlement. UI quality and accountant comprehension are core acceptance requirements. A custom Test USD mint preserves the frozen arithmetic while honestly distinguishing demonstration assets from the intended USDC use case.",
+  "engineeringDecision": "Accept the original proposal and SDE's feasible implementation with no counterproposal or unresolved product objection. Build a native Rust Solana program using pinned remote SBF tooling, a local Node signing/RPC service and React/Vite UI. The program enforces canonical organization/obligation, two distinct revision-specific approvals, exact amount/mint/recipient/evidence/expiry, atomic authorized credit revision and permanent paid state. Serialize revise and execute through the writable obligation; fixed SPL Token CPI and paid mutation are atomic. Use native Codex builders, canonical HackFleet tasks and remote gates; standard Actions artifacts separately retain binary/source provenance. Live devnet completion remains conditional on successful compilation, funding, deployment and confirmed evidence. Local rehearsal is allowed but cannot satisfy the live-network acceptance gate.",
+  "constraints": [
+    "Implementation authority comes from the user's current build request. This decision approves scope and feasibility; approvedImplementationTasks remains empty until canonical TaskContracts are created through the parent controller.",
+    "Parent is the sole control-plane writer and budget owner. Additional expenses must not exceed $10. Bound remote compile jobs, retries and artifact retention; estimates are not provider-enforced caps. Stop dependent live-network work if funding or budget cannot support it rather than introducing unapproved spending.",
+    "Use custom Solana devnet Test USD with persistent Solana devnet · Test USD · No real value labeling. All transactional amounts, confirmations and receipts use Test USD, never USDC or Test USDC. Explain intended USDC use separately and disclose the actual mint. No Circle issuance, redeemability or production-support claim.",
+    "Distinct approvers must bind authorization to the exact current revision, amount, mint, recipient, evidence and expiry. Repeated approval by one identity cannot satisfy two-person approval. Authorized credit revision atomically invalidates old approval and cannot double-apply a repeated credit request.",
+    "Program constraints cover account owner, signer, PDA, size and alias checks. No arbitrary CPI, withdrawal, delegate or paid-state reset path. Scenario reset creates a new obligation and cannot erase or recall a previous settlement.",
+    "Credit and execution serialize through one writable obligation. Demonstrate both revision-first rejection and execution-first finality. Program payment and SPL Token transfer are atomic, with permanent paid status preventing a second settlement.",
+    "Live stale-revision proof uses unchanged old signed bytes, successful simulation before revision, a still-valid blockhash and approval expiry, then confirmed StaleRevision logs and zero token movement. Expired blockhash, expired approval, absent funds or a front-end-only rejection do not satisfy this gate.",
+    "Compile and test the actual SBF program. Source-aware independent testing must inspect distinct-signer checks, account substitution, credit/execute ordering, replay and CPI rollback. JavaScript simulation or model tests do not validate the real program boundary.",
+    "Preserve exact source/binary hashes and deployment manifest in standard artifacts separately from canonical deterministic receipts. Report native Codex plus remote checks as the hybrid runtime actually used, not a hosted coding-worker run.",
+    "Real devnet settlement evidence must agree with the UI on mint, amount, recipient and confirmed result. Repeated submit and refresh resolve to one settlement identity. Pending, failed and unknown states remain distinct; unknown confirmation cannot silently trigger a second transfer. No invented hashes or explorer links.",
+    "Synthetic role keys stay outside git and secrets are not exposed by the server. Server-held demo keys and retained upgrade authority are explicitly trusted demonstration authorities. No production custody, separation-of-duties, invoice-authenticity or accountant-acceptance claim.",
+    "P0 UI acceptance includes focused inbox/detail, invoice and credit reconciliation, named approvals, legible expired approval history, a discoverable labeled previous-approval test, clear next action and persistent evidence. Current amount/readiness/action should be visible at the agreed desktop viewport; keyboard/modal behavior, textual status, contrast and narrow-screen readability must remain usable.",
+    "A reviewer must understand 1,000 original minus 200 credit equals 800 due, why fresh approvals are required, who approved the current amount, why the old attempt moved no funds and why only 800 settled. Never imply notifications were sent when no delivery exists.",
+    "Conduct the user-authorized fresh-context accountant browser review with its non-isolated-tool limitation explicitly reported. It is not genuinely blind evaluation and remains separate from source-aware integration testing. Apply UX → PM → SDE → PM to material improvements and run no more than two improvement cycles.",
+    "No production accounting integrations, generalized FX, onboarding/KYC, fabricated activity, traction claims or recall feature. Do not accept the overall live-network proof as complete merely because a local rehearsal or attractive UI succeeds."
+  ],
+  "approvedImplementationTasks": [],
+  "rejectedAlternatives": [
+    "Official devnet USDC for the fixed 1,000 scenario: reported faucet quantity/time limits conflict with bounded execution; select custom clearly named Test USD.",
+    "Scaling the fixed scenario down for faucet convenience: loses the accepted 1,000 / 200 / 800 narrative without a compensating product benefit.",
+    "Calling a custom mint USDC or Test USDC: misrepresents the demonstrated asset.",
+    "Broad dashboard, unsupported integrations, decorative charts or fabricated activity: dilutes the central accounting proof and UI-quality budget.",
+    "Hidden stale-payment control or normal Pay 1,000 action after the credit: hides the proof or teaches unsafe behavior; use an explicit demo verification action.",
+    "One-button autoplay, client-only checks or local simulation as live-network acceptance: does not demonstrate accountant comprehension or actual program enforcement.",
+    "Hosted coding-worker claims without configured credentials, or genuinely blind claims with non-isolated review tools: would misstate execution and evidence provenance."
+  ],
+  "negotiationRounds": 1
+}

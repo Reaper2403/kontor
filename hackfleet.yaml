@@ -2,15 +2,15 @@ cost:
   catalog: cost-catalog.yaml
   budgetPolicy:
     perTaskSoftLimit: 1
-    perTaskHardLimit: 5
+    perTaskHardLimit: 4
     perWorkflowSoftLimit: 10
-    hackathonSessionLimit: 25
+    hackathonSessionLimit: 10
     preferActions: true
     keepWarmCodespaces: 0
     codespaceIdleStopMinutes: 5
     maxConcurrentCodespaces: 2
     allowLargeMachineWithoutApproval: false
-    maxParallel: 6
+    maxParallel: 3
     maxResourceTtlMinutes: 120
 project:
   id: kontor
@@ -24,11 +24,11 @@ runtimes:
   actions:
     enabled: true
   codespaces:
-    enabled: true
+    enabled: false
     maxConcurrent: 2
     idleStopMinutes: 5
 workers:
-  maxParallel: 6
+  maxParallel: 3
   defaultTimeoutMinutes: 20
   defaultRetries: 1
 browser:

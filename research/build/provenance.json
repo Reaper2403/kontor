@@ -1,0 +1,12 @@
+{
+  "decisionIssue": "https://github.com/Reaper2403/kontor/issues/1",
+  "controller": "/root",
+  "actors": {
+    "PM": "/root/build_pm",
+    "UX": "/root/build_ux",
+    "SDE": "/root/build_sde"
+  },
+  "runtime": "Native Codex builders; HackFleet canonical GitHub tasks; remote deterministic checks",
+  "accountantIsolation": "User approved fresh-context non-isolated browser-only-by-instruction review",
+  "budgetUSD": 10
+}

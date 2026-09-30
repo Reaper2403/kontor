@@ -1,0 +1,26 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "FeasibilityResponse",
+  "proposalId": "KONTOR-BUILD-20260930",
+  "feasibility": "feasible",
+  "implementation": "Accept the PM scope and custom devnet Test USD mint. Build a small native Rust Solana program with pinned SBF tooling remotely, a local Node signing/RPC service and React/Vite UI. The program, not server, enforces canonical organization/obligation, two distinct revision-specific approvers, exact amount/mint/recipient/evidence/expiry, authorized atomic credit and permanent paid status. Both execute and revise serialize through the writable obligation; fixed SPL Token CPI and paid mutation are atomic. No arbitrary CPI, withdrawal, delegate or reset path. Synthetic role keys remain outside git and are disclosed as demo custody; the server never exposes secrets. Reset creates a new obligation/scenario and never clears paid state. Separate standard Actions artifacts carry binary/hash/source and evidence; HackFleet canonical deterministic receipts remain independently bounded and accurately labeled. Deploy and rehearse both orderings with exact old signed bytes, valid blockhash/expiry and confirmed program error. UI Test USD labels and evidence reflect actual cluster/mint/outcomes. Local rehearsal can remain runnable but never satisfies devnet acceptance. Native Codex builds plus canonical tasks/remote checks are the selected hybrid runtime, not hosted coding-worker execution. User-authorized fresh-context non-isolated accountant review is labeled limited; it is distinct from source-aware integration tests.",
+  "affectedAreas": ["programs", "scripts", "server", "src", "tests", ".github/workflows"],
+  "risks": [
+    "Devnet completion depends on successful bounded SBF compilation, free devnet SOL faucet funding, deployment RPC availability and confirmed transactions. Implementation is feasible; timing and live-network success are not guaranteed.",
+    "Custom Test USD is not Circle USDC. Every amount/receipt uses Test USD with persistent Solana devnet and no-real-value labeling; expose actual mint.",
+    "Native Rust needs explicit owner/signer/PDA/size/alias constraints and negative SBF integration tests. A JavaScript model does not validate these boundaries.",
+    "The deterministic worker only returns its receipt; a separate artifact workflow must preserve exact source/binary provenance without modifying that acceptance schema.",
+    "Old blockhash expiry, absent funds or expired approvals do not count as stale-revision proof. Require unchanged signed bytes, successful pre-revision simulation, current expiry and confirmed StaleRevision logs with zero token movement.",
+    "Retained upgrade authority and server-held synthetic role keys are trusted demo authorities. This is no production custody/separation-of-duties or invoice-authenticity claim.",
+    "Shared $10 additional-spend budget remains parent-owned. Start with at most four 60-minute standard Linux jobs (~$1.44 compute at listed rate) and bound retries/artifact storage; this is an estimate, not a provider hard cap."
+  ],
+  "taskSplit": [
+    "Parent: create canonical decision/tasks; own scaffold, API contract, Node service, private key storage, artifact workflow, deployment orchestration and budget ledger. Do not start dependent writes until PM final acceptance.",
+    "SDE builder: own programs/** and chain-specific scripts/fixtures under explicit contract; implement native program, TypeScript codec/client and remote compiled-SBF invariant suite. Supply build and deploy commands with pinned dependencies.",
+    "UX builder: own src/** UI and design assets; establish references/tokens first, then inbox/detail/evidence, role controls, confirmations, accessible pending/error states and Test USD labeling against shared API.",
+    "Parent integration: connect UI to service/chain adapter, deploy devnet program, mint test funds into PDA vault, preserve manifests and execute revision-first and execution-first evidence scripts.",
+    "Independent source-aware tester: review constraints and independently verify authorization/account-substitution/replay/CPI rollback cases plus actual devnet logs and balances; inspect UI/network agreement.",
+    "Fresh-context accountant reviewer: user-authorized limited non-isolated browser review, followed by UX→PM→SDE→PM accepted improvements; at most two improvement cycles."
+  ],
+  "counterProposal": null
+}

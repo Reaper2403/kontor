@@ -1,0 +1,33 @@
+name: Kontor bounded SBF build
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  program:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install pinned Agave tooling
+        shell: bash
+        run: |
+          curl --fail --location --retry 2 --max-time 180 https://github.com/anza-xyz/agave/releases/download/v2.3.13/solana-release-x86_64-unknown-linux-gnu.tar.bz2 -o /tmp/solana.tar.bz2
+          echo 'c43539ebdf6942472e8b87635d6ea55f428a51e3d0219f7b6f720fc6b19fade0  /tmp/solana.tar.bz2' | sha256sum -c -
+          tar -xjf /tmp/solana.tar.bz2 -C /tmp
+          echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
+      - name: Build actual Solana program
+        run: cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts
+      - name: Record provenance
+        run: |
+          git rev-parse HEAD > artifacts/source-sha.txt
+          solana --version > artifacts/toolchain.txt
+          sha256sum artifacts/kontor.so > artifacts/binary-sha256.txt
+          cp programs/kontor/Cargo.lock artifacts/Cargo.lock
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kontor-sbf
+          path: artifacts/
+          retention-days: 1

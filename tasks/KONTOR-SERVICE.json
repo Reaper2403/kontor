@@ -1,0 +1,69 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "Task",
+  "metadata": {
+    "id": "KONTOR-SERVICE",
+    "title": "Integrate persistent service and preview",
+    "parent": "KONTOR-BUILD-20260930"
+  },
+  "spec": {
+    "objective": "Integrate persistent service and preview under accepted decision KONTOR-BUILD-20260930; preserve genuine test-network versus rehearsal boundaries.",
+    "role": {
+      "profession": "Integration engineer",
+      "memoryProfile": "task"
+    },
+    "runtime": {
+      "preference": "local-codex",
+      "allowed": [
+        "local-codex"
+      ]
+    },
+    "capabilities": {
+      "required": [
+        "typescript"
+      ],
+      "optional": []
+    },
+    "context": {
+      "include": [
+        "contracts/api.ts",
+        "project-memory/decisions/KONTOR-BUILD-20260930.json"
+      ],
+      "dependencySummaries": []
+    },
+    "skills": [],
+    "writeScope": {
+      "allowed": [
+        "server/**",
+        "contracts/**",
+        "tests/**",
+        "package.json",
+        "package-lock.json",
+        "vite.config.ts",
+        "tsconfig.json",
+        "index.html",
+        "README.md"
+      ],
+      "forbidden": [
+        ".env",
+        ".local/**"
+      ]
+    },
+    "acceptance": [
+      "Complete assigned scope under accepted decision and Test USD labels",
+      "No fabricated chain evidence; no secrets in source",
+      "Supply exact verification and remaining limitations"
+    ],
+    "verification": {
+      "commands": []
+    },
+    "deliverables": [
+      "result-json"
+    ],
+    "limits": {
+      "executionMinutes": 180,
+      "retries": 1,
+      "maxModelTurns": 100
+    }
+  }
+}
