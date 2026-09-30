@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+*.log
+node_modules/
+dist/
+.local/
+*.log
+playwright-report/
+test-results/
+target/

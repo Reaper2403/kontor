@@ -1,0 +1,53 @@
+cost:
+  catalog: cost-catalog.yaml
+  budgetPolicy:
+    perTaskSoftLimit: 1
+    perTaskHardLimit: 5
+    perWorkflowSoftLimit: 10
+    hackathonSessionLimit: 25
+    preferActions: true
+    keepWarmCodespaces: 0
+    codespaceIdleStopMinutes: 5
+    maxConcurrentCodespaces: 2
+    allowLargeMachineWithoutApproval: false
+    maxParallel: 6
+    maxResourceTtlMinutes: 120
+project:
+  id: kontor
+  defaultBranch: main
+github:
+  owner: Reaper2403
+  repo: kontor
+orchestrator:
+  mode: local-codex
+runtimes:
+  actions:
+    enabled: true
+  codespaces:
+    enabled: true
+    maxConcurrent: 2
+    idleStopMinutes: 5
+workers:
+  maxParallel: 6
+  defaultTimeoutMinutes: 20
+  defaultRetries: 1
+browser:
+  enabled: true
+  saveTrace: true
+  saveHar: true
+  saveVideo: false
+skills:
+  root: skills
+  retrieval: metadata-text
+negotiation:
+  maxRounds: 2
+scheduler:
+  maxTasks: 20
+  maxActions: 6
+  maxBrowser: 2
+  maxExecutionMinutes: 120
+  maxModelTurns: 36
+safety:
+  enforceWriteScopes: true
+  protectDefaultBranch: true
+  redactLogs: true
