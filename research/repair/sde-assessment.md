@@ -1,0 +1,45 @@
+# Independent SDE assessment — protocol repair
+
+Actor: /root/repair_sde. Scope: source-aware read-only assessment; no product edits, cloud, Git mutations, or live transactions. Parent remains sole control-plane writer. This is a provisional independent assessment preceding typed negotiation.
+
+## Findings
+
+- `programs/kontor/src/lib.rs` currently fixes recipient and recipient owner in Config (232 bytes, KNTRCFG1). Obligation is 129 bytes (KNTROBL1) and contains no destination. Execution transfers the revised amount once and sets paid atomically; no release/withdrawal/cancel exists. A funded 1000 obligation revised to 800 leaves 200 locked indefinitely.
+- `chain/client.mjs` derives every destination from its constructor, including handles, reads, signed execute instructions, and balance comparisons. Changing only Rust would retain a misleading single-recipient API.
+- `server/devnet.ts` currently displays `manifest.recipient`, while its balances use `handle.recipient`. Both must resolve the on-chain obligation destination consistently. Recovery verifies saved handle destination against `client.addresses`; its protection must remain after changing address derivation.
+- Bootstrap creates one supplier ATA; a distinct treasury ATA is required. The registrar's ATA is a reasonable explicit configured treasury for synthetic setup; treasury custody does not require a new secret key.
+- Tests contain manually encoded v1 account buffers and fixed byte-offset assumptions. They must deliberately move to v2 fixtures rather than tolerate old layouts silently.
+- No cancel instruction or cancelled state exists in this program. Do not report cancellation coverage or add cancellation in this repair.
+
+## Recommended protocol invariants
+
+1. Config v2 stores registrar, reviewer, two approvers, mint, treasury token account, treasury owner. Replace the two former recipient fields; size remains 232 but discriminator becomes KNTRCFG2. Config initialization validates initialized SPL Token mint (six decimals), initialized treasury token account, and matching mint; records treasury owner from actual token data. No update instruction.
+2. Obligation v2 appends recipient token account and recipient owner; size becomes 193, discriminator KNTROBL2. Only registrar may create. Creation validates the provided supplier token account is initialized, belongs to SPL Token program, and matches configured mint; stores its key and actual token owner. No later instruction changes either value. Different obligations under one config may choose different recipient accounts.
+3. Pay retains current amount/revision/approvals/expiry checks. It validates exact stored obligation recipient address, owner, initialized state and configured mint. Vault validation remains canonical PDA, stored address, correct token-program owner, obligation authority, configured mint, initialized state, no delegate and no close authority. Any signed executor may submit a fully authorized payment, as today.
+4. Add tag 5 `release_remainder` with no amount bytes, and exact account count/order. Suggested accounts: signer, config, obligation, vault, mint, treasury, SPL Token program. Require signer; config/obligation canonical and owned by program; paid == true; same vault checks as pay; exact immutable configured treasury address, owner, initialized state and mint; token program exact and executable; vault and treasury writable. Reject all aliases via existing unique-account guard. Use `NotPaid` (new stable custom error) before any movement for unpaid obligations.
+5. Release transfers the vault's current entire token balance, using the obligation PDA signature. It never changes paid, revision, approvals, supplier destination or approved amount. No amount parameter, destination parameter data, config-update path, arbitrary CPI, vault close, or authority change. Only account metas carry destinations and they are compared to immutable state.
+6. A signed caller may trigger release without registrar identity: the caller cannot change timing before paid, amount or destination. This matches existing permissionless execution and minimizes unavailable-key lockup. If product prefers registrar-only triggering, it is feasible but adds a needless availability condition; decide explicitly.
+7. Repeat release on empty vault should succeed as an amount-0 no-op (skip token CPI). A later deposit/donation into a paid vault may be released again to the same treasury. No one-shot released flag, since that would strand donated dust. Always validate destination and authority even on zero. Emit released amount. Release need not inspect current revision approval expiry; payment already established finality.
+
+## Client and integration boundaries
+
+- Require explicit treasury input to v2 client/config initialization. Permit `createScenario({recipient})`, defaulting to constructor recipient for existing one-invoice UI. Return the selected destination in handle; derive instruction destination from that handle and compare it with decoded obligation state during reads. Never silently discard a supplied handle mismatch or reuse one global recipient for all obligations.
+- Decode v2 explicitly; expose recipient and recipientOwner from obligation; treasury and treasuryOwner from config. Verify configured roles/mint/treasury match adapter expectations. Handle mutation must fail against on-chain binding rather than redefining canonical truth.
+- Add `releaseRemainder(handle)` and adversarial testing instruction factory. Keep this operation at chain/operator layer unless PM explicitly accepts UI scope; no arbitrary release controls in UI.
+- Bootstrap emits distinct treasury fields; setup/proof/selftest scripts and fixture manifests propagate them. Display/settlement/recovery use decoded or verified handle recipient, never top-level manifest recipient as authoritative. Update invoice comment: mint bound by config; supplier destination bound by obligation. Original invoice hash need not change because account binding is already deliberately separate.
+- Fix docs that claim no withdrawal or fixed config recipient, distinguishing constrained paid remainder return from unrestricted withdrawal. Format Rust via rustfmt and gate `cargo fmt --check`.
+
+## Layout and deployment choice
+
+Prefer a new devnet program identity and fresh v2 manifest/proof. Existing v1 config has same byte length with different meanings, so new discriminator is essential. Existing obligations lack immutable per-obligation destination bytes; simply deploying new code over the old ID breaks decoding and may reinterpret state dangerously. An in-place migration would require separate migration authorization and compatibility design disproportionate to this repair. Preserve old program, accounts, signatures and evidence as legacy; old locked 200 remains old-program state, not evidence that new release failed or that migration occurred. Fresh v2 proof demonstrates the repair. Changing public proof pointers or active server manifests must not pair a v2 client with v1 evidence. Remaining test SOL/budget should be checked before deploying; this assessment authorizes no spending.
+
+## Required evidence
+
+- Actual compiled-SBF local validator: both 1000 and credited 800 pay; credited scenario releases exactly 200 to configured treasury and zero to supplier; paid remains true and repeat pay still rejects; empty repeat release no-op; a subsequently donated small amount returns to treasury.
+- Release before paid rejects with no balance/state movement. Wrong treasury (including same-mint account), changed treasury token owner, wrong mint/program/vault/obligation, missing signer, aliases, extra amount bytes, and malformed lengths reject. Failed token CPI does not mutate paid or obligation state.
+- Two obligations in one config use two distinct supplier token accounts and each pays only its own captured destination. Cross-supplier substitution rejects. Changing token owner after creation invalidates execution; creating with wrong mint/frozen/uninitialized destination rejects. Corresponding treasury validation is enforced at creation and release.
+- Read/adapter regression: tampered recipient handle and old v1 account bytes rejected, v2 recipient returned from obligation, approval recovery binding retained, confirmed-slot consistency and unknown-outcome behavior retained.
+- Existing stale-byte replay and one-credit/once-only payment cases continue to pass. Rust formatting, Node suite, TypeScript and build pass. Existing script defaults process evidence into product directory; force an external evidence path for actual runs.
+- Fresh devnet proof records new program ID and exact transfers separately from legacy evidence; local execution, devnet execution, source-aware review and any blind UX evaluation remain distinct labels.
+
+No technical blocker identified under these constraints. Unresolved product choice: permissionless versus registrar-only release trigger; recommended permissionless with immutable destination. No need to expand to cancellation, generic withdrawal, migrations, or UI treasury management.

@@ -1,0 +1,30 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "ChangeProposal",
+  "proposalId": "KONTOR-REPAIR-01",
+  "sourceFinding": "KONTOR-REPAIR-UX-SOURCE-01",
+  "problem": "Paid omits the credited reserve destination. Global recipient configuration contradicts invoice-bound approval language. README mixes capability, old proof and internal process. Similar party names and chapter-five auto-modal confuse the story.",
+  "userImpact": "Reviewers must know who received 800, where the remaining 200 went, what was verified and how to finish a static replay. Multiple contractors need an immutable recipient per payable.",
+  "proposedChange": "Keep the payable workbench. Rename buyer/workspace Hamburg GmbH; retain Northform Studio supplier. Bind recipient per obligation, consistently visible in invoice, approval context, review and receipt. Keep 1,000 minus 200 equals 800 invoice math, then show a separate treasury-return row with actual amount, destination, status and evidence. Fund fresh demonstrations with 1,000; derive the release from actual remainder, not the credit amount. A separate release after confirmed payment is acceptable if atomic return is unsafe. Preserve the historical tour as payment-only proof: explain its 200 remained in the recorded vault and new behavior is not demonstrated there. Chapter five opens with its review closed and an explicit inspection button. README becomes public product documentation; process records move outside product. Any retained review claim explicitly identifies AI persona simulation and actual isolation limits.",
+  "acceptanceCriteria": [
+    "The fresh 1,000-funded scenario shows 800 paid to the obligation recipient and 200 returned to Hamburg GmbH treasury only after confirmed release. Pending/failed return cannot appear completed or erase confirmed supplier payment.",
+    "Return uses actual eligible vault remainder in no-credit, zero-remainder and overfunded cases. Fresh rehearsal funding changes from 2,000 to the documented 1,000; legacy balances cannot produce false 200-return claims.",
+    "Supplier and treasury destinations have readable labels and inspectable complete token-account addresses. Evidence/export distinguishes payment and release, mode, and genuine signatures. Rehearsal supplies no network signatures.",
+    "Two obligations support distinct immutable recipients without replacing global configuration. Approval context, review and settlement identify the correct obligation recipient. No post-approval recipient selector. A one-selected-obligation demo is acceptable only with its presentation limit documented separately from program support.",
+    "Historical tour preserves recorded amounts, signatures, invoice bytes and hashes. It labels its recorded 200 as not returned and states this proof does not demonstrate new release/multiple-recipient behavior. No reconstructed release receipt, invented hash or claim that navigation performs release.",
+    "Buyer/workspace uses Hamburg GmbH; supplier remains Northform Studio. Historical documents/digests stay immutable; old customer names in evidence are disclosed as earlier demo labels.",
+    "Chapter five does not auto-open a blocking modal on arrival. Explicit inspection opens the native dialog with Close review and Show recorded payment result available by keyboard. Closing or Escape returns focus to the inspection trigger; advancing reaches the paid snapshot. At 390 px and desktop widths no action is hidden beneath tour navigation.",
+    "README states purpose, runnable commands, current limits, mode differences and which historical deployed version/transactions establish which behavior. Do not claim source is private if public or repaired source is already deployed. Move HackFleet logs, review/provenance reports, internal issue narratives and agent memory outside product; retain necessary transaction evidence.",
+    "Retained review wording identifies AI persona simulation; prompts alone do not establish independent accountant validation, user research or enforced blindness. Public tour payloads exclude internal process metadata but retain transaction proof and reconstruction notes.",
+    "Integration acceptance covers recipient consistency across two obligations, release success/premature/duplicate/wrong-destination/pending cases, correct display/evidence arithmetic, no network mutations in the tour, unchanged historical proof bytes/digests, and desktop plus phone keyboard progression through chapter five. Rust formatting passes as requested."
+  ],
+  "tradeoffs": [
+    "Independent source-aware UX assessment by /root/repair_ux, not user research or blind browser evaluation. Parent is sole control-plane writer. Local findings remain provisional pending PM/SDE exchange.",
+    "The existing tour/public/recorded-evidence.json shows vaultBalance 200 after the 800 payment; its recipientBalance 3400 is an account total, not the amount of this invoice payment. Do not relabel account totals as transfers.",
+    "A separate treasury release adds a post-payment state with distinct evidence. Atomic settlement is acceptable only if SDE confirms feasibility and both results can be proven. Destination must be locked in advance.",
+    "A contractor directory, multi-invoice dashboard, arbitrary recipient editing, deployment and fresh recorded proof are outside this bounded repair. Per-obligation support must still be real at program/client boundaries.",
+    "Historical buyer rename is presentation-only; do not regenerate evidence solely for name uniformity.",
+    "Process removal must not delete chain transaction evidence merely because it was collected during a fleet run; strip internal AI/review metadata separately and keep exact product evidence and provenance of the recorded transaction."
+  ],
+  "status": "proposed"
+}

@@ -1,0 +1,36 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "FeasibilityResponse",
+  "proposalId": "KONTOR-REPAIR-01",
+  "feasibility": "feasible",
+  "implementation": "Independent SDE /root/repair_sde finds the PM constraints feasible. Introduce strict Config KNTRCFG2 (232 bytes, immutable treasury token account and owner replacing former recipient fields) and Obligation KNTROBL2 (193 bytes, immutable recipient token account and owner appended). Add tag 5 paid-only permissionless signed remainder transfer using existing canonical vault PDA authority, fixed treasury address/mint/owner/initialized checks, current full vault amount, zero no-op, and repeatable later dust sweep; no paid/revision/approval mutation or cancellation. Update client destinations per obligation, strict layout reads, bootstrap treasury, server binding/recovery fixtures, separate post-payment release state/evidence, public labels and tour modal focus. Build/test compiled SBF before a fresh devnet program deployment, new manifest and exact transfer proof; retain historical program/evidence without migration and refresh static tour only from a verified coherent v2 scenario. Format Rust on approved runner if formatter remains unavailable locally. Parent executes control-plane/live rollout within existing devnet-only spending authority.",
+  "affectedAreas": [
+    "programs/kontor/src/lib.rs",
+    "chain/**",
+    "scripts/chain-selftest.mjs",
+    "scripts/chain-setup.mjs",
+    "scripts/chain-proof.mjs",
+    "server/**",
+    "contracts/**",
+    "src/**",
+    "tour/**",
+    "tests/**",
+    "README.md"
+  ],
+  "risks": [
+    "Config v1 and v2 share length but different semantics: magic validation must reject v1 rather than reinterpret bytes. V1 obligations and stranded old balance remain legacy and are not migrated.",
+    "Unknown release outcome must preserve confirmed supplier payment and block unverified return claims; no generic recovery redesign.",
+    "Any handle-selected recipient is untrusted until compared with decoded immutable obligation; adapter and recovery must not silently substitute constructor recipient.",
+    "No local Rust toolchain discovered; approved runner formatting and compiled-SBF gates are mandatory before deploying.",
+    "Fresh devnet proof depends on sufficient test SOL, RPC availability and existing monetary budget; absent proof leaves an explicit rollout gap rather than synthetic evidence.",
+    "No enforced blind evaluator is claimed by source-aware integration checks; existing explicit user waiver/authorization governs any additional persona evaluation."
+  ],
+  "taskSplit": [
+    "SDE scoped program, chain client/bootstrap/docs, selftest and chain fixture changes; no Git/live action.",
+    "Parent service/contracts/recovery and setup/proof scripts; coordinate immutable-recipient and separate release interface.",
+    "UX scoped presentation and static tour navigation changes; preserve proof artifacts until verified v2 payload available.",
+    "Parent approved remote formatting/compiled-SBF/adversarial regression, fresh devnet deploy/proof, versioned historical evidence preservation, coherent static tour refresh and publication.",
+    "Independent source-aware integration and desktop/390px keyboard verification; canonical artifacts maintained outside product by parent."
+  ],
+  "counterProposal": null
+}

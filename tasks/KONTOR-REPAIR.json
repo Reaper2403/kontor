@@ -1,0 +1,71 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "Task",
+  "metadata": {
+    "id": "KONTOR-REPAIR",
+    "title": "Immutable invoice recipients and paid treasury return",
+    "parent": "KONTOR-REPAIR-01"
+  },
+  "spec": {
+    "objective": "Implement accepted repair decision with v2 program, per-obligation recipients, constrained treasury release, true devnet proof and public product cleanup.",
+    "role": {
+      "profession": "Integration engineer",
+      "memoryProfile": "task"
+    },
+    "runtime": {
+      "preference": "local-codex",
+      "allowed": [
+        "local-codex"
+      ]
+    },
+    "capabilities": {
+      "required": [
+        "typescript"
+      ],
+      "optional": []
+    },
+    "context": {
+      "include": [
+        "project-memory/decisions/KONTOR-REPAIR-01.json"
+      ],
+      "dependencySummaries": []
+    },
+    "skills": [],
+    "writeScope": {
+      "allowed": [
+        "programs/**",
+        "chain/**",
+        "scripts/**",
+        "server/**",
+        "contracts/**",
+        "src/**",
+        "tour/**",
+        "tests/**",
+        "README.md",
+        ".github/**",
+        ".gitignore",
+        "research/repair/**"
+      ],
+      "forbidden": [
+        ".env",
+        ".local/**"
+      ]
+    },
+    "acceptance": [
+      "Complete assigned scope under accepted decision and Test USD labels",
+      "No fabricated chain evidence; no secrets in source",
+      "Supply exact verification and remaining limitations"
+    ],
+    "verification": {
+      "commands": []
+    },
+    "deliverables": [
+      "result-json"
+    ],
+    "limits": {
+      "executionMinutes": 180,
+      "retries": 1,
+      "maxModelTurns": 100
+    }
+  }
+}
