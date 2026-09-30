@@ -1,0 +1,60 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "DeterministicReceipt",
+  "dispatchId": "d433f2fe-9317-4742-ad76-a46c9a24befc",
+  "repository": "Reaper2403/kontor",
+  "issueNumber": 6,
+  "sourceSha": "7676344b7ea2ef3506d52d4969a7680583b2d8c3",
+  "workflowSha": "7676344b7ea2ef3506d52d4969a7680583b2d8c3",
+  "taskHash": "5f0bf31e8a997c0f3601e9274fbe5ce6f68cc61bbb2107330b38f45bff3bb509",
+  "runId": 36754377785,
+  "runAttempt": 1,
+  "result": {
+    "apiVersion": "hackfleet/v1",
+    "kind": "StructuredResult",
+    "taskId": "KONTOR-CHECK-02",
+    "status": "FAIL",
+    "summary": "Deterministic command or write-scope gate failed",
+    "filesChanged": [
+      ".npm/_logs/2026-09-30T17_51_35_521Z-debug-0.log",
+      ".npm/_logs/2026-09-30T17_51_39_522Z-debug-0.log",
+      "dist/assets/index-BtIr9vHP.js",
+      "dist/assets/index-DKNIK4q7.css",
+      "dist/index.html"
+    ],
+    "verification": [
+      {
+        "command": "npm ci --ignore-scripts --no-audit --no-fund --cache /tmp/kontor-npm-cache",
+        "status": "PASS",
+        "evidence": "Exit code: 0; signal: none"
+      },
+      {
+        "command": "npm test",
+        "status": "PASS",
+        "evidence": "Exit code: 0; signal: none"
+      },
+      {
+        "command": "npm run build",
+        "status": "PASS",
+        "evidence": "Exit code: 0; signal: none"
+      },
+      {
+        "command": "node -e \"require('node:fs').rmSync('node_modules',{recursive:true,force:true})\"",
+        "status": "PASS",
+        "evidence": "Exit code: 0; signal: none"
+      }
+    ],
+    "scopeViolations": [
+      ".npm/_logs/2026-09-30T17_51_35_521Z-debug-0.log",
+      ".npm/_logs/2026-09-30T17_51_39_522Z-debug-0.log"
+    ],
+    "assumptions": [],
+    "knownRisks": [],
+    "artifacts": [],
+    "failureReason": "Deterministic command or write-scope gate failed",
+    "usage": {
+      "modelTurns": 0,
+      "executionSeconds": 17.253
+    }
+  }
+}
