@@ -1,0 +1,12 @@
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
+import { createClient } from '../chain/client.mjs';
+import { loadOrCreateKeys, bootstrapTokens, fundScenario } from '../chain/bootstrap.mjs';
+const rpcUrl=process.env.KONTOR_RPC_URL??'https://api.devnet.solana.com';
+if(!/^https:\/\/api\.devnet\.solana\.com\/?$/.test(rpcUrl)&&!/^http:\/\/(localhost|127\.0\.0\.1):\d+\/?$/.test(rpcUrl))throw new Error('Only explicit localnet or public devnet allowed');
+const programId=process.env.KONTOR_PROGRAM_ID;if(!programId)throw new Error('Set KONTOR_PROGRAM_ID after deployment');
+const directory=process.env.KONTOR_KEY_DIR;if(!directory)throw new Error('Set KONTOR_KEY_DIR to an excluded private directory');
+const output=process.env.KONTOR_MANIFEST_PATH??`${directory}/scenario.json`;
+const keys=await loadOrCreateKeys(directory),tokens=await bootstrapTokens({rpcUrl,keys,directory});
+const client=createClient({...tokens,programId,keys});const scenario=await client.createScenario();await fundScenario({client,handle:scenario,keys});
+const manifest={...tokens,programId,scenario,createdAt:new Date().toISOString(),state:await client.read(scenario)};await mkdir(dirname(output),{recursive:true});await writeFile(output,JSON.stringify(manifest,null,2));console.log(JSON.stringify({manifest:output,programId,obligation:scenario.obligation,mint:tokens.mint,asset:'Test USD'}));

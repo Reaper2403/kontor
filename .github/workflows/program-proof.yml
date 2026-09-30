@@ -1,0 +1,53 @@
+name: Kontor compiled-program proof
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install verified validator
+        run: |
+          curl --fail --location --retry 2 --max-time 180 https://github.com/anza-xyz/agave/releases/download/v4.1.2/solana-release-x86_64-unknown-linux-gnu.tar.bz2 -o /tmp/solana.tar.bz2
+          echo '5991d027a686eb419a709a479178b33eb83501e8a2bfbf599a81a286bfcbf770  /tmp/solana.tar.bz2' | sha256sum -c -
+          tar -xjf /tmp/solana.tar.bz2 -C /tmp
+          echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
+      - name: Retrieve the exact compiled program
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 36752025220 --repo Reaper2403/kontor --name kontor-sbf --dir artifacts
+          sha256sum -c artifacts/binary-sha256.txt
+      - name: Install client dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Execute actual SBF against a disposable validator
+        shell: bash
+        run: |
+          solana-keygen new --no-bip39-passphrase --silent --outfile /tmp/kontor-program.json
+          export KONTOR_PROGRAM_ID=$(solana-keygen pubkey /tmp/kontor-program.json)
+          export KONTOR_RPC_URL=http://127.0.0.1:8899
+          export KONTOR_KEY_DIR=/tmp/kontor-test-keys
+          export KONTOR_EVIDENCE_PATH=artifacts/program-proof.json
+          solana-test-validator --reset --quiet --ledger /tmp/kontor-ledger --bpf-program "$KONTOR_PROGRAM_ID" artifacts/kontor.so > /tmp/validator.log 2>&1 &
+          validator_pid=$!
+          trap 'kill "$validator_pid" || true' EXIT
+          for attempt in $(seq 1 45); do
+            if curl -sf http://127.0.0.1:8899 -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}' | grep -q '"ok"'; then break; fi
+            sleep 1
+          done
+          node scripts/chain-selftest.mjs
+          git rev-parse HEAD > artifacts/test-source-sha.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: kontor-program-proof
+          path: artifacts/
+          retention-days: 1

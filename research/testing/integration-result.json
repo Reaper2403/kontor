@@ -1,0 +1,42 @@
+{
+  "kind": "source-aware-integration-report",
+  "date": "2026-09-30",
+  "actor": "/root/integration_test",
+  "decision": "KONTOR-BUILD-20260930",
+  "scope": "Independent Node service behavior, mocked chain transport failure handling, and Rust/client source inspection. No actual Solana runtime execution in this report.",
+  "ownedFiles": ["tests/integration-engine.test.ts", "tests/integration-client.test.ts", "research/testing/**"],
+  "checks": [
+    {"command": "npm test", "result": "passed", "tests": 17, "passed": 17, "failed": 0, "cancelled": 0},
+    {"command": "npm run typecheck", "result": "failed-at-review-time", "detail": "src/App.tsx:70 uses Array.findLast under ES2022 and produces an implicit-any callback diagnostic. UI owner/controller informed; outside tester write scope."},
+    {"check": "Rust source review", "result": "no blocking source issue found", "artifact": "research/testing/program-source-review.md"}
+  ],
+  "independentFindings": [
+    {"issue": "Payment intent only held in memory while external effect ran, permitting silent resubmission after restart", "regression": "in-flight chain effect is durable before an outbound payment can complete", "resolution": "Controller persisted pending state before invoking effect; independent rerun passes"},
+    {"issue": "Reset retries discarded idempotency and created multiple replacement scenario identities", "regression": "retrying reset preserves the first replacement scenario identity across restart", "resolution": "Controller persisted reset identity and archived previous state; independent rerun passes"},
+    {"issue": "Confirmed transaction followed by failed account refresh lost known signature in thrown error", "regression": "post-confirmation account refresh failure retains the known transaction identity", "resolution": "SDE added refresh error wrapper retaining signature/confirmation/evidence; independent rerun passes"},
+    {"issue": "Byte-identical stale instruction proof needed explicit check after transaction deserialization", "resolution": "SDE added serialized byte equality check before broadcast; source verified"}
+  ],
+  "coveredServiceBehaviors": [
+    "one persona cannot satisfy both approval slots",
+    "wrong persona cannot approve or revise credit",
+    "credit invalidates old approvals and stale requests cannot mutate state",
+    "same credit retry and conflicting idempotency key across restart",
+    "execute-first paid state survives replay and credit attempt",
+    "eight concurrent payment requests yield one settlement evidence item",
+    "rehearsal has no fabricated blockchain signatures",
+    "invalid values, actors and action inputs reject without financial mutation",
+    "durable pending operation and unknown outcome block fresh payment after restart",
+    "both credit-versus-payment arrival orderings",
+    "old authorization rehearsal attempt moves no local balance",
+    "reset retry identity survives restart",
+    "signed transaction persisted before mocked RPC send",
+    "submission and post-confirmation RPC failures preserve transaction identity"
+  ],
+  "limitations": [
+    "Client transport tests replace RPC methods and cannot validate the Rust program, network confirmation, token accounting or CPI rollback.",
+    "Compiled SBF negative transactions, token-program rollback, deployed binary/source provenance and live devnet proof remain parent/SDE-owned outstanding gates at report time.",
+    "Real service-to-chain adapter reconciliation and HTTP end-to-end integration were not available during this bounded review and require follow-up.",
+    "No browser/accountant evaluation was performed by this source-aware tester; that role must have a separate fresh context.",
+    "Program execution is intentionally permissionless once configured distinct approvers authorize exact immutable settlement terms; API executor persona is a demonstration control, not an on-chain allowlist."
+  ]
+}
