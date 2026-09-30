@@ -21,24 +21,32 @@ export function projectRecordedState(eventCount: number): State {
   state.evidence = state.evidence.slice(0, eventCount);
   const hasCredit = state.evidence.some(event => event.kind === 'credit');
   const hasPayment = state.evidence.some(event => event.kind === 'payment');
+  const hasReturn = state.evidence.some(event => event.kind === 'treasury-return');
   const hasBlocked = state.evidence.some(event => event.kind === 'blocked');
   state.revision = hasCredit ? finalState.revision : finalState.evidence[0].revision;
   state.credit = hasCredit ? finalState.credit : 0;
   state.creditNote = hasCredit ? state.creditNote : null;
   state.amountDue = state.amountOriginal - state.credit;
   state.approvals = state.approvals.filter(approval => state.evidence.some(event =>
-    event.kind === 'approval' && event.at === approval.at && event.revision === approval.revision && event.actor === approval.name
+    event.kind === 'approval' && event.revision === approval.revision && event.actor === approval.name && event.amount === approval.amount
   )).map(approval => ({ ...approval, current: approval.revision === state.revision }));
   const currentApprovers = new Set(state.approvals.filter(approval => approval.current).map(approval => approval.actor));
   state.status = hasPayment ? 'paid' : currentApprovers.has('approver-a') && currentApprovers.has('approver-b') ? 'approved' : 'needs-approval';
   state.settlement = hasPayment ? state.settlement : null;
+  state.treasuryReturn = hasReturn ? state.treasuryReturn : null;
   state.operation = null;
   const savedOriginal = state.approvals.filter(approval => approval.revision === finalState.evidence[0].revision).length === 2;
   state.previousInstruction = savedOriginal && state.previousInstruction
     ? { ...state.previousInstruction, tested: hasBlocked, ...(hasBlocked ? {} : { outcome: undefined }) }
     : null;
   // The final export is not a historical balance journal. Never imply later balances existed earlier.
-  if (!hasPayment) state.chain = { ...state.chain, vaultBalance: null, recipientBalance: null };
+  if (!hasReturn) state.chain = { ...state.chain, vaultBalance: null, recipientBalance: null, treasuryBalance: null };
+  if (hasPayment && !hasReturn) {
+    const balances = recorded.networkProofs.find(proof => proof.action === 'pay')?.evidence?.postTokenBalances ?? [];
+    const vault = balances.filter(balance => balance.owner === state.chain.obligation && balance.mint === state.asset.mint);
+    if (vault.length !== 1 || vault[0].uiTokenAmount.decimals !== 6) throw new Error('Missing exact recorded payment vault balance');
+    state.chain.vaultBalance = Number(vault[0].uiTokenAmount.amount) / 1e6;
+  }
   return state;
 }
 
@@ -57,14 +65,15 @@ export const tourSteps: TourStep[] = [
   step('approved-revised', 'Jonas approved the revised 800', 7, 'approver-b'),
   step('payment-review', 'Review the recorded 800 payment', 7, 'executor', { initialModal: 'pay' }),
   step('paid', '800 Test USD was paid', 8, 'executor'),
-  step('evidence', 'Inspect the recorded evidence', 8, 'executor', { initialTab: 'evidence' }),
+  step('treasury-return', '200 returned to treasury; vault empty', 9, 'executor'),
+  step('evidence', 'Inspect the recorded evidence', 9, 'executor', { initialTab: 'evidence' }),
 ];
 
 // Relative URL works at the Pages repository base, including localhost subpath testing.
 export const recordedEvidenceHref = './recorded-evidence.json';
-const explorer = (kind: 'blocked' | 'payment') => {
+const explorer = (kind: 'blocked' | 'payment' | 'treasury-return') => {
   const signature = finalState.evidence.find(event => event.kind === kind)?.signature;
   if (!signature) throw new Error(`Missing recorded ${kind} proof`);
   return `https://explorer.solana.com/tx/${encodeURIComponent(signature)}?cluster=devnet`;
 };
-export const recordedProofLinks = { payment: explorer('payment'), blocked: explorer('blocked') };
+export const recordedProofLinks = { payment: explorer('payment'), blocked: explorer('blocked'), treasuryReturn: explorer('treasury-return') };

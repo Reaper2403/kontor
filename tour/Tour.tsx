@@ -20,10 +20,11 @@ const scenes: Record<string, { chapter: number; eyebrow: string; title: string; 
   'approval-new-a': { chapter: 3, eyebrow: 'MARA · FINANCE LEAD', title: 'A fresh amount needs a fresh yes.', body: 'Mara approves the revised 800 Test USD payable. Her earlier 1,000 approval remains in the history, clearly marked as expired.', next: 'Show Jonas’s fresh approval' },
   'approved-revised': { chapter: 3, eyebrow: 'JONAS · TEAM LEAD', title: 'Two approvals, now for 800.', body: 'Jonas also approves the new version. Both approvals now match the amount and recipient Alex is about to review.', next: 'Review the recorded payment' },
   'payment-review': { chapter: 4, eyebrow: 'ALEX · PAYMENT OPERATOR', title: 'Check the amount before it leaves.', body: 'Inspect the supplier, fixed recipient and revised 800 Test USD amount using the payment review below, or continue to the recorded result. This reconstruction sends no payment.', next: 'Show the recorded payment result' },
-  paid: { chapter: 4, eyebrow: 'RECORDED SOLANA DEVNET RESULT', title: '800 paid. The history stays intact.', body: 'The recorded run settled 800 Test USD after the two fresh approvals. The original invoice, credit and rejected instruction stay linked to the same payable.', next: 'Inspect the recorded evidence' },
-  evidence: { chapter: 5, eyebrow: 'FROM CLAIM TO RECEIPT', title: 'Don’t take the tour’s word for it.', body: 'Inspect the recorded rejection and corrected payment on Solana devnet, or download the evidence. These transactions happened on 30 September 2026; your tour clicks submitted nothing.', next: 'Restart the guided demo' },
+  paid: { chapter: 4, eyebrow: 'RECORDED SOLANA DEVNET RESULT', title: '800 paid. 200 still reserved.', body: 'The supplier received the newly approved 800 Test USD. At this point, 200 remains in this payable’s vault. It can now return only to the treasury fixed in advance.', next: 'Show the treasury return' },
+  'treasury-return': { chapter: 4, eyebrow: 'A SEPARATE CONFIRMED TRANSACTION', title: 'The remaining 200 goes home.', body: 'A second transaction returned 200 Test USD to Hamburg GmbH’s fixed treasury. The vault is now empty. The supplier’s 800 payment is unchanged, and both receipts remain inspectable.', next: 'Inspect the recorded evidence' },
+  evidence: { chapter: 5, eyebrow: 'FROM CLAIM TO RECEIPT', title: 'Don’t take the tour’s word for it.', body: 'Inspect the recorded rejection, corrected payment and treasury return on Solana devnet, or download the evidence. These transactions happened on 30 September 2026; your tour clicks submitted nothing.', next: 'Restart the guided demo' },
 };
-const orderedIds = ['start', 'approval-a', 'approved-original', 'credit-applied', 'old-instruction-blocked', 'approval-new-a', 'approved-revised', 'payment-review', 'paid', 'evidence'];
+const orderedIds = ['start', 'approval-a', 'approved-original', 'credit-applied', 'old-instruction-blocked', 'approval-new-a', 'approved-revised', 'payment-review', 'paid', 'treasury-return', 'evidence'];
 
 export default function Tour() {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -79,7 +80,8 @@ export default function Tour() {
         {activeId === 'evidence' && <div className="tour-proof-cards">
           <a href={recordedProofLinks.blocked} target="_blank" rel="noreferrer"><span>01 / THE CONTROL</span><strong>Obsolete instruction rejected<ExternalLink size={17} /></strong><p>Recorded failed devnet transaction. No Test USD moved.</p><span className="sr-only">Opens in a new tab</span></a>
           <a href={recordedProofLinks.payment} target="_blank" rel="noreferrer"><span>02 / THE SETTLEMENT</span><strong>Corrected 800 payment<ExternalLink size={17} /></strong><p>Recorded confirmed devnet transaction after fresh approvals.</p><span className="sr-only">Opens in a new tab</span></a>
-          <a href={recordedEvidenceHref} download><span>03 / THE RECORD</span><strong>Download evidence JSON<FileDown size={17} /></strong><p>The selected run, transaction proofs and reconstruction provenance.</p></a>
+          <a href={recordedProofLinks.treasuryReturn} target="_blank" rel="noreferrer"><span>03 / THE REMAINDER</span><strong>200 returned to treasury<ExternalLink size={17} /></strong><p>Fixed treasury destination; zero remaining in the payable vault.</p></a>
+          <a href={recordedEvidenceHref} download><span>04 / THE RECORD</span><strong>Download evidence JSON<FileDown size={17} /></strong><p>The selected run, transaction proofs and reconstruction provenance.</p></a>
         </div>}
       </section>
       <div className="tour-workbench-label"><span>THE KONTOR WORKBENCH</span><span>Read-only historical snapshot · 30 September 2026</span></div>

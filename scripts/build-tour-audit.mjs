@@ -19,14 +19,18 @@ for (const file of files) {
 const evidence = JSON.parse(await fs.readFile(path.join(root, 'recorded-evidence.json'), 'utf8'));
 const intended = JSON.parse(await fs.readFile('tour/public/recorded-evidence.json', 'utf8'));
 assert.deepEqual(evidence, intended, 'Published evidence must match reviewed artifact');
-assert.equal(evidence.state.scenarioId, 'c3f46241-966e-4264-ac88-035ed095ca23');
-assert.equal(evidence.networkProofs.length, 7);
+assert.equal(evidence.state.scenarioId, '12a9ddab-2484-41ba-89b3-9654e824a0d8');
+assert.equal(evidence.networkProofs.length, 8);
 const signatures = new Set(evidence.state.evidence.map(event => event.signature).filter(Boolean));
 for (const proof of evidence.networkProofs) {
   assert.equal(proof.scenarioId, evidence.state.scenarioId);
   assert(signatures.has(proof.signature));
 }
 assert.equal(evidence.state.settlement.amount, 800);
+assert.equal(evidence.state.treasuryReturn.amount, 200);
+assert.equal(evidence.state.chain.vaultBalance, 0);
+assert.notEqual(evidence.state.settlement.signature, evidence.state.treasuryReturn.signature);
+assert(evidence.networkProofs.find(proof => proof.action === 'release-remainder').evidence.logs.includes('Program log: Kontor::RemainderReleased amount=200000000'));
 assert.equal(evidence.networkProofs.find(proof => proof.action === 'test-previous').evidence.tokenMovement, '0');
 const html = await fs.readFile(path.join(root, 'index.html'), 'utf8');
 assert(!/(?:src|href)=["']\/(?!\/)/.test(html), 'Root-relative assets break repository subpaths');

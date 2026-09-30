@@ -1,0 +1,91 @@
+{
+  "kind": "verified-devnet-product-summary",
+  "protocolVersion": 2,
+  "cluster": "devnet",
+  "programId": "CZvXgXBgFYfNef1uJYixrP86EbAcaRKoZ5sbH7qWPhyP",
+  "deploymentSignature": "5G4wijMKG6HcQ2nWLSt26NYpdBqMz8wCTCTz48E8KjTRaHcMc3SUFjteK4iLj5vpw7Tdj6YVCmrrzkwpyFGq75xz",
+  "compiledSourceCommit": "92ef2b32d886856081c3b7488038a5625727ec9b",
+  "programSourceSha256": "2af17695eb9501fb503f7a4584d672116c383786c56df9a7e62f6a0e02281b6e",
+  "binarySha256": "b0d858a719ab96faff9830da3a6aca877fed9e7122963eed89b77f5e0a21fb10",
+  "deployedBinaryComparedByteForByte": true,
+  "compiledProgramProof": {
+    "path": "compiled-program-v2-proof.json",
+    "passed": 63,
+    "workflow": "https://github.com/Reaper2403/kontor/actions/runs/36767174261"
+  },
+  "asset": {
+    "symbol": "Test USD",
+    "decimals": 6,
+    "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+    "cluster": "devnet"
+  },
+  "treasury": "8zyGsAJLjHoFVMTKJ75Kad9q9rc32XJEFoer7oqQpC5f",
+  "treasuryOwner": "3DcmX4FL7ah9owhi5TmavczL1aEqGndw3Dmd1rzQ6Ud7",
+  "recordedScenario": {
+    "scenarioId": "12a9ddab-2484-41ba-89b3-9654e824a0d8",
+    "obligation": "FfzWhYo4xc4h2yekNywxd4Xh33CTmQY1UcVhq129DJ1Z",
+    "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+    "original": 1000,
+    "credit": 200,
+    "supplierPayment": 800,
+    "treasuryReturn": 200,
+    "vaultRemaining": 0,
+    "proof": "devnet-v2-demo.json",
+    "transactions": [
+      {
+        "action": "approve",
+        "signature": "3B1TE2KNCsh2ffUG5peKgpyL5mHJd1QjumHPsyzMih1woifbg9eYKtNwLqCBXH9W2L1PoRxC3iVEoRG98HwHbc3Y",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "approve",
+        "signature": "59aWkTfYV47rgZfKtJfrc8sTsRL1R1Dpi96rcgArm9nJsm3X3y7uUPdU4ZXtWYaZFGt7mcwpALK3cJENZxV9iyXr",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "apply-credit",
+        "signature": "2CGnY3Y8beJK5spw2eExn7Fwzk4nrxyxN52UvdZq7r3cJWztUgSGqHmBo4tSQmu5GtjgK9atGNJDzsACycakbnFh",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "test-previous",
+        "signature": "4LQe318u4JufLMwy3vR9BoWzQ8rjHiNPW6wC8xWBmQzc1w73R33sgGdFjFiBkniAQjnqt9FHvJNvv6nQMzC18ad3",
+        "confirmation": "failed"
+      },
+      {
+        "action": "approve",
+        "signature": "2rQkgtPjnxdvps1pV7sucZi98SoBertVEQCjfXqriZHJTRoBXNtrtkdiaNmrNXRuFvYbKvN7WpaXfhiEfKNh8KnS",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "approve",
+        "signature": "3jL4oycpQ3TpEQnsFNuV6XcEwUYLsuDB4Li8wNZ5VG2ff9YBH3qRajLkVKQuspCxagRGMW9U4mSEYW1AnV8pAHGh",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "pay",
+        "signature": "1256NpMX9eh8r5gWkfVuMJ3sS5EfqU2hKz89NdnJA2qN1chCuLGKhQoEviRDbYKVX84ThkdD2ATM9tDqqT6TerPf",
+        "confirmation": "confirmed"
+      },
+      {
+        "action": "release-remainder",
+        "signature": "5GrL9JnSAHWjMdNj82DvW7MbTRLveyvS73YrXQXRK67P7WkyXWwbEzXQU2UiTZMYRp72gFSAp4FKrgtvV8JnteRw",
+        "confirmation": "confirmed"
+      }
+    ]
+  },
+  "multiRecipientAndOrderingProof": "devnet-v2-ordering-proof.json",
+  "legacy": {
+    "programId": "8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9",
+    "migrated": false,
+    "recordedTour": "tour-v1-recorded-evidence.json",
+    "note": "Historical v1 retained200 was not returned or migrated by v2."
+  },
+  "limits": [
+    "Synthetic Test USD only; no monetary value.",
+    "No unpaid withdrawal or cancellation.",
+    "One partial credit per obligation.",
+    "Server-held demonstration keys and trusted upgrade authority; unaudited."
+  ],
+  "recordedAt": "2026-09-30T19:49:02.653Z"
+}

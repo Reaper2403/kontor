@@ -1,248 +1,8 @@
 {
+  "title": "Kontor v2 demonstration evidence",
   "protocolVersion": 2,
-  "disclosure": "Guided replay of a recorded v2 Solana devnet run. Synthetic Test USD has no monetary value. Tour clicks send no transactions.",
-  "provenance": {
-    "sourceSha256": "460a554e4f6ed05e3210fa430def7ed03cfe2a6b943c309f9025ca587f0844f7",
-    "scenarioId": "12a9ddab-2484-41ba-89b3-9654e824a0d8",
-    "recordedAt": "2026-09-30T19:49:02.653Z",
-    "projectionNotes": [
-      "Intermediate screens are reconstructed from event prefixes, not screenshots recorded at those moments.",
-      "Balances before payment are not asserted. The paid snapshot uses the payment transaction post-token balances; final balances and return come from the completed service export.",
-      "The supplier account balance is cumulative, not this invoice payment amount. Payment and treasury return are separate transactions.",
-      "Earlier v1 tour proof is preserved separately; no v1 funds or account layouts were migrated."
-    ]
-  },
-  "state": {
-    "mode": "devnet",
-    "scenarioId": "12a9ddab-2484-41ba-89b3-9654e824a0d8",
-    "revision": 2,
-    "asset": {
-      "symbol": "Test USD",
-      "decimals": 6,
-      "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
-      "cluster": "devnet"
-    },
-    "invoice": {
-      "id": "inv-f1d8485a",
-      "number": "NF-2026-041",
-      "supplier": "Northform Studio",
-      "supplierEmail": "accounts@northform.example",
-      "description": "Product design support \u00b7 September 2026",
-      "issued": "2026-09-24",
-      "due": "2026-10-08",
-      "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb"
-    },
-    "amountOriginal": 1000,
-    "credit": 200,
-    "amountDue": 800,
-    "status": "paid",
-    "creditNote": {
-      "reference": "CN-204",
-      "reason": "Service adjustment agreed with supplier",
-      "amount": 200,
-      "at": "2026-09-30T19:48:30.336Z"
-    },
-    "approvals": [
-      {
-        "actor": "approver-a",
-        "name": "Mara Weber",
-        "role": "Finance lead",
-        "revision": 1,
-        "amount": 1000,
-        "at": "2026-09-30T19:48:18.510Z",
-        "current": false
-      },
-      {
-        "actor": "approver-b",
-        "name": "Jonas Berg",
-        "role": "Team lead",
-        "revision": 1,
-        "amount": 1000,
-        "at": "2026-09-30T19:48:24.191Z",
-        "current": false
-      },
-      {
-        "actor": "approver-a",
-        "name": "Mara Weber",
-        "role": "Finance lead",
-        "revision": 2,
-        "amount": 800,
-        "at": "2026-09-30T19:48:45.755Z",
-        "current": true
-      },
-      {
-        "actor": "approver-b",
-        "name": "Jonas Berg",
-        "role": "Team lead",
-        "revision": 2,
-        "amount": 800,
-        "at": "2026-09-30T19:48:49.980Z",
-        "current": true
-      }
-    ],
-    "evidence": [
-      {
-        "id": "81dd2fab-dabd-4c59-8074-aecf6d8be926",
-        "kind": "created",
-        "title": "Invoice ready for review",
-        "detail": "Synthetic invoice for 1,000 Test USD. Two distinct approvals are required.",
-        "at": "2026-09-30T19:48:16.397Z",
-        "actor": "Demo registrar",
-        "revision": 1,
-        "amount": 1000,
-        "outcome": "local"
-      },
-      {
-        "id": "7da48b79-3692-45e7-b7f2-2fcfa536f926",
-        "kind": "approval",
-        "title": "Mara Weber approved 1,000 Test USD",
-        "detail": "Approval covers this amount, recipient and current invoice version.",
-        "at": "2026-09-30T19:48:18.527Z",
-        "actor": "Mara Weber",
-        "revision": 1,
-        "amount": 1000,
-        "outcome": "confirmed",
-        "signature": "3B1TE2KNCsh2ffUG5peKgpyL5mHJd1QjumHPsyzMih1woifbg9eYKtNwLqCBXH9W2L1PoRxC3iVEoRG98HwHbc3Y"
-      },
-      {
-        "id": "916bf636-bc13-4ed6-b80a-57d948561206",
-        "kind": "approval",
-        "title": "Jonas Berg approved 1,000 Test USD",
-        "detail": "Approval covers this amount, recipient and current invoice version.",
-        "at": "2026-09-30T19:48:24.191Z",
-        "actor": "Jonas Berg",
-        "revision": 1,
-        "amount": 1000,
-        "outcome": "confirmed",
-        "signature": "59aWkTfYV47rgZfKtJfrc8sTsRL1R1Dpi96rcgArm9nJsm3X3y7uUPdU4ZXtWYaZFGt7mcwpALK3cJENZxV9iyXr"
-      },
-      {
-        "id": "38d6b774-89c4-48ea-8f56-faf53973849c",
-        "kind": "credit",
-        "title": "200 Test USD credit applied",
-        "detail": "CN-204: Service adjustment agreed with supplier. Earlier approvals no longer cover the revised amount.",
-        "at": "2026-09-30T19:48:30.336Z",
-        "actor": "Lena Fischer",
-        "revision": 2,
-        "amount": 200,
-        "outcome": "confirmed",
-        "signature": "2CGnY3Y8beJK5spw2eExn7Fwzk4nrxyxN52UvdZq7r3cJWztUgSGqHmBo4tSQmu5GtjgK9atGNJDzsACycakbnFh"
-      },
-      {
-        "id": "15dc1ae2-7a3c-48b7-a851-d7b776a7b4ee",
-        "kind": "blocked",
-        "title": "Earlier payment attempt blocked",
-        "detail": "Attempted 1,000 Test USD under invoice version 1. Payment program rejected it. No Test USD moved.",
-        "at": "2026-09-30T19:48:36.322Z",
-        "actor": "Alex Morgan",
-        "revision": 2,
-        "amount": 1000,
-        "outcome": "failed",
-        "signature": "4LQe318u4JufLMwy3vR9BoWzQ8rjHiNPW6wC8xWBmQzc1w73R33sgGdFjFiBkniAQjnqt9FHvJNvv6nQMzC18ad3"
-      },
-      {
-        "id": "1d30f900-1d94-491d-a96b-f07926c6fb49",
-        "kind": "approval",
-        "title": "Mara Weber approved 800 Test USD",
-        "detail": "Approval covers this amount, recipient and current invoice version.",
-        "at": "2026-09-30T19:48:45.756Z",
-        "actor": "Mara Weber",
-        "revision": 2,
-        "amount": 800,
-        "outcome": "confirmed",
-        "signature": "2rQkgtPjnxdvps1pV7sucZi98SoBertVEQCjfXqriZHJTRoBXNtrtkdiaNmrNXRuFvYbKvN7WpaXfhiEfKNh8KnS"
-      },
-      {
-        "id": "79807d4b-8ae3-4d7a-91fa-837d0a70b361",
-        "kind": "approval",
-        "title": "Jonas Berg approved 800 Test USD",
-        "detail": "Approval covers this amount, recipient and current invoice version.",
-        "at": "2026-09-30T19:48:49.980Z",
-        "actor": "Jonas Berg",
-        "revision": 2,
-        "amount": 800,
-        "outcome": "confirmed",
-        "signature": "3jL4oycpQ3TpEQnsFNuV6XcEwUYLsuDB4Li8wNZ5VG2ff9YBH3qRajLkVKQuspCxagRGMW9U4mSEYW1AnV8pAHGh"
-      },
-      {
-        "id": "6187c42e-7736-4f91-abf1-9bc93390ce74",
-        "kind": "payment",
-        "title": "800 Test USD paid",
-        "detail": "Payment confirmed for the current approved amount.",
-        "at": "2026-09-30T19:48:54.213Z",
-        "actor": "Alex Morgan",
-        "revision": 2,
-        "amount": 800,
-        "outcome": "confirmed",
-        "signature": "1256NpMX9eh8r5gWkfVuMJ3sS5EfqU2hKz89NdnJA2qN1chCuLGKhQoEviRDbYKVX84ThkdD2ATM9tDqqT6TerPf"
-      },
-      {
-        "id": "3d1ad992-503e-467b-b776-e50e718a5a8b",
-        "kind": "treasury-return",
-        "title": "200 Test USD returned to treasury",
-        "detail": "Remaining reserve returned to the fixed Hamburg GmbH treasury. Supplier payment is unchanged.",
-        "at": "2026-09-30T19:48:58.434Z",
-        "actor": "Alex Morgan",
-        "revision": 2,
-        "amount": 200,
-        "outcome": "confirmed",
-        "signature": "5GrL9JnSAHWjMdNj82DvW7MbTRLveyvS73YrXQXRK67P7WkyXWwbEzXQU2UiTZMYRp72gFSAp4FKrgtvV8JnteRw"
-      }
-    ],
-    "settlement": {
-      "amount": 800,
-      "signature": "1256NpMX9eh8r5gWkfVuMJ3sS5EfqU2hKz89NdnJA2qN1chCuLGKhQoEviRDbYKVX84ThkdD2ATM9tDqqT6TerPf",
-      "at": "2026-09-30T19:48:54.212Z",
-      "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
-      "mode": "devnet"
-    },
-    "treasuryReturn": {
-      "amount": 200,
-      "signature": "5GrL9JnSAHWjMdNj82DvW7MbTRLveyvS73YrXQXRK67P7WkyXWwbEzXQU2UiTZMYRp72gFSAp4FKrgtvV8JnteRw",
-      "at": "2026-09-30T19:48:58.433Z",
-      "treasury": "8zyGsAJLjHoFVMTKJ75Kad9q9rc32XJEFoer7oqQpC5f",
-      "mode": "devnet"
-    },
-    "previousInstruction": {
-      "revision": 1,
-      "amount": 1000,
-      "capturedAt": "2026-09-30T19:48:24.191Z",
-      "tested": true,
-      "outcome": "Earlier approval expired \u2014 no payment sent"
-    },
-    "operation": null,
-    "people": [
-      {
-        "id": "reviewer",
-        "name": "Lena Fischer",
-        "role": "Finance reviewer"
-      },
-      {
-        "id": "approver-a",
-        "name": "Mara Weber",
-        "role": "Finance lead"
-      },
-      {
-        "id": "approver-b",
-        "name": "Jonas Berg",
-        "role": "Team lead"
-      },
-      {
-        "id": "executor",
-        "name": "Alex Morgan",
-        "role": "Payment operator"
-      }
-    ],
-    "chain": {
-      "programId": "CZvXgXBgFYfNef1uJYixrP86EbAcaRKoZ5sbH7qWPhyP",
-      "obligation": "FfzWhYo4xc4h2yekNywxd4Xh33CTmQY1UcVhq129DJ1Z",
-      "vault": "EPtrvsKzMJnEzqpZpTfsLtVQ9Gdk6iWxXFHD58npcdnV",
-      "treasury": "8zyGsAJLjHoFVMTKJ75Kad9q9rc32XJEFoer7oqQpC5f",
-      "vaultBalance": 0,
-      "recipientBalance": 5900,
-      "treasuryBalance": 200
-    }
-  },
+  "disclosure": "Solana devnet. Synthetic Test USD, no monetary value. Server-held demonstration role keys.",
+  "exportedAt": "2026-09-30T19:49:02.653Z",
   "networkProofs": [
     {
       "action": "approve",
@@ -723,7 +483,7 @@
         "invoiceNumber": "NF-2026-041",
         "supplier": "Northform Studio",
         "supplierEmail": "accounts@northform.example",
-        "description": "Product design support \u00b7 September 2026",
+        "description": "Product design support · September 2026",
         "issued": "2026-09-24",
         "due": "2026-10-08",
         "amountBaseUnits": "1000000000",
@@ -731,7 +491,7 @@
         "decimals": 6,
         "synthetic": true
       },
-      "utf8": "{\"schema\":\"kontor-synthetic-invoice-v1\",\"invoiceNumber\":\"NF-2026-041\",\"supplier\":\"Northform Studio\",\"supplierEmail\":\"accounts@northform.example\",\"description\":\"Product design support \u00b7 September 2026\",\"issued\":\"2026-09-24\",\"due\":\"2026-10-08\",\"amountBaseUnits\":\"1000000000\",\"asset\":\"Test USD\",\"decimals\":6,\"synthetic\":true}",
+      "utf8": "{\"schema\":\"kontor-synthetic-invoice-v1\",\"invoiceNumber\":\"NF-2026-041\",\"supplier\":\"Northform Studio\",\"supplierEmail\":\"accounts@northform.example\",\"description\":\"Product design support · September 2026\",\"issued\":\"2026-09-24\",\"due\":\"2026-10-08\",\"amountBaseUnits\":\"1000000000\",\"asset\":\"Test USD\",\"decimals\":6,\"synthetic\":true}",
       "sha256": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b"
     },
     "credit": {
@@ -744,5 +504,234 @@
       "reason": "Service adjustment agreed with supplier",
       "reasonSha256": "0ac0074000af5aba9567f233a6e24be44110e78b4d0bcc1b9912269163e80307"
     }
+  },
+  "mode": "devnet",
+  "scenarioId": "12a9ddab-2484-41ba-89b3-9654e824a0d8",
+  "revision": 2,
+  "asset": {
+    "symbol": "Test USD",
+    "decimals": 6,
+    "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+    "cluster": "devnet"
+  },
+  "invoice": {
+    "id": "inv-f1d8485a",
+    "number": "NF-2026-041",
+    "supplier": "Northform Studio",
+    "supplierEmail": "accounts@northform.example",
+    "description": "Product design support · September 2026",
+    "issued": "2026-09-24",
+    "due": "2026-10-08",
+    "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb"
+  },
+  "amountOriginal": 1000,
+  "credit": 200,
+  "amountDue": 800,
+  "status": "paid",
+  "creditNote": {
+    "reference": "CN-204",
+    "reason": "Service adjustment agreed with supplier",
+    "amount": 200,
+    "at": "2026-09-30T19:48:30.336Z"
+  },
+  "approvals": [
+    {
+      "actor": "approver-a",
+      "name": "Mara Weber",
+      "role": "Finance lead",
+      "revision": 1,
+      "amount": 1000,
+      "at": "2026-09-30T19:48:18.510Z",
+      "current": false
+    },
+    {
+      "actor": "approver-b",
+      "name": "Jonas Berg",
+      "role": "Team lead",
+      "revision": 1,
+      "amount": 1000,
+      "at": "2026-09-30T19:48:24.191Z",
+      "current": false
+    },
+    {
+      "actor": "approver-a",
+      "name": "Mara Weber",
+      "role": "Finance lead",
+      "revision": 2,
+      "amount": 800,
+      "at": "2026-09-30T19:48:45.755Z",
+      "current": true
+    },
+    {
+      "actor": "approver-b",
+      "name": "Jonas Berg",
+      "role": "Team lead",
+      "revision": 2,
+      "amount": 800,
+      "at": "2026-09-30T19:48:49.980Z",
+      "current": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "81dd2fab-dabd-4c59-8074-aecf6d8be926",
+      "kind": "created",
+      "title": "Invoice ready for review",
+      "detail": "Synthetic invoice for 1,000 Test USD. Two distinct approvals are required.",
+      "at": "2026-09-30T19:48:16.397Z",
+      "actor": "Demo registrar",
+      "revision": 1,
+      "amount": 1000,
+      "outcome": "local"
+    },
+    {
+      "id": "7da48b79-3692-45e7-b7f2-2fcfa536f926",
+      "kind": "approval",
+      "title": "Mara Weber approved 1,000 Test USD",
+      "detail": "Approval covers this amount, recipient and current invoice version.",
+      "at": "2026-09-30T19:48:18.527Z",
+      "actor": "Mara Weber",
+      "revision": 1,
+      "amount": 1000,
+      "outcome": "confirmed",
+      "signature": "3B1TE2KNCsh2ffUG5peKgpyL5mHJd1QjumHPsyzMih1woifbg9eYKtNwLqCBXH9W2L1PoRxC3iVEoRG98HwHbc3Y"
+    },
+    {
+      "id": "916bf636-bc13-4ed6-b80a-57d948561206",
+      "kind": "approval",
+      "title": "Jonas Berg approved 1,000 Test USD",
+      "detail": "Approval covers this amount, recipient and current invoice version.",
+      "at": "2026-09-30T19:48:24.191Z",
+      "actor": "Jonas Berg",
+      "revision": 1,
+      "amount": 1000,
+      "outcome": "confirmed",
+      "signature": "59aWkTfYV47rgZfKtJfrc8sTsRL1R1Dpi96rcgArm9nJsm3X3y7uUPdU4ZXtWYaZFGt7mcwpALK3cJENZxV9iyXr"
+    },
+    {
+      "id": "38d6b774-89c4-48ea-8f56-faf53973849c",
+      "kind": "credit",
+      "title": "200 Test USD credit applied",
+      "detail": "CN-204: Service adjustment agreed with supplier. Earlier approvals no longer cover the revised amount.",
+      "at": "2026-09-30T19:48:30.336Z",
+      "actor": "Lena Fischer",
+      "revision": 2,
+      "amount": 200,
+      "outcome": "confirmed",
+      "signature": "2CGnY3Y8beJK5spw2eExn7Fwzk4nrxyxN52UvdZq7r3cJWztUgSGqHmBo4tSQmu5GtjgK9atGNJDzsACycakbnFh"
+    },
+    {
+      "id": "15dc1ae2-7a3c-48b7-a851-d7b776a7b4ee",
+      "kind": "blocked",
+      "title": "Earlier payment attempt blocked",
+      "detail": "Attempted 1,000 Test USD under invoice version 1. Payment program rejected it. No Test USD moved.",
+      "at": "2026-09-30T19:48:36.322Z",
+      "actor": "Alex Morgan",
+      "revision": 2,
+      "amount": 1000,
+      "outcome": "failed",
+      "signature": "4LQe318u4JufLMwy3vR9BoWzQ8rjHiNPW6wC8xWBmQzc1w73R33sgGdFjFiBkniAQjnqt9FHvJNvv6nQMzC18ad3"
+    },
+    {
+      "id": "1d30f900-1d94-491d-a96b-f07926c6fb49",
+      "kind": "approval",
+      "title": "Mara Weber approved 800 Test USD",
+      "detail": "Approval covers this amount, recipient and current invoice version.",
+      "at": "2026-09-30T19:48:45.756Z",
+      "actor": "Mara Weber",
+      "revision": 2,
+      "amount": 800,
+      "outcome": "confirmed",
+      "signature": "2rQkgtPjnxdvps1pV7sucZi98SoBertVEQCjfXqriZHJTRoBXNtrtkdiaNmrNXRuFvYbKvN7WpaXfhiEfKNh8KnS"
+    },
+    {
+      "id": "79807d4b-8ae3-4d7a-91fa-837d0a70b361",
+      "kind": "approval",
+      "title": "Jonas Berg approved 800 Test USD",
+      "detail": "Approval covers this amount, recipient and current invoice version.",
+      "at": "2026-09-30T19:48:49.980Z",
+      "actor": "Jonas Berg",
+      "revision": 2,
+      "amount": 800,
+      "outcome": "confirmed",
+      "signature": "3jL4oycpQ3TpEQnsFNuV6XcEwUYLsuDB4Li8wNZ5VG2ff9YBH3qRajLkVKQuspCxagRGMW9U4mSEYW1AnV8pAHGh"
+    },
+    {
+      "id": "6187c42e-7736-4f91-abf1-9bc93390ce74",
+      "kind": "payment",
+      "title": "800 Test USD paid",
+      "detail": "Payment confirmed for the current approved amount.",
+      "at": "2026-09-30T19:48:54.213Z",
+      "actor": "Alex Morgan",
+      "revision": 2,
+      "amount": 800,
+      "outcome": "confirmed",
+      "signature": "1256NpMX9eh8r5gWkfVuMJ3sS5EfqU2hKz89NdnJA2qN1chCuLGKhQoEviRDbYKVX84ThkdD2ATM9tDqqT6TerPf"
+    },
+    {
+      "id": "3d1ad992-503e-467b-b776-e50e718a5a8b",
+      "kind": "treasury-return",
+      "title": "200 Test USD returned to treasury",
+      "detail": "Remaining reserve returned to the fixed Hamburg GmbH treasury. Supplier payment is unchanged.",
+      "at": "2026-09-30T19:48:58.434Z",
+      "actor": "Alex Morgan",
+      "revision": 2,
+      "amount": 200,
+      "outcome": "confirmed",
+      "signature": "5GrL9JnSAHWjMdNj82DvW7MbTRLveyvS73YrXQXRK67P7WkyXWwbEzXQU2UiTZMYRp72gFSAp4FKrgtvV8JnteRw"
+    }
+  ],
+  "settlement": {
+    "amount": 800,
+    "signature": "1256NpMX9eh8r5gWkfVuMJ3sS5EfqU2hKz89NdnJA2qN1chCuLGKhQoEviRDbYKVX84ThkdD2ATM9tDqqT6TerPf",
+    "at": "2026-09-30T19:48:54.212Z",
+    "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+    "mode": "devnet"
+  },
+  "treasuryReturn": {
+    "amount": 200,
+    "signature": "5GrL9JnSAHWjMdNj82DvW7MbTRLveyvS73YrXQXRK67P7WkyXWwbEzXQU2UiTZMYRp72gFSAp4FKrgtvV8JnteRw",
+    "at": "2026-09-30T19:48:58.433Z",
+    "treasury": "8zyGsAJLjHoFVMTKJ75Kad9q9rc32XJEFoer7oqQpC5f",
+    "mode": "devnet"
+  },
+  "previousInstruction": {
+    "revision": 1,
+    "amount": 1000,
+    "capturedAt": "2026-09-30T19:48:24.191Z",
+    "tested": true,
+    "outcome": "Earlier approval expired — no payment sent"
+  },
+  "operation": null,
+  "people": [
+    {
+      "id": "reviewer",
+      "name": "Lena Fischer",
+      "role": "Finance reviewer"
+    },
+    {
+      "id": "approver-a",
+      "name": "Mara Weber",
+      "role": "Finance lead"
+    },
+    {
+      "id": "approver-b",
+      "name": "Jonas Berg",
+      "role": "Team lead"
+    },
+    {
+      "id": "executor",
+      "name": "Alex Morgan",
+      "role": "Payment operator"
+    }
+  ],
+  "chain": {
+    "programId": "CZvXgXBgFYfNef1uJYixrP86EbAcaRKoZ5sbH7qWPhyP",
+    "obligation": "FfzWhYo4xc4h2yekNywxd4Xh33CTmQY1UcVhq129DJ1Z",
+    "vault": "EPtrvsKzMJnEzqpZpTfsLtVQ9Gdk6iWxXFHD58npcdnV",
+    "treasury": "8zyGsAJLjHoFVMTKJ75Kad9q9rc32XJEFoer7oqQpC5f",
+    "vaultBalance": 0,
+    "recipientBalance": 5900,
+    "treasuryBalance": 200
   }
 }

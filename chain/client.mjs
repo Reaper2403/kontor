@@ -53,6 +53,17 @@ export function createPacedRpcFetch(endpoint,{fetchImpl=globalThis.fetch,minInte
 function base58(bytes) { const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';let n=BigInt('0x'+Buffer.from(bytes).toString('hex'));let s='';while(n){s=alphabet[Number(n%58n)]+s;n/=58n;}for(const b of bytes){if(b!==0)break;s='1'+s;}return s; }
 function codeFor(error,logs=[]) {const found=logs.find(s=>/Kontor::(Unauthorized|InvalidAccount|StaleRevision|AlreadyPaid|MissingApprovals|ApprovalExpired|InvalidAmount|DuplicateApproval|CreditAlreadyApplied|InvalidInstruction|AliasedAccount|NotPaid)/.test(s));if(found)return found.match(/Kontor::(\w+)/)[1];const custom=error?.InstructionError?.[1]?.Custom;return ERRORS[custom]??'TransactionFailed';}
 export class ChainError extends Error {constructor(code,message,extra={}){super(message);this.name='ChainError';this.code=code;Object.assign(this,extra);}}
+// A failed-only fallback needs explicit structured failure metadata, not logs or exception hints.
+// Only the explicit Custom-u32 shape needed by these program checks is accepted.
+// Other variants and invented enum names remain unresolved.
+function validFailureMetadata(value,instructionCount) {
+  if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length!==1||!Object.hasOwn(value,'InstructionError'))return false;
+  const pair=value.InstructionError;
+  if(!Array.isArray(pair)||pair.length!==2||!Number.isInteger(pair[0])||pair[0]<0||pair[0]>=instructionCount)return false;
+  const detail=pair[1];
+  return Boolean(detail&&typeof detail==='object'&&!Array.isArray(detail)&&Object.keys(detail).length===1&&Object.hasOwn(detail,'Custom')&&Number.isInteger(detail.Custom)&&detail.Custom>=0&&detail.Custom<=0xffffffff);
+}
+
 function decoder(data,magic) {if(data.subarray(0,8).toString()!==magic)throw new ChainError('InvalidAccount','Wrong account discriminator');let at=8;return {key(){const v=new PublicKey(data.subarray(at,at+32)).toBase58();at+=32;return v;},hash(){const v=data.subarray(at,at+32).toString('hex');at+=32;return v;},u64(){const v=data.readBigUInt64LE(at);at+=8;return v;},i64(){const v=data.readBigInt64LE(at);at+=8;return v;},byte(){return data[at++];}};}
 export function decodeObligation(data) {if(data.length!==193)throw new ChainError('InvalidAccount','Invalid v2 obligation length');const d=decoder(data,'KNTROBL2');return {config:d.key(),id:d.u64().toString(),amountOriginal:d.u64().toString(),invoiceDigest:d.hash(),revision:Number(d.u64()),paid:!!d.byte(),vault:d.key(),recipient:d.key(),recipientOwner:d.key()};}
 export function decodeRevision(data) {if(data.length!==217)throw new Error('Invalid revision length');const d=decoder(data,'KNTRREV1');return {obligation:d.key(),revision:Number(d.u64()),amount:d.u64().toString(),credit:d.u64().toString(),evidenceDigest:d.hash(),creditDigest:d.hash(),reasonDigest:d.hash(),expiry:Number(d.i64()),approvalMask:d.byte(),approvedAt:[Number(d.i64()),Number(d.i64())],reviewer:d.key()};}
@@ -91,11 +102,19 @@ export function createClient({rpcUrl,programId,keys,mint,recipient,treasury,trea
     const prepared={signature,sha256:digest(bytes).toString('hex'),blockhash:signedTx.blockhash,lastValidBlockHeight:signedTx.lastValidBlockHeight,transactionBase64:bytes.toString('base64'),kind,handle};
     await onPrepared?.(prepared);
     await onSubmitted?.(prepared);
+    let evidence;
     try {
       await connection.sendRawTransaction(bytes,{skipPreflight:true,maxRetries:2,preflightCommitment:commitment});
       await connection.confirmTransaction({signature,blockhash:signedTx.blockhash,lastValidBlockHeight:signedTx.lastValidBlockHeight},commitment);
-    }catch(error){throw new ChainError('UnknownOutcome',`Submission/confirmation needs reconciliation: ${error.message}`,{signature,confirmation:'unknown'});}
-    let evidence;try{evidence=await record(signature);}catch(error){if(error instanceof ChainError)throw error;throw new ChainError('UnknownOutcome',`Transaction record needs reconciliation: ${error.message}`,{signature,confirmation:'unknown'});}
+    }catch(error){
+      // Read the exact already-sent identity once; never sign or submit a replacement.
+      // Success inspection deliberately cannot recover an uncertain successful action here.
+      try{await inspectPrepared(prepared);}catch(inspection){
+        if(inspection instanceof ChainError&&inspection.code==='TransactionFailed'&&inspection.confirmation==='failed'&&inspection.signature===signature&&inspection.evidence?.signature===signature&&validFailureMetadata(inspection.evidence?.error,signedTx.tx.instructions.length))evidence=inspection.evidence;
+      }
+      if(!evidence){const detail=typeof error?.message==='string'&&error.message?error.message:'RPC submission or confirmation did not complete';throw new ChainError('UnknownOutcome',`Submission/confirmation needs reconciliation: ${detail}`,{signature,confirmation:'unknown'});}
+    }
+    if(!evidence)try{evidence=await record(signature);}catch(error){if(error instanceof ChainError)throw error;throw new ChainError('UnknownOutcome',`Transaction record needs reconciliation: ${error.message}`,{signature,confirmation:'unknown'});}
     if(evidence.error&&!allowFailure)throw new ChainError(codeFor(evidence.error,evidence.logs),codeFor(evidence.error,evidence.logs),{signature,confirmation:'failed',evidence});
     return {signature,confirmation:evidence.error?'failed':'confirmed',evidence};
   }

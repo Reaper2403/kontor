@@ -65,12 +65,12 @@ test('action refresh applies the confirmed transaction slot to every account rea
 });
 
 test('actual web3 transport send429 is attempted once and preserves the prepared signature',async()=>{
- const previousFetch=globalThis.fetch;let calls=0,prepared:any;
+ const previousFetch=globalThis.fetch;const calls:string[]=[];let prepared:any;
  try{
-  globalThis.fetch=async()=>{calls++;assert.ok(prepared.signature);return new Response('limited',{status:429});};
+  globalThis.fetch=async(_input:any,init:any)=>{calls.push(JSON.parse(init.body).method);assert.ok(prepared.signature);return new Response('limited',{status:429,headers:{'Retry-After':'0'}});};
   const {client,handle}=fixture(url('web3-send429'),async(value:any)=>{prepared=value;});
   await assert.rejects(client.pay(handle,{expectedRevision:0}),(error:any)=>{assert.equal(error.confirmation,'unknown');assert.equal(error.signature,prepared.signature);assert.ok(Transaction.from(Buffer.from(prepared.transactionBase64,'base64')).verifySignatures());return true;});
-  assert.equal(calls,1);
+  assert.deepEqual(calls,['sendTransaction','getTransaction','getTransaction','getTransaction']);
  }finally{globalThis.fetch=previousFetch;}
 });
 

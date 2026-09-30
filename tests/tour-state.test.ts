@@ -45,13 +45,13 @@ test('historical projections have exact event prefixes, no future settlement or 
   copy.invoice.number = 'Changed';
   assert.equal(projectRecordedState(1).invoice.number, recorded.state.invoice.number);
   assert.throws(() => projectRecordedState(0));
-  assert.throws(() => projectRecordedState(9));
+  assert.throws(() => projectRecordedState(10));
   assert.throws(() => projectRecordedState(1.5));
 });
 
 test('selected public proofs match exact recorded events and distinguish rejected transaction from settlement', () => {
   const events = recorded.state.evidence.filter(event => 'signature' in event);
-  assert.equal(events.length, 7);
+  assert.equal(events.length, 8);
   assert.equal(recorded.networkProofs.length, events.length);
   assert.deepEqual(recorded.networkProofs.map(proof => proof.signature).sort(), events.map(event => event.signature).sort());
   assert.equal(recorded.networkProofs.every(proof => proof.scenarioId === recorded.state.scenarioId), true);
@@ -88,6 +88,15 @@ test('payment review is opt-in and never blocks arrival with an automatic dialog
   assert.ok(!html.includes('Show recorded payment result'));
   assert.ok(!html.includes('Confirm 800 Test USD'));
   assert.ok(!html.includes('This sends test tokens'));
+});
+
+test('treasury return is a separate later receipt, never projected into the payment snapshot', () => {
+  assert.equal(scene('paid').state.treasuryReturn, null);
+  assert.equal(scene('paid').state.chain.vaultBalance, 200);
+  assert.equal(scene('treasury-return').state.treasuryReturn?.amount, 200);
+  assert.equal(scene('treasury-return').state.chain.vaultBalance, 0);
+  assert.equal(scene('treasury-return').state.settlement?.signature, scene('paid').state.settlement?.signature);
+  for (const step of tourSteps.filter(s => !s.state.evidence.some(e => e.kind === 'treasury-return'))) assert.equal(step.state.treasuryReturn, null);
 });
 
 test('default App remains live workspace loading presentation', () => {
