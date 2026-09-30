@@ -1,0 +1,72 @@
+{
+  "result": {
+    "apiVersion": "hackfleet/v1",
+    "kind": "StructuredResult",
+    "taskId": "KONTOR-TOUR",
+    "status": "PASS",
+    "summary": "Published source-real six-chapter static tour with coherent historical devnet proof, independent browser review and verified public artifact integrity.",
+    "filesChanged": [
+      "src/App.tsx",
+      "tour/Tour.tsx",
+      "tour/tour.css",
+      "tour/recorded-state.ts",
+      "tour/main.tsx",
+      "tour/index.html",
+      "tour/public/recorded-evidence.json",
+      "vite.tour.config.ts",
+      "package.json",
+      "tsconfig.json",
+      "tests/tour-state.test.ts",
+      "scripts/build-tour-audit.mjs"
+    ],
+    "verification": [
+      {
+        "command": "npm test; npm run build; npm run build:tour",
+        "status": "PASS",
+        "evidence": "115 local tests; all exact-source remote commands and write-scope checks PASS in KONTOR-CHECK-06."
+      },
+      {
+        "command": "Independent source-aware browser and evidence review",
+        "status": "PASS",
+        "evidence": "All historical boundaries and seven proof identities matched. Full journey passed; final 90 keyboard transitions at each desktop/mobile viewport had no focus occlusion. No live transport or page errors."
+      },
+      {
+        "command": "Fresh accountant-persona browser review",
+        "status": "PASS",
+        "evidence": "Final 19/20; understands causal control and historical replay; no blocking findings. Isolation by instruction, not technical enforcement."
+      },
+      {
+        "command": "Public Pages smoke and artifact hashes",
+        "status": "PASS",
+        "evidence": "Five published artifact hashes match reviewed output; public desktop navigation, evidence route, mobile width and refresh passed without browser errors. Source repo remains PRIVATE."
+      }
+    ],
+    "scopeViolations": [],
+    "assumptions": [
+      "Native Codex fleet results controller-attested; remote deterministic receipt is distinct.",
+      "User authorized static public tour publication and approved fresh browser-only-by-instruction reviews."
+    ],
+    "knownRisks": [
+      "Tour reconstructs historical snapshots and sends no transactions.",
+      "Original devnet prototype used synthetic Test USD, server-held keys and trusted upgrade authority; not audited or production custody/accounting.",
+      "Minor mobile label spacing and long full evidence record deferred.",
+      "External explorer transaction outcomes were not independently audited by browser personas."
+    ],
+    "artifacts": [
+      "research/tour/check-06-receipt.json",
+      "research/tour/integration-final-results.json",
+      "research/tour/accountant-final-review.json",
+      "research/tour/publication-manifest.json",
+      "research/tour/hosted-smoke.json",
+      "https://reaper2403.github.io/kontor-tour/"
+    ]
+  },
+  "artifacts": [
+    "research/tour/check-06-receipt.json",
+    "research/tour/integration-final-results.json",
+    "research/tour/accountant-final-review.json",
+    "research/tour/publication-manifest.json",
+    "research/tour/hosted-smoke.json",
+    "https://reaper2403.github.io/kontor-tour/"
+  ]
+}

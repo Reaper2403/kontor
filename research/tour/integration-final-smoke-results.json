@@ -1,0 +1,491 @@
+{
+  "hero": "BUILT FOR THE MOMENT BEFORE PAYMENT\n\nThe invoice changed.\nShould the old payment still go through?\n\nAn approved 1,000 invoice. A 200 supplier credit. Follow the decision that keeps an obsolete payment from becoming an expensive mistake.\n\nThis is a static replay. Your clicks send no transactions.\n\nFollow the payment\nInspect recorded evidence\n\nSelf-paced · Six chapters · No wallet needed",
+  "actor": "RECORDED ACTOR\n\nMara Weber\nFinance lead",
+  "keyboard": [
+    {
+      "name": "Restart the guided demo",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction.",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction af",
+      "covered": true,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and re",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Kontor payables",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "All payables",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Evidence8",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Recorded evidence (JSON)",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": true,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Technical identifiers",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Scenario",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Recipient",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Token mint",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Program",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Obligation",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "2 earlier approvals expired",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View recorded evidence",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Inspect rejected devnet transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Recorded evidence & provenance",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Back",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Restart the guided demo",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Kontor tour home",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Restart tour",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "01Approve",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "02Credit",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "03Block",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "04Reapprove",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "05Pay",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "06Evidence",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Restart the guided demo",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction.",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction af",
+      "covered": true,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and re",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Kontor payables",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "All payables",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Evidence8",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Recorded evidence (JSON)",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": true,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "View transaction",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Technical identifiers",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Scenario",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Recipient",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    },
+    {
+      "name": "Copy Token mint",
+      "covered": false,
+      "outOfView": false,
+      "focusVisible": true,
+      "outline": "3px"
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:5174/kontor-tour/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5174/kontor-tour/assets/index-DBXhiupj.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:5174/kontor-tour/assets/index-YKCOGgfN.css",
+      "method": "GET"
+    }
+  ],
+  "liveReadOnly": {
+    "title": "Kontor — Payables with a paper trail",
+    "body": "YOUR FINANCE DESK\nGood work. Clear payments.\n\nReview the details. Agree on the amount. Pay with confidence.\n\n30 SEPTEMBER 2026\nWORKSPACE 01\nSettled this session\n700\nTest USD\nPayables in this workspace\n01\nsynthetic invoice\nPayables\nOne invoice, from review to receipt.\nAll payables\n1\nTo pay\n0\nPaid\n1\nSUPPLIER / INVOICE\nDUE DATE\nSTATUS\nAMOUNT PAID\nN\nNorthform Studio\nNF-2026-041 · Product design support · September 2026\n8 Oct 2026\nPaid\n700\nTest USD\n\nThe amount you approve is the amount you authorize.\nWhen an invoice changes, approval starts fresh.\n\nBUILT FOR THE MOMENT BEFORE PAYMENT.\nkontor\n\nClear approvals. Controlled payments.\n\nTest USD has no monetary value.",
+    "requests": [
+      {
+        "url": "http://127.0.0.1:5173/",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/@vite/client",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/src/main.tsx?t=1790794248598",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/@react-refresh",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=4f6a7966",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react.js?v=4f6a7966",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=e7896f03",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/src/App.tsx?t=1790794248598",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/src/styles.css?t=1790792232842",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/vite/dist/client/env.mjs",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-IYDKXRZQ.js?v=f173ca48",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/lucide-react.js?v=d16ad1c0",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/node_modules/.vite/deps/chunk-S3Z6QACX.js?v=f173ca48",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/api/state",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:5173/api/state",
+        "method": "GET"
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "dist-tour/.nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "dist-tour/assets/index-DBXhiupj.js",
+      "bytes": 251014,
+      "sha256": "75777ea6dcbe467cfdb98162079144d7c8903a4e470ed63a5165e006866df76d"
+    },
+    {
+      "path": "dist-tour/assets/index-YKCOGgfN.css",
+      "bytes": 46093,
+      "sha256": "3ae2069d2aca44c5a70df563bf69252bc0fd22b9a6b981d7723c2987e6617116"
+    },
+    {
+      "path": "dist-tour/index.html",
+      "bytes": 685,
+      "sha256": "1b187b28ee7902e29a5ced0ce2df59b804457f70ef02f5af08cdabd170fdacc8"
+    },
+    {
+      "path": "dist-tour/recorded-evidence.json",
+      "bytes": 25748,
+      "sha256": "02f0e0ba4686f14abf2babc72054a50adbc53bc0acb5b3b6e410f7ab24c1a543"
+    }
+  ]
+}

@@ -4,7 +4,9 @@ Reviewer: `/root/tour_integration`, source-aware independent tester. Local built
 
 ## Current verdict
 
-One open acceptance issue: the sticky navigation hides some keyboard-focused evidence controls at 390 px. Other completed checks pass. Publication should wait for the targeted focus fix and recheck.
+PASS for the local source-aware integration scope. The sticky-navigation focus issue below is resolved in the corrected build and verified by targeted final regression. No open integration blocker remains. Public deployment and the separate usability gate remain parent-owned.
+
+Final assets tested: `index-DyMctYlX.js` and `index-Bk_nlseQ.css`. At 390 × 844 and 1440 × 1000, 45 forward plus 45 reverse keyboard transitions per viewport produced no covered controls. Focus has visible 3 px outlines. Raw rectangles are retained; the geometric check permits 1 CSS pixel of browser fractional scroll rounding (one desktop link touched y−0.375, with its content visible and no overlay). Final restart helper correctly says “Return to the first snapshot”; restart returns to the initial approval scene. Native payment dialog contains focus, fits both viewports, closes with Escape and advances to the paid scene. No horizontal overflow, live transport or browser errors were observed. Only document/JS/CSS GETs occurred. Actual data: `integration-final-results.json`; reusable targeted check: `integration-targeted-final.mjs`.
 
 ## Passing evidence
 
@@ -18,7 +20,7 @@ One open acceptance issue: the sticky navigation hides some keyboard-focused evi
 - Live App read-only smoke successfully loads existing paid inbox at port 5173. Only GETs, including `/api/state`, were allowed; no live controls were used. Its current persisted sample is 700 Test USD, separate from the tour's historical 800 sample. This smoke verifies rendering/default transport, not all live mutation behavior. Parent/SDE report shared build and 115 tests passed; those reports are corroborative rather than independently rerun here.
 - Output inventory is exactly HTML, one JS, one CSS, curated evidence and `.nojekyll`; no other output files. Audit design limitations remain documented in `integration-source-review.md`.
 
-## Open issue: keyboard focus behind sticky footer
+## Resolved issue: keyboard focus behind sticky footer
 
 At 390 × 844, choose **Inspect recorded evidence** from welcome, then repeatedly Tab. The browser leaves several focused controls nominally inside the viewport but behind `.tour-navigation`: Evidence tab (y762–806), Recorded evidence JSON link (y776–792), View transaction (y773–798), and corrected settlement proof card. Focus styles are present, but hidden by the footer. `document.elementFromPoint` at each focused center resolves to the overlay; screenshots visually confirm. This violates accepted focused-element visibility.
 
@@ -28,4 +30,4 @@ Reproduction: `research/tour/integration-focus-repro.mjs`. Exact geometry: `inte
 
 Executable checks and results: `integration-browser.mjs`/`integration-browser-results.json`, `integration-keyboard.mjs`/`integration-keyboard-results.json`, `integration-final-smoke.mjs`/`integration-final-smoke-results.json`. Representative screenshots are outside the publish tree under `../.kontor-control/tour-integration-*`. Initial keyboard results include a BODY focus transition at browser tab-cycle wrap; that is not an obscured interactive control and is not classified as a defect.
 
-Need targeted final-build keyboard evidence recheck after the fix. Public deployment smoke remains parent-owned. Overall workflow acceptance also requires the separate fresh-context usability gate; passing this integration report alone does not satisfy it.
+Targeted final-build keyboard evidence recheck completed successfully as recorded above. Public deployment smoke remains parent-owned. Overall workflow acceptance also requires the separate fresh-context usability gate; passing this integration report alone does not satisfy it.

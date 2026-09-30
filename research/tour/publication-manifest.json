@@ -1,0 +1,38 @@
+{
+  "kind": "reviewed-public-artifact-manifest",
+  "sourceCommit": "0facb041df1024069e473c5725e7aa3a6d6988fb",
+  "files": [
+    {
+      "path": ".nojekyll",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "assets/index-Bk_nlseQ.css",
+      "sha256": "b741ef2e1470028a5a002707a5b14aea3047b56585aa54a9302c30c3d25e891a",
+      "bytes": 46073
+    },
+    {
+      "path": "assets/index-DyMctYlX.js",
+      "sha256": "9eb799a51345a633ae9d494357dff4d6717b30b640bc91c988c47d07ca09104a",
+      "bytes": 251083
+    },
+    {
+      "path": "index.html",
+      "sha256": "328192c94fb567ec43bdbffaad6cede6cb2b44692e9eb5fa17bb5bdbe2af1982",
+      "bytes": 685
+    },
+    {
+      "path": "recorded-evidence.json",
+      "sha256": "02f0e0ba4686f14abf2babc72054a50adbc53bc0acb5b3b6e410f7ab24c1a543",
+      "bytes": 25748
+    }
+  ],
+  "additionalPublicFile": "README.md: hand-authored synthetic demo explanation; no private history",
+  "target": "https://reaper2403.github.io/kontor-tour/",
+  "status": "published and hosted smoke verified",
+  "publicationCommit": "af693060621d914b96295aadecd596d9d1488329",
+  "publicRepository": "https://github.com/Reaper2403/kontor-tour",
+  "mainSourceVisibility": "PRIVATE",
+  "pagesBuildId": 1250856297
+}

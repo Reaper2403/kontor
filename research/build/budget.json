@@ -10,6 +10,22 @@
   "runs": [
     {
       "conclusion": "success",
+      "id": 36762803488,
+      "name": "hf-deterministic/ed9cbd62-7550-485e-8d1e-d1485bf75172",
+      "run_started_at": "2026-09-30T19:01:59Z",
+      "status": "completed",
+      "updated_at": "2026-09-30T19:02:54Z"
+    },
+    {
+      "conclusion": "failure",
+      "id": 36762168097,
+      "name": "hf-deterministic/6b6c4162-3148-4991-bf97-0b8d54e5c5f5",
+      "run_started_at": "2026-09-30T18:56:35Z",
+      "status": "completed",
+      "updated_at": "2026-09-30T18:57:31Z"
+    },
+    {
+      "conclusion": "success",
       "id": 36758931988,
       "name": "hf-deterministic/f500341f-a9f2-4f3c-8031-870962cbe6c8",
       "run_started_at": "2026-09-30T18:29:23Z",
@@ -73,10 +89,11 @@
       "updated_at": "2026-09-30T17:29:53Z"
     }
   ],
-  "observedRoundedRunMinutes": 13,
-  "estimatedComputeUSD": 0.078,
+  "observedRoundedRunMinutes": 15,
+  "estimatedComputeUSD": 0.09,
   "additionalPaidModelAPIUSD": 0,
   "purchasedServicesUSD": 0,
   "funding": "5 free devnet SOL received; no real SOL purchased",
-  "budgetStatus": "Well within the10USD authorized envelope; no further approval needed."
+  "budgetStatus": "Well within the10USD authorized envelope; no further approval needed.",
+  "tourPublication": "Public Pages/static assets only; no paid backend or domain."
 }

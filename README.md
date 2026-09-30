@@ -64,4 +64,4 @@ The separate guided tour reuses the workbench UI with read-only historical snaps
 
 Build with `npm run build:tour`. Only the audited `dist-tour/` directory is intended for public hosting; never publish this private source tree or `.local/`. The reviewed evidence uses one recorded scenario and labels its reconstructed intermediate screens. Existing live app commands remain unchanged.
 
-Tour research, independent review and publication provenance are retained in `research/tour/`. The public site is published separately from the private application repository.
+Tour research, independent review and publication provenance are retained in `research/tour/`. Open the [public guided tour](https://reaper2403.github.io/kontor-tour/). Its [publication repository](https://github.com/Reaper2403/kontor-tour) contains static assets only; the application repository remains private.

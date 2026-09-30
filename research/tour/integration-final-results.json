@@ -1,0 +1,2941 @@
+{
+  "reviewer": "/root/tour_integration",
+  "kind": "source-aware targeted final regression",
+  "url": "http://127.0.0.1:5174/kontor-tour/",
+  "runs": [
+    {
+      "width": 390,
+      "height": 844,
+      "reducedMotion": "reduce",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/assets/index-DyMctYlX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/assets/index-Bk_nlseQ.css",
+          "method": "GET"
+        }
+      ],
+      "badRequests": [],
+      "errors": [],
+      "keyboardChecks": [
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 277.125,
+            "bottom": 321.125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 370.625,
+            "bottom": 481.3125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 491.3125,
+            "bottom": 620.6875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 630.6875,
+            "bottom": 760.0625,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 405.65625,
+            "bottom": 437.65625,
+            "left": 20,
+            "right": 187.5
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 579.65625,
+            "bottom": 596.15625,
+            "left": 18,
+            "right": 101.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 762.03125,
+            "bottom": 806.03125,
+            "left": 105.796875,
+            "right": 196.109375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 776.53125,
+            "bottom": 791.53125,
+            "left": 223.265625,
+            "right": 372
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 591.21875,
+            "bottom": 616.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 750.71875,
+            "bottom": 775.71875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 591.21875,
+            "bottom": 616.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 773.21875,
+            "bottom": 798.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Technical identifiers",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 490.21875,
+            "bottom": 506.21875,
+            "left": 32,
+            "right": 358
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "2 earlier approvals expired",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 414.71875,
+            "bottom": 429.71875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 597.21875,
+            "bottom": 637.21875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 60,
+            "right": 250.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 704.21875,
+            "bottom": 748.21875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 780.71875,
+            "bottom": 824.71875,
+            "left": 15,
+            "right": 55.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 779.21875,
+            "bottom": 826.21875,
+            "left": 101.40625,
+            "right": 375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "browserWrap": true
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 19,
+            "bottom": 50,
+            "left": 20,
+            "right": 149.84375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 21,
+            "bottom": 48,
+            "left": 314.203125,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 498.125,
+            "bottom": 542.125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 591.625,
+            "bottom": 702.3125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 712.3125,
+            "bottom": 841.6875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 357.6875,
+            "bottom": 487.0625,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 580.65625,
+            "bottom": 612.65625,
+            "left": 20,
+            "right": 187.5
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 754.65625,
+            "bottom": 771.15625,
+            "left": 18,
+            "right": 101.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 400.03125,
+            "bottom": 444.03125,
+            "left": 105.796875,
+            "right": 196.109375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 414.53125,
+            "bottom": 429.53125,
+            "left": 223.265625,
+            "right": 372
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 591.21875,
+            "bottom": 616.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 750.71875,
+            "bottom": 775.71875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 591.21875,
+            "bottom": 616.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 773.21875,
+            "bottom": 798.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 21,
+            "bottom": 48,
+            "left": 314.203125,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 19,
+            "bottom": 50,
+            "left": 20,
+            "right": 149.84375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 715.21875,
+            "bottom": 762.21875,
+            "left": 101.40625,
+            "right": 375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 716.71875,
+            "bottom": 760.71875,
+            "left": 15,
+            "right": 55.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 640.21875,
+            "bottom": 684.21875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 345.21875,
+            "bottom": 370.21875,
+            "left": 60,
+            "right": 250.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 402.21875,
+            "bottom": 442.21875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "2 earlier approvals expired",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 219.71875,
+            "bottom": 234.71875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Technical identifiers",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 414.21875,
+            "bottom": 430.21875,
+            "left": 32,
+            "right": 358
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 333.21875,
+            "bottom": 358.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 190.21875,
+            "bottom": 215.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 8.21875,
+            "bottom": 33.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 249.71875,
+            "bottom": 274.71875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 90.21875,
+            "bottom": 115.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 409.21875,
+            "bottom": 434.21875,
+            "left": 54,
+            "right": 153.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 414.53125,
+            "bottom": 429.53125,
+            "left": 223.265625,
+            "right": 372
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 400.03125,
+            "bottom": 444.03125,
+            "left": 105.796875,
+            "right": 196.109375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 217.65625,
+            "bottom": 234.15625,
+            "left": 18,
+            "right": 101.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 43.65625,
+            "bottom": 75.65625,
+            "left": 20,
+            "right": 187.5
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 357.6875,
+            "bottom": 487.0625,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 218.3125,
+            "bottom": 347.6875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 97.625,
+            "bottom": 208.3125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 4.125,
+            "bottom": 48.125,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 149.5,
+            "bottom": 194,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 253.328125,
+            "right": 369.984375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 136.65625,
+            "right": 253.328125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 105,
+            "bottom": 149.5,
+            "left": 20,
+            "right": 136.65625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 21,
+            "bottom": 48,
+            "left": 314.203125,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 19,
+            "bottom": 50,
+            "left": 20,
+            "right": 149.84375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "browserWrap": true
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 715.21875,
+            "bottom": 762.21875,
+            "left": 101.40625,
+            "right": 375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 716.71875,
+            "bottom": 760.71875,
+            "left": 15,
+            "right": 55.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 640.21875,
+            "bottom": 684.21875,
+            "left": 20,
+            "right": 370
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 345.21875,
+            "bottom": 370.21875,
+            "left": 60,
+            "right": 250.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 402.21875,
+            "bottom": 442.21875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "2 earlier approvals expired",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 219.71875,
+            "bottom": 234.71875,
+            "left": 41,
+            "right": 349
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        }
+      ],
+      "keyboardIssues": [],
+      "finalHelper": "Restart the guided demo\nReturn to the first snapshot · No transaction sent",
+      "restartTitle": "First, agree on the amount.",
+      "dialogOpen": true,
+      "modalFocus": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "modalGeometry": {
+        "x": 16,
+        "y": 174.84375,
+        "width": 358,
+        "height": 494.296875
+      },
+      "escapeClosed": true,
+      "paidTitle": "800 paid. The history stays intact.",
+      "evidenceOverflow": false,
+      "paidOverflow": false,
+      "status": "PASS"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "reducedMotion": "reduce",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/assets/index-DyMctYlX.js",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:5174/kontor-tour/assets/index-Bk_nlseQ.css",
+          "method": "GET"
+        }
+      ],
+      "badRequests": [],
+      "errors": [],
+      "keyboardChecks": [
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 152.34375,
+            "bottom": 196.34375,
+            "left": 64.796875,
+            "right": 278.53125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 222.34375,
+            "bottom": 339.03125,
+            "left": 64.796875,
+            "right": 492.265625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 222.34375,
+            "bottom": 339.03125,
+            "left": 506.265625,
+            "right": 933.734375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 222.34375,
+            "bottom": 339.03125,
+            "left": 947.734375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 440.03125,
+            "bottom": 480.03125,
+            "left": 30,
+            "right": 186
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Payables1",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 608.03125,
+            "bottom": 653.03125,
+            "left": 20,
+            "right": 196
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 510.03125,
+            "bottom": 526.53125,
+            "left": 256,
+            "right": 339.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 669.125,
+            "bottom": 713.625,
+            "left": 355.765625,
+            "right": 449.9375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 683.875,
+            "bottom": 698.875,
+            "left": 1248.265625,
+            "right": 1400
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 487.125,
+            "bottom": 512.125,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 634.625,
+            "bottom": 659.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 759.625,
+            "bottom": 784.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 884.625,
+            "bottom": 909.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 487.125,
+            "bottom": 512.125,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 634.625,
+            "bottom": 659.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 759.625,
+            "bottom": 784.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Technical identifiers",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 840.625,
+            "bottom": 856.625,
+            "left": 270,
+            "right": 1048
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "2 earlier approvals expired",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 492.515625,
+            "bottom": 507.515625,
+            "left": 1113,
+            "right": 1377
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 685.015625,
+            "bottom": 725.015625,
+            "left": 1113,
+            "right": 1377
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 573.625,
+            "bottom": 598.625,
+            "left": 298,
+            "right": 488.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 773.625,
+            "bottom": 817.625,
+            "left": 1099.796875,
+            "right": 1297.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 858.125,
+            "bottom": 902.125,
+            "left": 64.796875,
+            "right": 116.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 856.625,
+            "bottom": 903.625,
+            "left": 1115.203125,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "browserWrap": true
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 23,
+            "bottom": 60,
+            "left": 64.796875,
+            "right": 218.703125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 24.5,
+            "bottom": 58.5,
+            "left": 1267.484375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 64.796875,
+            "right": 283.1875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 283.1875,
+            "right": 501.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 501.59375,
+            "right": 720
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 720,
+            "right": 938.390625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 938.390625,
+            "right": 1156.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 1156.796875,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 327.34375,
+            "bottom": 371.34375,
+            "left": 64.796875,
+            "right": 278.53125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 397.34375,
+            "bottom": 514.03125,
+            "left": 64.796875,
+            "right": 492.265625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 397.34375,
+            "bottom": 514.03125,
+            "left": 506.265625,
+            "right": 933.734375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 397.34375,
+            "bottom": 514.03125,
+            "left": 947.734375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 615.03125,
+            "bottom": 655.03125,
+            "left": 30,
+            "right": 186
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Payables1",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 783.03125,
+            "bottom": 828.03125,
+            "left": 20,
+            "right": 196
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 685.03125,
+            "bottom": 701.53125,
+            "left": 256,
+            "right": 339.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 844.125,
+            "bottom": 888.625,
+            "left": 355.765625,
+            "right": 449.9375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 858.875,
+            "bottom": 873.875,
+            "left": 1248.265625,
+            "right": 1400
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 487.125,
+            "bottom": 512.125,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 634.625,
+            "bottom": 659.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 759.625,
+            "bottom": 784.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 884.625,
+            "bottom": 909.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 1156.796875,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 938.390625,
+            "right": 1156.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 720,
+            "right": 938.390625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 501.59375,
+            "right": 720
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 283.1875,
+            "right": 501.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 64.796875,
+            "right": 283.1875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 24.5,
+            "bottom": 58.5,
+            "left": 1267.484375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 23,
+            "bottom": 60,
+            "left": 64.796875,
+            "right": 218.703125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 856.625,
+            "bottom": 903.625,
+            "left": 1115.203125,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 858.125,
+            "bottom": 902.125,
+            "left": 64.796875,
+            "right": 116.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 773.625,
+            "bottom": 817.625,
+            "left": 1099.796875,
+            "right": 1297.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 573.625,
+            "bottom": 598.625,
+            "left": 298,
+            "right": 488.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 480.015625,
+            "bottom": 520.015625,
+            "left": 1113,
+            "right": 1377
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "2 earlier approvals expired",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 287.515625,
+            "bottom": 302.515625,
+            "left": 1113,
+            "right": 1377
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Technical identifiers",
+          "tag": "SUMMARY",
+          "rect": {
+            "top": 491.625,
+            "bottom": 507.625,
+            "left": 270,
+            "right": 1048
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 410.625,
+            "bottom": 435.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 285.625,
+            "bottom": 310.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 138.125,
+            "bottom": 163.125,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": -0.375,
+            "bottom": 24.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": true,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 487.625,
+            "bottom": 512.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 362.625,
+            "bottom": 387.625,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View transaction",
+          "tag": "A",
+          "rect": {
+            "top": 215.125,
+            "bottom": 240.125,
+            "left": 297,
+            "right": 396.453125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence (JSON)",
+          "tag": "A",
+          "rect": {
+            "top": 492.875,
+            "bottom": 507.875,
+            "left": 1248.265625,
+            "right": 1400
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Evidence8",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 478.125,
+            "bottom": 522.625,
+            "left": 355.765625,
+            "right": 449.9375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "All payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 319.03125,
+            "bottom": 335.53125,
+            "left": 256,
+            "right": 339.828125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Payables1",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 417.03125,
+            "bottom": 462.03125,
+            "left": 20,
+            "right": 196
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor payables",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 249.03125,
+            "bottom": 289.03125,
+            "left": 30,
+            "right": 186
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03 / THE RECORDDownload evidence JSONThe selected run, transaction proofs and reconstructi",
+          "tag": "A",
+          "rect": {
+            "top": 31.34375,
+            "bottom": 148.03125,
+            "left": 947.734375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02 / THE SETTLEMENTCorrected 800 paymentRecorded confirmed devnet transaction after fresh ",
+          "tag": "A",
+          "rect": {
+            "top": 31.34375,
+            "bottom": 148.03125,
+            "left": 506.265625,
+            "right": 933.734375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01 / THE CONTROLObsolete instruction rejectedRecorded failed devnet transaction. No Test U",
+          "tag": "A",
+          "rect": {
+            "top": 31.34375,
+            "bottom": 148.03125,
+            "left": 64.796875,
+            "right": 492.265625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 0.34375,
+            "bottom": 44.34375,
+            "left": 64.796875,
+            "right": 278.53125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "06Evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 1156.796875,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "05Pay",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 938.390625,
+            "right": 1156.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "04Reapprove",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 720,
+            "right": 938.390625
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "03Block",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 501.59375,
+            "right": 720
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "02Credit",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 283.1875,
+            "right": 501.59375
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "01Approve",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 84,
+            "bottom": 142,
+            "left": 64.796875,
+            "right": 283.1875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart tour",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 24.5,
+            "bottom": 58.5,
+            "left": 1267.484375,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Kontor tour home",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 23,
+            "bottom": 60,
+            "left": 64.796875,
+            "right": 218.703125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "browserWrap": true
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Restart the guided demo",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 856.625,
+            "bottom": 903.625,
+            "left": 1115.203125,
+            "right": 1375.203125
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Back",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 858.125,
+            "bottom": 902.125,
+            "left": 64.796875,
+            "right": 116.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Recorded evidence & provenance",
+          "tag": "A",
+          "rect": {
+            "top": 773.625,
+            "bottom": 817.625,
+            "left": 1099.796875,
+            "right": 1297.796875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "Inspect rejected devnet transaction",
+          "tag": "A",
+          "rect": {
+            "top": 573.625,
+            "bottom": 598.625,
+            "left": 298,
+            "right": 488.546875
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        },
+        {
+          "direction": "Shift+Tab",
+          "name": "View recorded evidence",
+          "tag": "BUTTON",
+          "rect": {
+            "top": 480.015625,
+            "bottom": 520.015625,
+            "left": 1113,
+            "right": 1377
+          },
+          "covered": false,
+          "outOfView": false,
+          "subpixelViewportEdge": false,
+          "focusVisible": true,
+          "outline": "3px"
+        }
+      ],
+      "keyboardIssues": [],
+      "finalHelper": "Restart the guided demo\nReturn to the first snapshot · No transaction sent",
+      "restartTitle": "First, agree on the amount.",
+      "dialogOpen": true,
+      "modalFocus": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "modalGeometry": {
+        "x": 485,
+        "y": 269.34375,
+        "width": 470,
+        "height": 461.296875
+      },
+      "escapeClosed": true,
+      "paidTitle": "800 paid. The history stays intact.",
+      "evidenceOverflow": false,
+      "paidOverflow": false,
+      "status": "PASS"
+    }
+  ],
+  "geometryTolerance": "1 CSS pixel for browser fractional scroll rounding; raw rectangles retained. Covered controls remain failures regardless of tolerance.",
+  "scope": "Forward/reverse keyboard evidence focus, final restart helper, modal/Escape, overflow, zero live transport. Earlier full-journey and independent eight-boundary results remain separately recorded."
+}
