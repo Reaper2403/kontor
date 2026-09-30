@@ -57,3 +57,11 @@ Run service/client tests with `npm test`, and the UI/typecheck with `npm run bui
 ## Fleet and review provenance
 
 Independent PM, UX, engineering and integration agents contributed through HackFleet. Decisions and tasks are canonical GitHub issues; [research/build](research/build) preserves the actual submissions. Accountant agents use fresh contexts and browser-only instructions under the user's approved boundary; the runtime does not enforce filesystem isolation.
+
+## Public guided tour
+
+The separate guided tour reuses the workbench UI with read-only historical snapshots. It sends no transactions and needs no wallet or backend. Six chapters show original approvals, the credit, obsolete-instruction rejection, fresh approvals, payment review and the recorded receipt. Each approval is shown separately.
+
+Build with `npm run build:tour`. Only the audited `dist-tour/` directory is intended for public hosting; never publish this private source tree or `.local/`. The reviewed evidence uses one recorded scenario and labels its reconstructed intermediate screens. Existing live app commands remain unchanged.
+
+Tour research, independent review and publication provenance are retained in `research/tour/`. The public site is published separately from the private application repository.

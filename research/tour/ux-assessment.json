@@ -1,0 +1,76 @@
+{
+  "id": "TOUR-UX-RESEARCH-01",
+  "type": "pre-build-source-aware-assessment",
+  "actor": "/root/tour_ux",
+  "status": "provisional-pending-PM-SDE-exchange",
+  "observations": [
+    {
+      "source": "src/App.tsx",
+      "finding": "The actual UI already supplies approval route, expired approvals disclosure, credit preview warning, stale-payment control result, confirmation modal and chronological evidence. A tour can teach through these real elements."
+    },
+    {
+      "source": "src/styles.css and ../.kontor-control/accountant-r4-desktop.png",
+      "finding": "Cream paper, dark green sidebar, lime primary action and serif invoice headings form a coherent visual identity. The full-page capture is tall and text-dense; a screenshot-only phone tour would be hard to read."
+    },
+    {
+      "source": "src/styles.css",
+      "finding": "At <=870 px the payment rail is already ordered above the invoice, and reduced-motion rules exist. A new guide must retain these useful behaviors and avoid fixed overlays covering controls."
+    },
+    {
+      "source": "evidence/browser-demo-export.json",
+      "finding": "Recorded run contains original approvals, a 200 credit and a failed stale-revision transaction. It is a suitable evidence candidate subject to engineering verification of the complete run and final payment."
+    }
+  ],
+  "recommended_sequence": [
+    {
+      "chapter": "Approve 1,000",
+      "guide": "Two people approved this amount. Each approval belongs to this invoice version.",
+      "focus": "Actual approval button and named approval count; preserve two separate approvals."
+    },
+    {
+      "chapter": "Apply a 200 credit",
+      "guide": "The supplier credit reduces the payable to 800. That changes what the team is authorizing.",
+      "focus": "Actual credit modal amount breakdown and expiration warning."
+    },
+    {
+      "chapter": "Approvals expire",
+      "guide": "The amount changed. The two approvals for 1,000 cannot authorize the revised invoice.",
+      "focus": "800 amount and expanded earlier-approvals disclosure."
+    },
+    {
+      "chapter": "Try the obsolete instruction",
+      "guide": "The old instruction still asks for 1,000. Kontor rejects it before Test USD moves.",
+      "focus": "Actual control-check result with rejected transaction proof available."
+    },
+    {
+      "chapter": "Approve and pay 800",
+      "guide": "Two fresh approvals authorize this invoice version. Review the recipient and confirm the revised amount.",
+      "focus": "Both new named approvals, payment confirmation, then paid 800."
+    },
+    {
+      "chapter": "Inspect the evidence",
+      "guide": "Follow the credit, expired approvals, rejected attempt and final payment in the recorded devnet evidence.",
+      "focus": "Genuine recorded evidence links, JSON, source and Restart."
+    }
+  ],
+  "choice": {
+    "primary": "Self-paced clickable static replay",
+    "autoplay": "Omit in initial release; motion does not improve comprehension enough to justify timing and accessibility complexity.",
+    "recording": "Optional later artifact, not required for the public tour; do not delay reliable interactive publication."
+  },
+  "uncertainties": [
+    "SDE must establish whether shared presentation components or source-derived isolated scenes best avoid live API coupling.",
+    "Parent/SDE must verify one complete coherent evidence run and public URLs before selecting the replay dataset.",
+    "No first-time judge usability session has been observed; proposed clarity criteria require later real preview review."
+  ],
+  "selected_evidence_after_parent_context": {
+    "source": "evidence/browser-recovery-export.json",
+    "scenarioId": "c3f46241-966e-4264-ac88-035ed095ca23",
+    "reason": "Latest settled run retains seven scenario-specific network proofs. The export also contains older-run proofs; filter to this scenario. No recovery tangent in main story."
+  },
+  "rendering_plan": {
+    "desktop": "Guide appears above the real source-derived app content; full-width invoice and review rail stay readable. Use scene-specific accent/focus around the actual target action rather than a large tutorial overlay. Keep Back/Next accessible outside the app.",
+    "mobile": "Keep guide in document flow and use the existing app responsive ordering: payment review before invoice at narrow widths. Preserve text as HTML, not shrunken desktop screenshot. Place intended control and result adjacent where possible; scroll only on explicit navigation, with reduced motion respected.",
+    "implementation_scope": "tour/ and its builder script only; parent owns package/config. No live-source edits."
+  }
+}
