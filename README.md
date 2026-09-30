@@ -23,6 +23,37 @@ An approval is attached to an immutable invoice recipient and a particular amoun
 
 Each obligation can have a different recipient under the same configuration. The program supports multiple contractors; the interface deliberately shows one selected synthetic invoice. The treasury destination cannot be chosen or changed by the person triggering a return. Returns use the actual vault remainder, including excess funding or later deposits. Repeating an empty return moves nothing and never reopens supplier payment.
 
+## Solana architecture
+
+```mermaid
+flowchart TB
+    subgraph OFFCHAIN["Off-chain application"]
+        UI["React workbench"] --> API["Node API + chain client<br/>Server-held demo role keys"]
+        API -->|Signed transactions / confirmed state| RPC["Solana RPC"]
+    end
+
+    subgraph CHAIN["Solana devnet"]
+        RPC --> PROGRAM["Kontor Rust program<br/>approve · apply_credit · pay · release_remainder"]
+        CONFIG["Config PDA<br/>Roles, mint, fixed treasury"] -.->|Read configuration| PROGRAM
+        PROGRAM <-->|Read / update| STATE["Per-invoice PDAs<br/>Obligation: recipient, revision, paid flag<br/>Revision: amount, approvals, expiry"]
+        PROGRAM -->|Stale or already-paid payment| BLOCK["Reject<br/>No Test USD moves"]
+        PROGRAM -->|"pay: current revision + two unexpired approvals"| TOKEN["SPL Token program<br/>transfer_checked via invoke_signed"]
+        PROGRAM -->|"release_remainder: paid only + fixed treasury"| TOKEN
+        TOKEN -->|Transfer from| VAULT["Per-invoice Test USD vault<br/>Authority: Obligation PDA"]
+        VAULT -->|"pay: 800"| SUPPLIER["Supplier token account<br/>Fixed per obligation"]
+        VAULT -->|"separate return: 200"| TREASURY["Treasury token account<br/>Fixed in config"]
+    end
+
+    classDef app fill:#F5F7F9,stroke:#60717D,color:#243746
+    classDef control fill:#EDF5F5,stroke:#087F80,color:#142E45
+    classDef rejected fill:#FFF2EE,stroke:#AD493D,color:#7B3028
+    class UI,API,RPC app
+    class PROGRAM,CONFIG,STATE,TOKEN,VAULT,SUPPLIER,TREASURY control
+    class BLOCK rejected
+```
+
+PDAs are program-derived addresses. Payment checks and the supplier transfer execute atomically; the treasury return is a separate, paid-only transaction. Applying the 200 credit creates a new revision requiring fresh approvals. This example uses synthetic **Test USD**, not Circle USDC; the static public tour only replays recorded evidence.
+
 ## Run locally
 
 Node.js 22 or later:
