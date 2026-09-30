@@ -1,0 +1,33 @@
+{
+  "kind": "independent-source-aware-adapter-review",
+  "actor": "/root/integration_test",
+  "date": "2026-09-30",
+  "supersedes": "Earlier test counts and unavailable-adapter/typecheck limitations in integration-result.json",
+  "writeScopeObserved": ["tests/integration-*.test.ts", "research/testing/**"],
+  "checks": [
+    {"command": "npm test", "result": "passed", "tests": 30, "passed": 30, "failed": 0},
+    {"command": "npm run typecheck", "result": "passed"},
+    {"check": "Actual localnet SBF artifact inspection", "artifact": ".local/proof-v1/program-proof.json", "observedPassCount": 27, "result": "Contains confirmed transaction evidence for stale bytes, token account substitution, paid replay, both orderings, expiry and failed CPI rollback"},
+    {"check": "Devnet artifact internal consistency", "artifact": ".local/devnet-proof.json", "result": "Passed signature verification, capture SHA256, successful original simulation, confirmed StaleRevision logs, matching unchanged-byte hash, valid-before-send blockhash flag, zero stale balance movement, exact 800 token debit/credit, distinct duplicate signature rejected AlreadyPaid, execution-first 1000 finality and canonical invoice digest assertions"}
+  ],
+  "findingsResolvedByController": [
+    {"finding": "Adapter could export canonical invoice or saved credit content without comparing the committed digests", "resolution": "link now validates invoice digest and display fields, credit reference/amount digest and reason digest; isolated regression tests pass"},
+    {"finding": "Adapter could display or query supplied handle addresses while transactions used different canonical addresses derived from its ID", "resolution": "link validates configuration, obligation, vault, mint, recipient and initial revision PDA fields; isolated regression tests pass"},
+    {"finding": "Unknown credit result discarded the exact reference/reason and request identity needed to reconstruct committed documents", "resolution": "Private pendingIntent now persists action, before state, intended state, fingerprint and timestamp before effect; retained on unknown outcome without presenting it as confirmed; regression passes"}
+  ],
+  "latestDevnetEvidence": {
+    "programId": "8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9",
+    "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+    "staleSignature": "5CRWD2Wtf6S7gHAbB4YjWtLczUppFpbhsfUxy9rjPDgPyWGTF44krJkc7QPR8fCwhugDpcuhxL77656UtPLPsdNk",
+    "payment800": "3RTfbnB6kN1v4T4WmkaMexzfvXZ137DFSqT41UYy9AGj3mmhTV9kMNYPjsLWZ6HaPStHFzvuEm1cz2S7MHueca1N",
+    "payment1000": "Yn3RwLVyujS2m6Updni6gdxuoyfutEkBmP9tXBVLjmvgogGEK5BnKHhmh2PGzzW1m7N2dV8ezHw9cZp7bTg6FAL",
+    "canonicalInvoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b"
+  },
+  "remainingLimits": [
+    "No independent RPC refetch was performed in this review; devnet assertions verify the parent-generated artifact's internal consistency, not a separate external observation.",
+    "The adapter tests use generated in-memory program account fixtures and mocked read-only RPC methods. They do not add to actual compiled SBF or devnet execution counts.",
+    "The 27-check SBF artifact predates four additional cases in the latest selftest source. The parent plans a fresh remote run; do not report those extra cases as already executed from this artifact.",
+    "Unknown outcomes intentionally remain blocked. Recovery retains sufficient request/transaction data but no automatic or user-facing reconciliation flow was present during review; operator-assisted recovery remains a documented limitation.",
+    "No app state/browser mutation or accountant evaluation was performed by this source-aware reviewer."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "cluster": "devnet",
+  "programId": "8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9",
+  "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+  "asset": "Custom Test USD; no monetary value",
+  "binarySha256": "a826593548e62aeafbc5206bf915bf4965dec84ca71c685ed30e19c85cf517b3",
+  "deploymentSignature": "51LnptF1caycna79H8egiTsorYyAuRwW4kvJxhtmD5KtgqnYhqX8TBAsvZ14mASSYXirAy3Jxugq3cUreieojste",
+  "staleRejected": "5CRWD2Wtf6S7gHAbB4YjWtLczUppFpbhsfUxy9rjPDgPyWGTF44krJkc7QPR8fCwhugDpcuhxL77656UtPLPsdNk",
+  "paid800": "3RTfbnB6kN1v4T4WmkaMexzfvXZ137DFSqT41UYy9AGj3mmhTV9kMNYPjsLWZ6HaPStHFzvuEm1cz2S7MHueca1N",
+  "paid1000": "Yn3RwLVyujS2m6Updni6gdxuoyfutEkBmP9tXBVLjmvgogGEK5BnKHhmh2PGzzW1m7N2dV8ezHw9cZp7bTg6FAL",
+  "duplicateRejected": "585bdwSmsymXz875sLZ68aHNVm6TUaYfBaQJwF6frvAG7DxdfLmpbXg7VnoyLmkJpAoTvgois7Ns4ejoFNjdMU2Y",
+  "lateCreditRejected": "49AmFPTQHuTj9sXVZ4Fys6eEYcfN8284kFi4VMUof25d7d6WQaCkXjtcVQu57jtKzWGhrf5Lq2uLDUupJomBJ91S",
+  "limitations": [
+    "Demonstration role keys held by local server",
+    "Trusted upgrade authority retained",
+    "Protects only each program-controlled obligation and vault",
+    "No audit or production-readiness claim"
+  ]
+}

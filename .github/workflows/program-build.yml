@@ -19,7 +19,7 @@ jobs:
           tar -xjf /tmp/solana.tar.bz2 -C /tmp
           echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
       - name: Build actual Solana program
-        run: cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts
+        run: cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts -- --locked
       - name: Record provenance
         run: |
           git rev-parse HEAD > artifacts/source-sha.txt
@@ -29,5 +29,10 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: kontor-sbf
-          path: artifacts/
+          path: |
+            artifacts/kontor.so
+            artifacts/source-sha.txt
+            artifacts/toolchain.txt
+            artifacts/binary-sha256.txt
+            artifacts/Cargo.lock
           retention-days: 1

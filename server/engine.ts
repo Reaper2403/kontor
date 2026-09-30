@@ -7,7 +7,7 @@ export type ChainEffect=(action:Action,before:State,after:State)=>Promise<Partia
 const people:State['people']=[{id:'reviewer',name:'Lena Fischer',role:'Finance reviewer'},{id:'approver-a',name:'Mara Weber',role:'Finance lead'},{id:'approver-b',name:'Jonas Berg',role:'Team lead'},{id:'executor',name:'Alex Morgan',role:'Payment operator'}];
 const now=()=>new Date().toISOString();
 export function initialState():State {const at=now();return {mode:'rehearsal',scenarioId:randomUUID(),revision:1,asset:{symbol:'Test USD',decimals:6,mint:null,cluster:'local'},invoice:{id:'inv-'+randomUUID().slice(0,8),number:'NF-2026-041',supplier:'Northform Studio',supplierEmail:'accounts@northform.example',description:'Product design support · September 2026',issued:'2026-09-24',due:'2026-10-08',recipient:'Northform Studio · demonstration recipient'},amountOriginal:1000,credit:0,amountDue:1000,status:'needs-approval',creditNote:null,approvals:[],evidence:[{id:randomUUID(),kind:'created',title:'Invoice ready for review',detail:'Synthetic invoice for 1,000 Test USD. Two distinct approvals are required.',at,actor:'Demo registrar',revision:1,amount:1000,outcome:'local'}],settlement:null,previousInstruction:null,operation:null,people,chain:{programId:null,obligation:null,vault:null,recipientBalance:0,vaultBalance:2000}};}
-interface Stored {archive?:State[];state:State;idempotency:Record<string,{fingerprint:string;scenarioId:string}>}
+interface Stored {pendingIntent?:{action:Action;before:State;intendedAfter:State;fingerprint:string;preparedAt:string};archive?:State[];state:State;idempotency:Record<string,{fingerprint:string;scenarioId:string}>}
 export class Engine {
  private data:Stored={state:initialState(),idempotency:{}};private queue:Promise<unknown>=Promise.resolve();private effect?:ChainEffect;
  constructor(private options:{file?:string;effect?:ChainEffect}={}){this.effect=options.effect;}
@@ -31,8 +31,8 @@ export class Engine {
   const unpaid=()=>{if(s.status==='paid')throw new DomainError('ALREADY_PAID','This payable is already settled. Its payment cannot be repeated or recalled.');};
   if(a.type==='reset'){
    allow('reviewer','executor');const next=initialState();next.mode=s.mode;next.asset=s.asset;
-   if(this.effect){this.data.state.operation={type:a.type,status:'pending',message:'Creating a new test obligation.'};await this.save();try{Object.assign(next,await this.effect(a,before,next));}catch(e:any){this.data.state=before;if(e.code==='CONFIRMATION_UNKNOWN')this.data.state.operation={type:a.type,status:'unknown',message:e.message};await this.save();throw e;}}
-   this.data.archive=[...(this.data.archive??[]),before];this.data.state=next;this.data.idempotency={[a.idempotencyKey]:{fingerprint,scenarioId:next.scenarioId}};await this.save();return this.getState();
+   if(this.effect){this.data.pendingIntent={action:structuredClone(a),before:structuredClone(before),intendedAfter:structuredClone(next),fingerprint,preparedAt:now()};this.data.state.operation={type:a.type,status:'pending',message:'Creating a new test obligation.'};await this.save();try{Object.assign(next,await this.effect(a,before,next));}catch(e:any){this.data.state=before;if(e.code==='CONFIRMATION_UNKNOWN')this.data.state.operation={type:a.type,status:'unknown',message:e.message};else delete this.data.pendingIntent;await this.save();throw e;}}
+   delete this.data.pendingIntent;this.data.archive=[...(this.data.archive??[]),before];this.data.state=next;this.data.idempotency={[a.idempotencyKey]:{fingerprint,scenarioId:next.scenarioId}};await this.save();return this.getState();
   }
   if(a.type==='approve'){
    allow('approver-a','approver-b');unpaid();if(s.approvals.some(p=>p.actor===a.actor&&p.current))throw new DomainError('ALREADY_APPROVED','You already approved this amount. The other approver must review it.');
@@ -61,7 +61,7 @@ export class Engine {
    s.chain.vaultBalance=(s.chain.vaultBalance??0)-s.amountDue;s.chain.recipientBalance=(s.chain.recipientBalance??0)+s.amountDue;
    add('payment',`${s.amountDue.toLocaleString('en-US')} Test USD ${s.mode==='rehearsal'?'recorded in rehearsal':'paid'}`,s.mode==='rehearsal'?'Local rehearsal settlement only. No on-chain funds moved.':'Payment confirmed for the current approved amount.',s.amountDue);
   }
-  if(this.effect){this.data.state.operation={type:a.type,status:'pending',message:'Waiting for the test-network result.'};await this.save();try{const patch=await this.effect(a,before,s);Object.assign(s,patch);s.operation=null;}catch(e:any){this.data.state=before;if(e.code==='CONFIRMATION_UNKNOWN'){this.data.state.operation={type:a.type,status:'unknown',message:e.message};}await this.save();throw e;}}
-  this.data.state=s;this.data.idempotency[a.idempotencyKey]={fingerprint,scenarioId:s.scenarioId};await this.save();return this.getState();
+  if(this.effect){this.data.pendingIntent={action:structuredClone(a),before:structuredClone(before),intendedAfter:structuredClone(s),fingerprint,preparedAt:now()};this.data.state.operation={type:a.type,status:'pending',message:'Waiting for the test-network result.'};await this.save();try{const patch=await this.effect(a,before,s);Object.assign(s,patch);s.operation=null;}catch(e:any){this.data.state=before;if(e.code==='CONFIRMATION_UNKNOWN'){this.data.state.operation={type:a.type,status:'unknown',message:e.message};}else delete this.data.pendingIntent;await this.save();throw e;}}
+  delete this.data.pendingIntent;this.data.state=s;this.data.idempotency[a.idempotencyKey]={fingerprint,scenarioId:s.scenarioId};await this.save();return this.getState();
  }
 }

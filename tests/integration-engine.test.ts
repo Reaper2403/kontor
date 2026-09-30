@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdtemp, rm} from 'node:fs/promises';
+import {mkdtemp, readFile, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {test} from 'node:test';
@@ -239,4 +239,21 @@ test('retrying reset preserves the first replacement scenario identity across re
   await restarted.load();
   await restarted.act(action);
   assert.equal(restarted.getState().scenarioId, replacement);
+});
+
+test('unknown credit outcome retains committed document inputs for later reconciliation', async t => {
+  const {file} = await fixture(t);
+  const engine = new Engine({file, effect:async()=>{
+    throw Object.assign(new Error('Synthetic confirmation response loss'),{code:'CONFIRMATION_UNKNOWN'});
+  }});
+  await engine.load();
+  const action=request(engine.getState(),'apply-credit','reviewer',{
+    amount:200,reference:'CN-RECOVERY-UNIQUE-481',reason:'Recovered exact committed reason 7261',
+  });
+  await assert.rejects(engine.act(action));
+  assert.equal(engine.getState().creditNote,null,'unconfirmed change must not be presented as confirmed');
+  const durable=await readFile(file,'utf8');
+  assert.ok(durable.includes(action.reference!),'document reference must survive a lost result');
+  assert.ok(durable.includes(action.reason!),'document reason must survive a lost result');
+  assert.ok(durable.includes(action.idempotencyKey),'reconciliation must retain request identity');
 });

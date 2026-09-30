@@ -1,0 +1,21 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "FeasibilityResponse",
+  "proposalId": "KONTOR-UX-IMPROVEMENT-01",
+  "feasibility": "feasible",
+  "implementation": "Accept the UX proposal and all PM constraints as a presentation-only change. Existing State has current/revision/actor on approvals, payable status, named people with roles, event kind/revision, and the single accepted creditNote reference. Derive distinct current required-approver identities for 0/2, 1/2 and 2/2 guidance, before and after credit. Ready copy requires both current approvals and approved status; paid and pending/unknown states keep precedence. Name the executor from people for completed-review guidance and reviewer from people beside the disabled credit control. The prototype permits exactly one credit per scenario, so historical approval annotations can be established from an approval event revision preceding the recorded credit event revision and the actual creditNote reference. Show the event invoice version and derived expiry annotation without changing its title, detail, state object or JSON export. If credit event/reference linkage is absent or ambiguous, omit the expiry annotation rather than infer it from amounts. Rename only the existing export control to Export evidence (JSON). No program, server, API, authorization, settlement or stored evidence change is required.",
+  "affectedAreas": ["src/App.tsx", "src/styles.css"],
+  "risks": [
+    "Count distinct required approvers for the current revision, not array length alone. Preserve authoritative payable status and pending/unknown precedence so copy does not claim payment readiness during unresolved network work.",
+    "Historical expiry labeling is reliable only within the current one-credit-per-scenario model and explicit event-revision/credit-reference linkage. Do not generalize it to arbitrary future multi-credit histories or infer from an amount difference.",
+    "The added role hint may increase rail height. Verify above-the-fold amount and next action at the accepted desktop viewport and readable non-hover guidance at 390 px.",
+    "Fresh-context non-isolated accountant regression establishes observed usability only. It does not replace compiled SBF or devnet evidence, establish production accountant acceptance, or imply enforced evaluator blindness."
+  ],
+  "taskSplit": [
+    "After final PM acceptance, UX builder edits src/App.tsx to centralize current approval/readiness copy, show named reviewer help, annotate earlier approval display and identify JSON export; touch src/styles.css only if the added help needs layout styling.",
+    "Parent or integration tester runs the existing typecheck and production build and confirms no changes outside the accepted UI scope or mutations of exported evidence data.",
+    "A fresh-context accountant regression checks original/revised 0/2, 1/2 and 2/2 guidance, disabled-credit role hint, historical/current evidence, export label and one 800 Test USD completion at desktop and 390 px. Record the known non-isolated evaluation limitation.",
+    "Parent preserves this as improvement cycle 1 under the existing two-cycle and $10 bounds and remains sole control-plane writer."
+  ],
+  "counterProposal": null
+}

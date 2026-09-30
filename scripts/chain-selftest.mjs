@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { Connection, PublicKey, SystemProgram } from '@solana/web3.js';
-import { createTransferInstruction, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import { createApproveInstruction, createTransferInstruction, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { createClient, digest } from '../chain/client.mjs';
 import { loadOrCreateKeys, bootstrapTokens, fundScenario } from '../chain/bootstrap.mjs';
 
@@ -29,6 +29,7 @@ const main=await scenario();
 await rejected('payment needs two approvals',()=>client.pay(main,{expectedRevision:0}),'MissingApprovals');
 await client.approve(main,{actor:'approver-a',expectedRevision:0});
 await rejected('one signer cannot count twice',()=>client.approve(main,{actor:'approver-a',expectedRevision:0}),'DuplicateApproval');
+await rejected('configured identity still needs its signature',()=>{const ix=client.testing.approveIx(main,keys.approverB,0);ix.keys[0].isSigner=false;return client.testing.submit(ix,keys.executor);},'Unauthorized');
 await rejected('unconfigured signer cannot approve',()=>client.testing.submit(client.testing.approveIx(main,keys.executor,0),keys.executor),'Unauthorized');
 await rejected('unconfigured signer cannot accept credit',()=>client.testing.submit(client.testing.creditIx(main,{expectedRevision:0},keys.executor),keys.executor),'Unauthorized');
 await client.approve(main,{actor:'approver-b',expectedRevision:0});
@@ -40,8 +41,10 @@ await rejected('source and recipient alias rejected',()=>client.testing.submit(c
 const alternate=await scenario(false);
 await rejected('obligation/revision substitution rejected',()=>client.testing.submit(change(client.testing.executeIx(main,0),2,alternate.obligation),keys.executor),'InvalidAccount');
 await rejected('raw token transfer cannot sign PDA vault',()=>client.testing.submit(createTransferInstruction(new PublicKey(main.vault),new PublicKey(main.recipient),keys.executor.publicKey,1n),keys.executor));
+await rejected('raw token delegation cannot authorize vault spending',()=>client.testing.submit(createApproveInstruction(new PublicKey(main.vault),keys.approverB.publicKey,keys.executor.publicKey,1n),keys.executor));
 await rejected('credit exceeding amount rejected',()=>client.applyCredit(main,{expectedRevision:0,amount:'1000000001'}),'InvalidAmount');
 await rejected('zero credit rejected',()=>client.applyCredit(main,{expectedRevision:0,amount:'0'}),'InvalidAmount');
+await rejected('execution cannot inject an alternate amount',()=>{const ix=client.testing.executeIx(main,0);ix.data=Buffer.concat([ix.data,Buffer.alloc(8)]);return client.testing.submit(ix,keys.executor);},'InvalidInstruction');
 await rejected('malformed instruction rejected',()=>{const ix=client.testing.executeIx(main,0);ix.data=Buffer.from([4]);return client.testing.submit(ix,keys.executor);},'InvalidInstruction');
 
 // Time-sensitive evidence: no negative test or user wait between capture, revision and replay.
@@ -58,6 +61,7 @@ await rejected('old approvals cannot settle new revision',()=>client.pay(main,{e
 await approvals(main,1);const before=await client.testing.balances(main);const paid=await client.pay(main,{expectedRevision:1});const after=await client.testing.balances(main);
 assert.equal(BigInt(before.vault)-BigInt(after.vault),800000000n);assert.equal(BigInt(after.recipient)-BigInt(before.recipient),800000000n);assert.equal(paid.state.paid,true);transactions.push({name:'fresh800paid',...paid.evidence});pass('fresh two approvals pay exactly 800 once',{signature:paid.signature,before,after});
 await rejected('new transaction cannot pay twice',()=>client.pay(main,{expectedRevision:1}),'AlreadyPaid');
+await rejected('canonical paid obligation cannot be reinitialized',()=>client.createScenario({id:main.id}),'InvalidAccount');
 await rejected('paid obligation rejects credit',()=>client.applyCredit(main,{expectedRevision:1}),'AlreadyPaid');
 
 // Insufficient vault balance makes token CPI fail after paid mutation; chain rollback must restore unpaid.

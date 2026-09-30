@@ -1,0 +1,17 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "PMResponse",
+  "proposalId": "KONTOR-UX-IMPROVEMENT-01",
+  "decision": "REQUEST_FEASIBILITY",
+  "reason": "Product-priority acceptance for improvement cycle 1. The actual accountant completed the rehearsal and correctly explained the financial outcome, but observed contradictory approval instructions and evidence wording that undermine readiness confidence. Findings R1-01/02 are the principal correction; R1-03/04/05 are small adjacent clarity fixes worth including in the same bounded UI change. Accept the UX proposal as written, subject to SDE confirmation of presentation-only derivation from existing data. The report establishes rehearsal usability only, not devnet enforcement, production accountant acceptance or technically enforced blindness. Printable evidence remains deferred.",
+  "constraints": [
+    "Limit implementation to src/App.tsx and src/styles.css only if needed. No API, program, permission, approval, credit, settlement or immutable/exported evidence changes.",
+    "Use authoritative current approval count and payable status to show remaining work at 0/2 or 1/2 and completed approval/payment-operator guidance at 2/2, before and after credit. Do not display a new approval imperative after both current approvals are recorded.",
+    "Preserve reviewer access to credit before payment. For a non-reviewer disabled credit control, show adjacent readable reviewer name and role without hover at desktop and 390 px width.",
+    "Derive historical approval annotations from the actual event revision and corresponding credit reference. Preserve original record text and export data. If existing data cannot reliably establish expiry, return that feasibility constraint instead of inventing or inferring it from amount difference.",
+    "Label the existing export Export evidence (JSON). Defer printable summaries and all new export formats; do not imply accounting certification.",
+    "Accept all UX proposal acceptance criteria. Require typecheck/build and a fresh-context accountant regression of original/revised 0/2, 1/2 and 2/2 guidance, role hint, historical/current evidence, export labeling and the single 800 Test USD completion at desktop/narrow width.",
+    "Preserve explicit rehearsal versus actual devnet labels and distinguish browser usability findings from independent source-aware SBF/network enforcement evidence. The reported 27 SBF checks and current deployment progress do not expand this UI-only change.",
+    "This is the first of at most two authorized improvement cycles under the existing $10 ceiling. Parent remains sole control-plane writer. SDE feasibility and final PM acceptance precede implementation."
+  ]
+}

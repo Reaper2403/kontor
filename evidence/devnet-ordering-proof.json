@@ -1,0 +1,982 @@
+{
+  "kind": "on-chain-ordering-proof",
+  "cluster": "devnet",
+  "asset": "Test USD",
+  "programId": "8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9",
+  "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+  "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+  "revisionFirst": {
+    "scenario": {
+      "id": "10029659770132317891",
+      "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+      "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+      "revisionAddress": "7pXK2vgRwtsbTFTvmbRnpCiYFNezuGZoBSJH6cPmZTzF",
+      "vault": "3WmbHbt6yxmmQjuAhk4cHmwQb1mdabcTukJsiAyhLdXQ",
+      "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+      "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb"
+    },
+    "capture": {
+      "signature": "5CRWD2Wtf6S7gHAbB4YjWtLczUppFpbhsfUxy9rjPDgPyWGTF44krJkc7QPR8fCwhugDpcuhxL77656UtPLPsdNk",
+      "blockhash": "9gwuY5dHQJ5xmMwmBAnxYEVp4mhS747ferJc5ftjUvNt",
+      "lastValidBlockHeight": 493233212,
+      "transactionBase64": "AdHrFePGvbwn1BG4AhU46vjO0GuYkejsGMboyphxvWdn2WO0Z5CcA7anuLHfeF6ADamGQz1h56RnL1znXshn6g0BAAYKfsnEJZlK5f6P01oNTiFliAu+znfkMXWoY8KDbRhMMFclV6L9gwKmd7x7+Hwx7t53j4kjttfoZz6F0hwqteOVK7gLuTIf0r+sbkwoL5iUtMytLPTXOCNbYvlANoQ38BvI39aGjF3Us9TsRxmKglyo8FGOpSUd0x43nHrwY1fuDvhlUrE3KjnDoh0asdTGKK2DhRF/Gh61brXHojBLx7vvYHBgrQ6qmOvkFO18O2hbZLwvbjmBqr2ozyvTwhhK0Oruj+8Ll9VljsbibMGrwHdgWpmuKKUgvrWVeWZfFFf3+7UDBkZv5SEXMv/srbpyw5vnvIzlu8X3EmssQ5s6QAAAAMMS9aSRk7a0SZsxq3Uv4+1ozI+OM0JNESifuMtP61AaBt324ddloZPZy+FGzut5rBy0he1fWzeROoz1hX7/AKmBGTqo7eV9YY0zckOLl32a7rZnzyFHYmoH0mjR7vuzoQIHAAUCQw0DAAUIAAYDBAEIAgkJBAAAAAAAAAAA",
+      "sha256": "7da334591cbda39daf4ac54b94a2d7d780dd69161890407e2757a7a9f999046f",
+      "revision": 0,
+      "amount": "1000000000",
+      "expiry": 1790793920,
+      "simulation": {
+        "accounts": null,
+        "err": null,
+        "fee": 5000,
+        "innerInstructions": null,
+        "loadedAccountsDataSize": 237414,
+        "loadedAddresses": {
+          "readonly": [],
+          "writable": []
+        },
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 171182 compute units",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+          "Program log: Kontor::Paid amount=1000000000 revision=0",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 29822 of 199853 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 success"
+        ],
+        "postBalances": [
+          29995000,
+          1488440,
+          1488440,
+          1305560,
+          1752600,
+          833120,
+          1828800,
+          1,
+          1066800,
+          20369267856
+        ],
+        "postTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": 0,
+              "uiAmountString": "0"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          }
+        ],
+        "preBalances": [
+          30000000,
+          1488440,
+          1488440,
+          1305560,
+          1752600,
+          833120,
+          1828800,
+          1,
+          1066800,
+          20369267856
+        ],
+        "preTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": 0,
+              "uiAmountString": "0"
+            }
+          }
+        ],
+        "replacementBlockhash": null,
+        "returnData": null,
+        "unitsConsumed": 29972
+      },
+      "capturedAt": "2026-09-30T17:45:31.551Z"
+    },
+    "credit": {
+      "signature": "2w6Kr8tSjXEgYt7PQmXH2af7n5gS8RPVjidejKphsU3Azd8mvNFwJoz7pG5Xdyav8YbWvW6415exckwGxnuRmh8u",
+      "confirmation": "confirmed",
+      "evidence": {
+        "signature": "2w6Kr8tSjXEgYt7PQmXH2af7n5gS8RPVjidejKphsU3Azd8mvNFwJoz7pG5Xdyav8YbWvW6415exckwGxnuRmh8u",
+        "slot": 505984847,
+        "blockTime": 1790790332,
+        "error": null,
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program 11111111111111111111111111111111 invoke [2]",
+          "Program 11111111111111111111111111111111 success",
+          "Program log: Kontor::CreditAccepted amount=200000000 revision=1",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 21954 of 199854 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 success"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [],
+        "postTokenBalances": []
+      },
+      "state": {
+        "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+        "id": "10029659770132317891",
+        "amountOriginal": "1000000000",
+        "invoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+        "revision": 1,
+        "paid": false,
+        "vault": "3WmbHbt6yxmmQjuAhk4cHmwQb1mdabcTukJsiAyhLdXQ",
+        "invoiceDocument": {
+          "schema": "kontor-synthetic-invoice-v1",
+          "invoiceNumber": "NF-2026-041",
+          "supplier": "Northform Studio",
+          "supplierEmail": "accounts@northform.example",
+          "description": "Product design support · September 2026",
+          "issued": "2026-09-24",
+          "due": "2026-10-08",
+          "amountBaseUnits": "1000000000",
+          "asset": "Test USD",
+          "decimals": 6,
+          "synthetic": true
+        },
+        "credit": "200000000",
+        "amountDue": "800000000",
+        "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+        "expiry": 1790793931,
+        "approvalMask": 0,
+        "approvers": [
+          {
+            "role": "approver-a",
+            "address": "6tb9pjEwATfg8wWg3ZvHaxsWSK5pnrkdzUMcZqw353RE",
+            "approved": false
+          },
+          {
+            "role": "approver-b",
+            "address": "7vKhyEjtsWYMHiPoS2Hw2azWVSDzYsDWVZzpBqCYXd8J",
+            "approved": false
+          }
+        ],
+        "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+        "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+        "recipientOwner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+        "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+        "revisionAddress": "4Dsn7eP7wz3iUp8RzhRTreRrrHxB9cXBFphABSfFWgH9",
+        "history": [
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 0,
+            "amount": "1000000000",
+            "credit": "0",
+            "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+            "creditDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reasonDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "expiry": 1790793920,
+            "approvalMask": 3,
+            "approvedAt": [
+              1790790322,
+              1790790322
+            ],
+            "reviewer": "11111111111111111111111111111111"
+          },
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 1,
+            "amount": "800000000",
+            "credit": "200000000",
+            "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+            "creditDigest": "c048823d1bbe21f0af20fb4367808643edfba6510a237fd931575f568ac38b83",
+            "reasonDigest": "92287a7ec131b1b5a8aa0d9b1f2d727ae3c80468f20b65a2a8d14d9e5776de81",
+            "expiry": 1790793931,
+            "approvalMask": 0,
+            "approvedAt": [
+              0,
+              0
+            ],
+            "reviewer": "7kTVEPKvJCjjcR6KbcJWoU4UEZ31U6Zwju5xw7r3AmP9"
+          }
+        ]
+      }
+    },
+    "blocked": {
+      "signature": "5CRWD2Wtf6S7gHAbB4YjWtLczUppFpbhsfUxy9rjPDgPyWGTF44krJkc7QPR8fCwhugDpcuhxL77656UtPLPsdNk",
+      "confirmation": "failed",
+      "evidence": {
+        "signature": "5CRWD2Wtf6S7gHAbB4YjWtLczUppFpbhsfUxy9rjPDgPyWGTF44krJkc7QPR8fCwhugDpcuhxL77656UtPLPsdNk",
+        "slot": 505984879,
+        "blockTime": 1790790339,
+        "error": {
+          "InstructionError": [
+            1,
+            {
+              "Custom": 7002
+            }
+          ]
+        },
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program log: Kontor::StaleRevision",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 10830 of 199853 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 failed: custom program error: 0x1b5a"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": null,
+              "uiAmountString": "0"
+            }
+          }
+        ],
+        "postTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": null,
+              "uiAmountString": "0"
+            }
+          }
+        ],
+        "unchangedBytesSha256": "7da334591cbda39daf4ac54b94a2d7d780dd69161890407e2757a7a9f999046f",
+        "blockhashValidBeforeSend": true,
+        "approvalExpiry": 1790793920,
+        "checkedBlockTime": 1790790336,
+        "before": {
+          "vault": "1000000000",
+          "recipient": "0"
+        },
+        "after": {
+          "vault": "1000000000",
+          "recipient": "0"
+        },
+        "tokenMovement": "0",
+        "simulationBeforeRevision": {
+          "accounts": null,
+          "err": null,
+          "fee": 5000,
+          "innerInstructions": null,
+          "loadedAccountsDataSize": 237414,
+          "loadedAddresses": {
+            "readonly": [],
+            "writable": []
+          },
+          "logs": [
+            "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+            "Program ComputeBudget111111111111111111111111111111 success",
+            "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+            "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+            "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 171182 compute units",
+            "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+            "Program log: Kontor::Paid amount=1000000000 revision=0",
+            "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 29822 of 199853 compute units",
+            "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 success"
+          ],
+          "postBalances": [
+            29995000,
+            1488440,
+            1488440,
+            1305560,
+            1752600,
+            833120,
+            1828800,
+            1,
+            1066800,
+            20369267856
+          ],
+          "postTokenBalances": [
+            {
+              "accountIndex": 1,
+              "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+              "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+              "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "uiTokenAmount": {
+                "amount": "0",
+                "decimals": 6,
+                "uiAmount": 0,
+                "uiAmountString": "0"
+              }
+            },
+            {
+              "accountIndex": 2,
+              "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+              "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+              "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "uiTokenAmount": {
+                "amount": "1000000000",
+                "decimals": 6,
+                "uiAmount": 1000,
+                "uiAmountString": "1000"
+              }
+            }
+          ],
+          "preBalances": [
+            30000000,
+            1488440,
+            1488440,
+            1305560,
+            1752600,
+            833120,
+            1828800,
+            1,
+            1066800,
+            20369267856
+          ],
+          "preTokenBalances": [
+            {
+              "accountIndex": 1,
+              "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+              "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+              "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "uiTokenAmount": {
+                "amount": "1000000000",
+                "decimals": 6,
+                "uiAmount": 1000,
+                "uiAmountString": "1000"
+              }
+            },
+            {
+              "accountIndex": 2,
+              "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+              "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+              "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+              "uiTokenAmount": {
+                "amount": "0",
+                "decimals": 6,
+                "uiAmount": 0,
+                "uiAmountString": "0"
+              }
+            }
+          ],
+          "replacementBlockhash": null,
+          "returnData": null,
+          "unitsConsumed": 29972
+        },
+        "executorProcess": 75508,
+        "separateExecutor": true
+      },
+      "error": {
+        "code": "StaleRevision",
+        "message": "Earlier approvals no longer authorize this revised payable"
+      },
+      "state": {
+        "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+        "id": "10029659770132317891",
+        "amountOriginal": "1000000000",
+        "invoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+        "revision": 1,
+        "paid": false,
+        "vault": "3WmbHbt6yxmmQjuAhk4cHmwQb1mdabcTukJsiAyhLdXQ",
+        "invoiceDocument": {
+          "schema": "kontor-synthetic-invoice-v1",
+          "invoiceNumber": "NF-2026-041",
+          "supplier": "Northform Studio",
+          "supplierEmail": "accounts@northform.example",
+          "description": "Product design support · September 2026",
+          "issued": "2026-09-24",
+          "due": "2026-10-08",
+          "amountBaseUnits": "1000000000",
+          "asset": "Test USD",
+          "decimals": 6,
+          "synthetic": true
+        },
+        "credit": "200000000",
+        "amountDue": "800000000",
+        "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+        "expiry": 1790793931,
+        "approvalMask": 0,
+        "approvers": [
+          {
+            "role": "approver-a",
+            "address": "6tb9pjEwATfg8wWg3ZvHaxsWSK5pnrkdzUMcZqw353RE",
+            "approved": false
+          },
+          {
+            "role": "approver-b",
+            "address": "7vKhyEjtsWYMHiPoS2Hw2azWVSDzYsDWVZzpBqCYXd8J",
+            "approved": false
+          }
+        ],
+        "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+        "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+        "recipientOwner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+        "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+        "revisionAddress": "4Dsn7eP7wz3iUp8RzhRTreRrrHxB9cXBFphABSfFWgH9",
+        "history": [
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 0,
+            "amount": "1000000000",
+            "credit": "0",
+            "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+            "creditDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reasonDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "expiry": 1790793920,
+            "approvalMask": 3,
+            "approvedAt": [
+              1790790322,
+              1790790322
+            ],
+            "reviewer": "11111111111111111111111111111111"
+          },
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 1,
+            "amount": "800000000",
+            "credit": "200000000",
+            "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+            "creditDigest": "c048823d1bbe21f0af20fb4367808643edfba6510a237fd931575f568ac38b83",
+            "reasonDigest": "92287a7ec131b1b5a8aa0d9b1f2d727ae3c80468f20b65a2a8d14d9e5776de81",
+            "expiry": 1790793931,
+            "approvalMask": 0,
+            "approvedAt": [
+              0,
+              0
+            ],
+            "reviewer": "7kTVEPKvJCjjcR6KbcJWoU4UEZ31U6Zwju5xw7r3AmP9"
+          }
+        ]
+      }
+    },
+    "paid": {
+      "signature": "3RTfbnB6kN1v4T4WmkaMexzfvXZ137DFSqT41UYy9AGj3mmhTV9kMNYPjsLWZ6HaPStHFzvuEm1cz2S7MHueca1N",
+      "confirmation": "confirmed",
+      "evidence": {
+        "signature": "3RTfbnB6kN1v4T4WmkaMexzfvXZ137DFSqT41UYy9AGj3mmhTV9kMNYPjsLWZ6HaPStHFzvuEm1cz2S7MHueca1N",
+        "slot": 505984930,
+        "blockTime": 1790790351,
+        "error": null,
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 172686 compute units",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+          "Program log: Kontor::Paid amount=800000000 revision=1",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 28314 of 199857 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 success"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": null,
+              "uiAmountString": "0"
+            }
+          }
+        ],
+        "postTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "200000000",
+              "decimals": 6,
+              "uiAmount": 200,
+              "uiAmountString": "200"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "800000000",
+              "decimals": 6,
+              "uiAmount": 800,
+              "uiAmountString": "800"
+            }
+          }
+        ]
+      },
+      "state": {
+        "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+        "id": "10029659770132317891",
+        "amountOriginal": "1000000000",
+        "invoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+        "revision": 1,
+        "paid": true,
+        "vault": "3WmbHbt6yxmmQjuAhk4cHmwQb1mdabcTukJsiAyhLdXQ",
+        "invoiceDocument": {
+          "schema": "kontor-synthetic-invoice-v1",
+          "invoiceNumber": "NF-2026-041",
+          "supplier": "Northform Studio",
+          "supplierEmail": "accounts@northform.example",
+          "description": "Product design support · September 2026",
+          "issued": "2026-09-24",
+          "due": "2026-10-08",
+          "amountBaseUnits": "1000000000",
+          "asset": "Test USD",
+          "decimals": 6,
+          "synthetic": true
+        },
+        "credit": "200000000",
+        "amountDue": "800000000",
+        "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+        "expiry": 1790793931,
+        "approvalMask": 3,
+        "approvers": [
+          {
+            "role": "approver-a",
+            "address": "6tb9pjEwATfg8wWg3ZvHaxsWSK5pnrkdzUMcZqw353RE",
+            "approved": true
+          },
+          {
+            "role": "approver-b",
+            "address": "7vKhyEjtsWYMHiPoS2Hw2azWVSDzYsDWVZzpBqCYXd8J",
+            "approved": true
+          }
+        ],
+        "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+        "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+        "recipientOwner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+        "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+        "revisionAddress": "4Dsn7eP7wz3iUp8RzhRTreRrrHxB9cXBFphABSfFWgH9",
+        "history": [
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 0,
+            "amount": "1000000000",
+            "credit": "0",
+            "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+            "creditDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reasonDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "expiry": 1790793920,
+            "approvalMask": 3,
+            "approvedAt": [
+              1790790322,
+              1790790322
+            ],
+            "reviewer": "11111111111111111111111111111111"
+          },
+          {
+            "obligation": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "revision": 1,
+            "amount": "800000000",
+            "credit": "200000000",
+            "evidenceDigest": "81f194196dd06586510c45f6acea19c07b9d47967aa3f29ef11faf60fe6fd7c3",
+            "creditDigest": "c048823d1bbe21f0af20fb4367808643edfba6510a237fd931575f568ac38b83",
+            "reasonDigest": "92287a7ec131b1b5a8aa0d9b1f2d727ae3c80468f20b65a2a8d14d9e5776de81",
+            "expiry": 1790793931,
+            "approvalMask": 3,
+            "approvedAt": [
+              1790790347,
+              1790790348
+            ],
+            "reviewer": "7kTVEPKvJCjjcR6KbcJWoU4UEZ31U6Zwju5xw7r3AmP9"
+          }
+        ]
+      }
+    },
+    "duplicate": {
+      "signature": "585bdwSmsymXz875sLZ68aHNVm6TUaYfBaQJwF6frvAG7DxdfLmpbXg7VnoyLmkJpAoTvgois7Ns4ejoFNjdMU2Y",
+      "evidence": {
+        "signature": "585bdwSmsymXz875sLZ68aHNVm6TUaYfBaQJwF6frvAG7DxdfLmpbXg7VnoyLmkJpAoTvgois7Ns4ejoFNjdMU2Y",
+        "slot": 505984951,
+        "blockTime": 1790790356,
+        "error": {
+          "InstructionError": [
+            1,
+            {
+              "Custom": 7003
+            }
+          ]
+        },
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program log: Kontor::AlreadyPaid",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 10828 of 199858 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 failed: custom program error: 0x1b5b"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "200000000",
+              "decimals": 6,
+              "uiAmount": 200,
+              "uiAmountString": "200"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "800000000",
+              "decimals": 6,
+              "uiAmount": 800,
+              "uiAmountString": "800"
+            }
+          }
+        ],
+        "postTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "G4meMniJ4Di6LHzniQNUdMbHTm3uc66tCH6TqpDXrYfy",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "200000000",
+              "decimals": 6,
+              "uiAmount": 200,
+              "uiAmountString": "200"
+            }
+          },
+          {
+            "accountIndex": 2,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "800000000",
+              "decimals": 6,
+              "uiAmount": 800,
+              "uiAmountString": "800"
+            }
+          }
+        ]
+      }
+    },
+    "before": {
+      "vault": "1000000000",
+      "recipient": "0"
+    },
+    "after": {
+      "vault": "200000000",
+      "recipient": "800000000"
+    }
+  },
+  "executionFirst": {
+    "scenario": {
+      "id": "6850157522820157816",
+      "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+      "obligation": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+      "revisionAddress": "29n5HyBwzxUpaVtQNpBMjs2H6AawDfxe75GZoSjbZb4e",
+      "vault": "2oNNVhcoqBy9FCYxdAjGWQpKezEwjAjYCeXwMqMJkrJ8",
+      "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+      "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb"
+    },
+    "firstPayment": {
+      "signature": "Yn3RwLVyujS2m6Updni6gdxuoyfutEkBmP9tXBVLjmvgogGEK5BnKHhmh2PGzzW1m7N2dV8ezHw9cZp7bTg6FAL",
+      "confirmation": "confirmed",
+      "evidence": {
+        "signature": "Yn3RwLVyujS2m6Updni6gdxuoyfutEkBmP9tXBVLjmvgogGEK5BnKHhmh2PGzzW1m7N2dV8ezHw9cZp7bTg6FAL",
+        "slot": 505985036,
+        "blockTime": 1790790376,
+        "error": null,
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [2]",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 105 of 178691 compute units",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success",
+          "Program log: Kontor::Paid amount=1000000000 revision=0",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 22322 of 199862 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 success"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1000000000",
+              "decimals": 6,
+              "uiAmount": 1000,
+              "uiAmountString": "1000"
+            }
+          },
+          {
+            "accountIndex": 3,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "800000000",
+              "decimals": 6,
+              "uiAmount": 800,
+              "uiAmountString": "800"
+            }
+          }
+        ],
+        "postTokenBalances": [
+          {
+            "accountIndex": 1,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "0",
+              "decimals": 6,
+              "uiAmount": null,
+              "uiAmountString": "0"
+            }
+          },
+          {
+            "accountIndex": 3,
+            "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+            "owner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+            "programId": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "uiTokenAmount": {
+              "amount": "1800000000",
+              "decimals": 6,
+              "uiAmount": 1800,
+              "uiAmountString": "1800"
+            }
+          }
+        ]
+      },
+      "state": {
+        "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+        "id": "6850157522820157816",
+        "amountOriginal": "1000000000",
+        "invoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+        "revision": 0,
+        "paid": true,
+        "vault": "2oNNVhcoqBy9FCYxdAjGWQpKezEwjAjYCeXwMqMJkrJ8",
+        "invoiceDocument": {
+          "schema": "kontor-synthetic-invoice-v1",
+          "invoiceNumber": "NF-2026-041",
+          "supplier": "Northform Studio",
+          "supplierEmail": "accounts@northform.example",
+          "description": "Product design support · September 2026",
+          "issued": "2026-09-24",
+          "due": "2026-10-08",
+          "amountBaseUnits": "1000000000",
+          "asset": "Test USD",
+          "decimals": 6,
+          "synthetic": true
+        },
+        "credit": "0",
+        "amountDue": "1000000000",
+        "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+        "expiry": 1790793959,
+        "approvalMask": 3,
+        "approvers": [
+          {
+            "role": "approver-a",
+            "address": "6tb9pjEwATfg8wWg3ZvHaxsWSK5pnrkdzUMcZqw353RE",
+            "approved": true
+          },
+          {
+            "role": "approver-b",
+            "address": "7vKhyEjtsWYMHiPoS2Hw2azWVSDzYsDWVZzpBqCYXd8J",
+            "approved": true
+          }
+        ],
+        "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+        "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+        "recipientOwner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+        "obligation": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+        "revisionAddress": "29n5HyBwzxUpaVtQNpBMjs2H6AawDfxe75GZoSjbZb4e",
+        "history": [
+          {
+            "obligation": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+            "revision": 0,
+            "amount": "1000000000",
+            "credit": "0",
+            "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+            "creditDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reasonDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+            "expiry": 1790793959,
+            "approvalMask": 3,
+            "approvedAt": [
+              1790790365,
+              1790790369
+            ],
+            "reviewer": "11111111111111111111111111111111"
+          }
+        ]
+      }
+    },
+    "lateCredit": {
+      "signature": "49AmFPTQHuTj9sXVZ4Fys6eEYcfN8284kFi4VMUof25d7d6WQaCkXjtcVQu57jtKzWGhrf5Lq2uLDUupJomBJ91S",
+      "evidence": {
+        "signature": "49AmFPTQHuTj9sXVZ4Fys6eEYcfN8284kFi4VMUof25d7d6WQaCkXjtcVQu57jtKzWGhrf5Lq2uLDUupJomBJ91S",
+        "slot": 505985040,
+        "blockTime": 1790790377,
+        "error": {
+          "InstructionError": [
+            1,
+            {
+              "Custom": 7003
+            }
+          ]
+        },
+        "logs": [
+          "Program ComputeBudget111111111111111111111111111111 invoke [1]",
+          "Program ComputeBudget111111111111111111111111111111 success",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 invoke [1]",
+          "Program log: Kontor::AlreadyPaid",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 consumed 7315 of 199863 compute units",
+          "Program 8ZgASzPtuNQote1grs4TsPATVqdkCnjZnYTkzTiBUgE9 failed: custom program error: 0x1b5b"
+        ],
+        "fee": 5000,
+        "preTokenBalances": [],
+        "postTokenBalances": []
+      }
+    },
+    "finalState": {
+      "config": "AgriPhABfSnahEkFcacGkdShvsTqgy4tpHMuQPngRayJ",
+      "id": "6850157522820157816",
+      "amountOriginal": "1000000000",
+      "invoiceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+      "revision": 0,
+      "paid": true,
+      "vault": "2oNNVhcoqBy9FCYxdAjGWQpKezEwjAjYCeXwMqMJkrJ8",
+      "invoiceDocument": {
+        "schema": "kontor-synthetic-invoice-v1",
+        "invoiceNumber": "NF-2026-041",
+        "supplier": "Northform Studio",
+        "supplierEmail": "accounts@northform.example",
+        "description": "Product design support · September 2026",
+        "issued": "2026-09-24",
+        "due": "2026-10-08",
+        "amountBaseUnits": "1000000000",
+        "asset": "Test USD",
+        "decimals": 6,
+        "synthetic": true
+      },
+      "credit": "0",
+      "amountDue": "1000000000",
+      "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+      "expiry": 1790793959,
+      "approvalMask": 3,
+      "approvers": [
+        {
+          "role": "approver-a",
+          "address": "6tb9pjEwATfg8wWg3ZvHaxsWSK5pnrkdzUMcZqw353RE",
+          "approved": true
+        },
+        {
+          "role": "approver-b",
+          "address": "7vKhyEjtsWYMHiPoS2Hw2azWVSDzYsDWVZzpBqCYXd8J",
+          "approved": true
+        }
+      ],
+      "mint": "E8VGbqzpghmVAmMjXxH9CYL7vevDiUeCfJxR7tMwfZcV",
+      "recipient": "DPSPJw6a3LyzBSPRL2mMMzyn7gqYtKAYhxX9PszbmuQb",
+      "recipientOwner": "EfdyQCSiX9RVeZt1bg9rfMwadznqX5B3N7ahjfZTMnix",
+      "obligation": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+      "revisionAddress": "29n5HyBwzxUpaVtQNpBMjs2H6AawDfxe75GZoSjbZb4e",
+      "history": [
+        {
+          "obligation": "CsNGDvtYqeug1ZzeDEU3DsNQfQB94qdygHZzTUupGipC",
+          "revision": 0,
+          "amount": "1000000000",
+          "credit": "0",
+          "evidenceDigest": "474fa385760a53dfd5435aa5a3106b8d71dc69f6e01e9f7adb33d413c9f9c63b",
+          "creditDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+          "reasonDigest": "0000000000000000000000000000000000000000000000000000000000000000",
+          "expiry": 1790793959,
+          "approvalMask": 3,
+          "approvedAt": [
+            1790790365,
+            1790790369
+          ],
+          "reviewer": "11111111111111111111111111111111"
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-09-30T17:46:18.287Z"
+}

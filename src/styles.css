@@ -8,3 +8,7 @@
 
 /* Keep the demonstration reset reachable on narrow screens. */
 @media(max-width:620px){.demo-role .sidebar-reset{display:flex;font-size:0;padding:8px}.demo-role .sidebar-reset svg{width:15px;height:15px}.demo-role select{min-width:0}}
+
+/* State-specific guidance and historical display annotations. */
+.credit-role-hint{font-size:10px;line-height:1.6;color:#637858;margin:9px 0 0;text-align:center}
+.history-event p.approval-annotation,.evidence-item p.approval-annotation{color:#596f4e;font-weight:550;margin-top:6px}

@@ -1,0 +1,66 @@
+{
+  "evaluator": "Accounts-payable accountant",
+  "round": 1,
+  "method": "Fresh task context using only dedicated browser UI control at port 4322, accessible DOM and screenshots. No application source, API, repository or previous evaluation reports inspected. Tools were not technically isolated; enforced blindness is not claimed.",
+  "result": "Completed original approvals, applied the supplied 200 Test USD credit, verified earlier payment was blocked, obtained revised approvals, recorded 800 Test USD rehearsal payment and downloaded evidence.",
+  "steps": [
+    "Opened Northform Studio invoice NF-2026-041: 1,000 Test USD for September product design support, due 8 October 2026.",
+    "Changed demo role to Mara Weber and approved 1,000; changed to Jonas Berg and approved 1,000. Status became Ready to pay.",
+    "Returned to Lena Fischer because supplier-credit control was disabled for approvers. Opened credit form with supplied 200, CN-2026-084 and Service adjustment agreed with supplier. Form explicitly previewed 800 and expiry of existing approvals; applied it.",
+    "Opened Demo control check, followed its instruction to switch to Alex Morgan, and tested previous approval. Recorded result said attempted 1,000 under invoice version 1 was rejected by the local rehearsal guard, with no Test USD moved.",
+    "Changed viewport to 390 by 844. Obtained fresh 800 approvals from Mara and Jonas. Switched to Alex and opened Pay 800 Test USD confirmation.",
+    "Confirmed 800. Application selected Evidence automatically and showed eight chronological records plus 1,000 minus 200 equals 800 paid.",
+    "Clicked Export evidence and verified browser download metadata: kontor-NF-2026-041-evidence.json, failure null. Download contents were not inspected."
+  ],
+  "final_record_explanation": "Original 1,000 approval pair remains in history but expired after CN-2026-084 reduced the payable to 800. The saved previous instruction could not pay. A second pair approved the revised amount and Alex recorded an 800 local rehearsal settlement. There was no on-chain transaction or real-funds payment.",
+  "mistakes_and_recovery": [
+    "No incorrect financial action or task-blocking UI error occurred.",
+    "Credit authority required remembering the initial reviewer role because disabled credit control did not explain who could use it. I successfully returned to Lena.",
+    "The browser control download action alone only reads metadata; its first result was null. Clicking the visible Export evidence link first produced successful download metadata. This was a tool-use correction, not an application fault.",
+    "Pressing Home while focus remained in the tablist selected Overview; this was consistent with tab keyboard navigation and did not lose payment state."
+  ],
+  "scores": {
+    "amount_document_comprehension": {"score": 4, "reason": "Invoice amount, reference, dates, credit reference and 800 reconciliation were consistent and immediately understandable."},
+    "approval_credit_completion": {"score": 3, "reason": "Entire sequence completed smoothly; role-specific next-step text is occasionally stale or incomplete."},
+    "previous_approval_understanding": {"score": 4, "reason": "Credit warning, expired-approval count, disabled payment and explicit blocked-attempt evidence made the control clear."},
+    "final_payment_evidence": {"score": 3, "reason": "Clear confirmation and eight-event audit trail; export works but JSON-only format limits ordinary accounting use, and old approval events do not explicitly label their expired state."},
+    "readability_navigation_accessibility_recovery": {"score": 3, "reason": "Desktop and narrow layouts were usable, with labeled controls, status messages and no observed blocking clipping. Muted small text and some stale instructions weaken clarity; this was not a comprehensive accessibility audit."},
+    "total": 17,
+    "maximum": 20
+  },
+  "actionable_findings": [
+    {
+      "priority": "medium",
+      "finding": "After both original approvals, Lena reviewer view simultaneously showed Ready to pay / 2 of 2 and Two approvers must review this amount / Switch demo role to a named approver to review.",
+      "impact": "An accountant can unnecessarily revisit completed approvals or doubt readiness.",
+      "recommendation": "Make reviewer guidance depend on approval count: show Both approvals are in; switch to payment operator, while preserving access to the credit action."
+    },
+    {
+      "priority": "medium",
+      "finding": "After both revised approvals were recorded, the payment panel still said Amount changed after review. Approve the revised 800 Test USD, even with Ready to pay and enabled Pay 800.",
+      "impact": "The primary callout asks for work already completed at the moment of payment.",
+      "recommendation": "Replace the imperative after 2 of 2 with Revised 800 Test USD approved, or hide it once approvals are current."
+    },
+    {
+      "priority": "low",
+      "finding": "Apply supplier credit is disabled for approvers without adjacent explanation of the required reviewer role.",
+      "recommendation": "Name Lena / Finance reviewer beside the disabled control or show a concise role hint."
+    },
+    {
+      "priority": "low",
+      "finding": "Evidence labels original 1,000 approval events as generic Rehearsal record, with present-tense Approval covers this amount, recipient and current invoice version; expiry must be inferred from the later credit event or side-panel disclosure.",
+      "recommendation": "Mark historical approval records Expired after CN-2026-084 and include their invoice version in human-readable evidence."
+    },
+    {
+      "priority": "low",
+      "finding": "Export evidence downloads JSON, although label does not identify format.",
+      "recommendation": "Label export format and consider a printable accounting evidence summary alongside JSON."
+    }
+  ],
+  "screenshots": [
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-desktop.png",
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-narrow-confirm.png",
+    "/Users/ashutoshchatterjee/.codex/.chatgpt-projects/g-p-6abd1f968b508191a2a907a9907dc5b4/.kontor-control/accountant-narrow-final.png"
+  ],
+  "limitations": "Browser-level rehearsal evaluation only. No actual blockchain enforcement, server authorization implementation, downloaded JSON contents, exhaustive keyboard navigation or contrast ratios were verified."
+}

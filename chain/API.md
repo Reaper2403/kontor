@@ -26,3 +26,5 @@
 `chain/bootstrap.mjs` will export `loadOrCreateKeys(directory)` and `bootstrapTokens(client options)` for operator-only setup; private keys excluded from git. Program keypair/deployment belongs to parent. Only devnet/localnet targets permitted by operator scripts.
 
 `onPrepared({signature, transactionBase64, blockhash, lastValidBlockHeight, kind, handle})` is awaited before every chain-client broadcast, including configuration/scenario creation and the unchanged previous transaction. Throwing cancels submission. Persist it atomically as the durable in-flight journal. Unknown-outcome errors retain signature. `kind` is initialize-config/create-scenario/approve/apply-credit/test-previous/pay.
+
+The default original evidence is exported from `chain/invoice.mjs` as `invoiceDocument`, exact `invoiceDocumentJSON` UTF-8 bytes, and SHA256 `invoiceDocumentDigest`. It matches NF-2026-041 visible fields; do not replace the default with a hash of a transient UI object or placeholder recipient. `read` includes invoiceDocument only when its digest matches this canonical original. Preserve it in evidence export.

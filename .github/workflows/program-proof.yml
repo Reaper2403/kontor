@@ -49,5 +49,9 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: kontor-program-proof
-          path: artifacts/
+          path: |
+            artifacts/program-proof.json
+            artifacts/test-source-sha.txt
+            artifacts/source-sha.txt
+            artifacts/binary-sha256.txt
           retention-days: 1

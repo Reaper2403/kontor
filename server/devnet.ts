@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {dirname,join} from 'node:path';
 import {PublicKey} from '@solana/web3.js';
 import {createClient} from '../chain/client.mjs';
+import {invoiceDocument,invoiceDocumentDigest} from '../chain/invoice.mjs';
 import {loadOrCreateKeys,fundScenario} from '../chain/bootstrap.mjs';
 import type {State,Action} from '../contracts/api.js';
 import {DomainError,initialState,type ChainEffect} from './engine.js';
@@ -16,19 +17,31 @@ export async function devnetAdapter(manifestPath:string){
  const client=createClient({...manifest,keys,onPrepared:async(tx:any)=>{lastPrepared=tx;await atomic(join(directory,'journal',tx.signature+'.json'),{...tx,status:'prepared',at:new Date().toISOString()});}});
  let handle=manifest.handle??manifest.scenario; if(!handle)throw Error('Manifest requires a setup scenario handle.');
  async function balances(){const [v,r]=await Promise.all([client.connection.getTokenAccountBalance(new PublicKey(handle.vault)),client.connection.getTokenAccountBalance(new PublicKey(handle.recipient))]);return{vaultBalance:Number(v.value.amount)/1e6,recipientBalance:Number(r.value.amount)/1e6};}
- async function link(s:State):Promise<State>{const c=await client.read(handle);const b=await balances();return {...s,mode:'devnet',revision:c.revision+1,asset:{symbol:'Test USD',decimals:6,mint:manifest.mint,cluster:'devnet'},invoice:{...s.invoice,recipient:manifest.recipient},chain:{programId:manifest.programId,obligation:handle.obligation,vault:handle.vault,...b}};}
+ async function link(s:State):Promise<State>{const c=await client.read(handle);
+ const canonical=client.addresses(handle,0);
+ for(const [field,address] of Object.entries({config:canonical.config,obligation:canonical.obligation,vault:canonical.vault,mint:canonical.mint,recipient:canonical.recipient,revisionAddress:canonical.revision}))if(handle[field]!==address.toBase58())throw Error('Manifest scenario account mismatch: '+field);
+ if(c.invoiceDigest!==invoiceDocumentDigest)throw Error('On-chain invoice digest does not match the exported original document.');
+ const invoiceFields={number:invoiceDocument.invoiceNumber,supplier:invoiceDocument.supplier,supplierEmail:invoiceDocument.supplierEmail,description:invoiceDocument.description,issued:invoiceDocument.issued,due:invoiceDocument.due};
+ for(const [field,value] of Object.entries(invoiceFields))if(s.invoice[field as keyof State['invoice']]!==value)throw Error('Saved invoice differs from the committed document: '+field);
+ if(s.chain.obligation&&s.chain.obligation!==handle.obligation)throw Error('Saved evidence belongs to a different obligation. Refusing to relink it.');
+ const approvedMask=s.approvals.filter(x=>x.current).reduce((mask,x)=>mask|(x.actor==='approver-a'?1:2),0);
+ const matches=s.revision===c.revision+1&&s.amountOriginal===Number(c.amountOriginal)/1e6&&s.amountDue===Number(c.amountDue)/1e6&&s.credit===Number(c.credit)/1e6&&(s.status==='paid')===c.paid&&approvedMask===c.approvalMask;
+ if(!matches){if(s.operation)return {...s,operation:{...s.operation,status:'unknown',message:'Saved state differs from the network. Reconcile the recorded transaction before another action.'}};throw Error('Saved payable does not match the confirmed program state. Reconciliation required.');}
+ if(c.revision>0){const latest=c.history.at(-1);if(!latest||!s.creditNote||s.creditNote.amount!==s.credit||latest.creditDigest!==hash(JSON.stringify({reference:s.creditNote.reference,amount:s.creditNote.amount}))||latest.reasonDigest!==hash(s.creditNote.reason))throw Error('Saved credit does not match the on-chain document digests.');}
+ else if(s.creditNote)throw Error('Saved credit has no matching on-chain revision.');
+ const b=await balances();return {...s,mode:'devnet',revision:c.revision+1,asset:{symbol:'Test USD',decimals:6,mint:manifest.mint,cluster:'devnet'},invoice:{...s.invoice,recipient:manifest.recipient},chain:{programId:manifest.programId,obligation:handle.obligation,vault:handle.vault,...b}};}
  const effect:ChainEffect=async(a:Action,before:State,after:State)=>{
   lastPrepared=null;let result:any;
   try{
    if(a.type==='reset'){
-    handle=await client.createScenario({invoiceDigest:hash(JSON.stringify(after.invoice))} as any);await fundScenario({client,handle,keys});manifest.handle=handle;delete manifest.capture;await atomic(manifestPath,manifest);return await link(after);
+    handle=await client.createScenario();await fundScenario({client,handle,keys});manifest.handle=handle;delete manifest.capture;await atomic(manifestPath,manifest);return await link(after);
    }
    if(a.type==='approve')result=await client.approve(handle,{actor:a.actor,expectedRevision:a.expectedRevision-1});
    if(a.type==='capture-previous'){manifest.capture=await client.capturePrevious(handle);await atomic(manifestPath,manifest);return await link(after);}
    if(a.type==='apply-credit'){
     // A fresh snapshot immediately before the correction preserves the exact old signed bytes.
     if(before.status==='approved'){manifest.capture=await client.capturePrevious(handle);await atomic(manifestPath,manifest);}
-    result=await client.applyCredit(handle,{expectedRevision:a.expectedRevision-1,amount:String(a.amount!*1e6),creditDigest:hash(JSON.stringify({reference:a.reference,amount:a.amount})),reasonDigest:hash(a.reason!)});
+    result=await client.applyCredit(handle,{expectedRevision:a.expectedRevision-1,amount:String(a.amount!*1e6),creditDigest:hash(JSON.stringify({reference:after.creditNote!.reference,amount:after.creditNote!.amount})),reasonDigest:hash(after.creditNote!.reason)});
    }
    if(a.type==='test-previous'){
     if(!manifest.capture)throw new DomainError('NO_CAPTURE','There is no signed earlier instruction. Start a new scenario and approve the original amount first.');
