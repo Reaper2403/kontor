@@ -2,6 +2,10 @@
 
 A payable workbench that keeps approval tied to the amount being paid. Built for the Build at WHU hackathon.
 
+**[Explore the interactive product tour →](https://reaper2403.github.io/kontor-tour/)**
+
+Follow the 1,000 → 200 credit → 800 payment story in six chapters, using the actual app interface. No installation or wallet is needed. This is a guided replay with links to recorded Solana devnet evidence; tour clicks send no transactions.
+
 ## The demonstration
 
 1. Open the Northform Studio invoice for **1,000 Test USD**.
@@ -27,7 +31,7 @@ In another terminal:
 npm run dev
 ```
 
-Open http://127.0.0.1:5173. With no network configuration, the app clearly identifies a **local rehearsal**, generates no transaction links, and moves no network tokens.
+For development, open the address printed by the development server. With no network configuration, the app clearly identifies a **local rehearsal**, generates no transaction links, and moves no network tokens.
 
 For the already configured local devnet workspace, start the server with:
 
