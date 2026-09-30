@@ -1,0 +1,53 @@
+{
+  "result": {
+    "apiVersion": "hackfleet/v1",
+    "kind": "StructuredResult",
+    "taskId": "KONTOR-SERVICE",
+    "status": "PASS",
+    "summary": "Persistent service integrated with real devnet; canonical evidence binding, idempotency and fail-closed unknown outcomes verified.",
+    "filesChanged": [
+      "contracts/api.ts",
+      "server/devnet.ts",
+      "server/engine.ts",
+      "server/index.ts",
+      "tests/integration-client.test.ts",
+      "tests/integration-devnet.test.ts",
+      "tests/integration-engine.test.ts"
+    ],
+    "verification": [
+      {
+        "command": "npm test",
+        "status": "PASS",
+        "evidence": "30/30 independent service/client/adapter tests pass"
+      },
+      {
+        "command": "npm run build",
+        "status": "PASS",
+        "evidence": "Typecheck and production UI bundle pass"
+      },
+      {
+        "command": "Live browser evidence export",
+        "status": "PASS",
+        "evidence": "Confirmed800 settlement, actual stale rejection, document hashes and7networkproofs verified"
+      }
+    ],
+    "scopeViolations": [],
+    "assumptions": [
+      "Controller-attested result for actual native Codex work; not a hosted coding worker receipt."
+    ],
+    "knownRisks": [
+      "Synthetic Test USD and server-held demonstration keys; trusted upgrade authority; no security audit.",
+      "Unknown outcomes require operator-assisted reconciliation and remain blocked."
+    ],
+    "artifacts": [
+      "evidence/devnet-ordering-proof.json",
+      "evidence/compiled-program-proof.json",
+      "research/testing/adapter-review-result.json"
+    ]
+  },
+  "artifacts": [
+    "evidence/devnet-ordering-proof.json",
+    "evidence/compiled-program-proof.json",
+    "research/testing/adapter-review-result.json"
+  ]
+}

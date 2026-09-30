@@ -1,0 +1,32 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "DecisionRecord",
+  "decisionId": "KONTOR-UX-IMPROVEMENT-02",
+  "proposalId": "KONTOR-UX-IMPROVEMENT-02",
+  "title": "Reconcile paid-list labels and historical approval descriptions",
+  "status": "accepted",
+  "date": "2026-09-30",
+  "trigger": "Second fresh-context accountant browser review completed the live UI journey and scored 17/20, identifying paid-list amount ambiguity ACC-R2-01 and historical approval wording ACC-R2-02. UX /root/build_ux proposed bounded changes, PM /root/build_pm accepted priority, SDE /root/build_sde confirmed feasible original implementation, and PM accepts after one engineering round. Source review is limited to the relevant actor artifacts; browser findings are non-isolated usability evidence, not an independently verified chain receipt.",
+  "productRationale": "A paid invoice must not display its settled amount beneath Amount due, and an expired approval must not claim to cover the current invoice version. These two presentation-semantic corrections align the list, detail and evidence without altering the successful authorization and payment workflow. Accept this as the second and final improvement cycle. Human-readable export and broader visual/accessibility enhancements remain deferred.",
+  "engineeringDecision": "Accept the original UX proposal with feasible engineering and no counterproposal or unresolved objection. Use paid status in the current single-invoice list to display AMOUNT PAID and settlement.amount with amountDue fallback, otherwise AMOUNT DUE and amountDue. Reuse the existing exact approval/credit event revision predicate and actual credit reference for display-only historical descriptions in both Activity and Evidence. Missing event amount or ambiguous linkage retains original detail. Existing data is sufficient; change only src/App.tsx and necessary monetary-heading layout in src/styles.css. Parent already prepared a fresh obligation through supported archiving reset; the old paid obligation and evidence remain preserved. Fresh full-journey verification of the new test obligation is within the accepted test scope and is distinct from repaying the old obligation.",
+  "constraints": [
+    "Implementation scope is only ACC-R2-01 and ACC-R2-02. No API, server, program, authority, operation, role, approval, credit, settlement, export format or document-scope changes.",
+    "Unpaid list states show AMOUNT DUE and current amountDue, including 800 after credit. Paid All payables and Paid views show AMOUNT PAID and the settled amount. Keep To pay zero, filters/counts and existing paid detail unchanged. This heading design applies only to the current one-invoice workspace, not a future mixed-state list.",
+    "Only approvals proven expired by the existing exact event-revision/credit-reference linkage receive historical wording naming recorded amount, invoice version and superseding credit. Use one shared display helper in Activity and Evidence. Preserve original titles, stored details, expiry annotation, signatures, state and downloaded JSON. Retain original description when amount/linkage is absent or ambiguous; never infer from amount differences.",
+    "Accept all UX proposal acceptance criteria. Run existing typecheck and production build and verify the diff does not mutate records or operational behavior. Verify unpaid/paid column semantics and historical/current descriptions at desktop and 390 px.",
+    "The supported reset occurred before the preference to avoid cosmetic resets was delivered. Its new obligation may undergo a fresh accountant full journey and one test-network settlement under the existing devnet scope. Preserve archived old evidence and evidence/browser-demo-export.json; never pay the old obligation again or describe the new obligation as the old record. Further resets or payments solely for cosmetic verification are unnecessary.",
+    "This is cycle 2 of 2. Parent remains sole control-plane writer and shared $10-budget owner and persists acceptance before implementation. No third UI improvement cycle is authorized. Subsequent observations are reported as residual findings rather than automatically implemented. approvedImplementationTasks remains empty until canonical task assignment.",
+    "Defer printable/PDF/spreadsheet export ACC-R2-03 and broad accessibility redesign. Do not imply that those limitations were addressed or that the unchanged prior 17/20 score establishes numerical improvement.",
+    "Preserve Test USD and no-real-value labels and accurate devnet/rehearsal boundaries. Fresh-context tools are not technically isolated. Browser verification remains separate from compiled SBF and actual network proof and does not establish production accounting acceptance, certification or a comprehensive accessibility audit."
+  ],
+  "approvedImplementationTasks": [],
+  "rejectedAlternatives": [
+    "Keep 800 under Amount due after payment because Paid and To pay zero appear elsewhere: leaves a contradictory accounting label in the scanning view.",
+    "Generalize the list to a mixed paid/unpaid portfolio now: expands beyond the bounded one-invoice product and observed issue.",
+    "Rewrite immutable history or exported JSON: unnecessary for a presentation defect and outside scope.",
+    "Infer expiry from amount differences or fabricate missing historical values: would weaken evidence accuracy.",
+    "Add printable evidence or broader design changes in the last cycle: exceeds the accepted bounded correction; preserve as deferred findings.",
+    "Start another improvement cycle from final verification observations: exceeds the authorized two-cycle limit."
+  ],
+  "negotiationRounds": 1
+}

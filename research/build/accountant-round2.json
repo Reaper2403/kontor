@@ -1,0 +1,66 @@
+{
+  "evaluator": "Independent accountant usability evaluator",
+  "round": 2,
+  "date": "2026-09-30",
+  "method": {
+    "blindness": "Fresh context: no source, repository, API, or earlier report inspection. Only rendered browser UI via assigned harness was used.",
+    "isolation": "Instructional browser-only isolation, not technical filesystem isolation; this limitation was explicitly approved in assignment.",
+    "surface": "http://127.0.0.1:5173",
+    "viewports": [{"width": 1440, "height": 1000}, {"width": 390, "height": 844}],
+    "scope": "Synthetic Northform Studio invoice NF-2026-041, 1,000 Test USD, supplied CN-204 accepted service credit of 200 Test USD. Solana devnet/test funds."
+  },
+  "outcome": "Completed original approvals, supplied credit, rejection of an earlier payment instruction, two fresh approvals, and payment of 800 Test USD. Evidence export downloaded successfully.",
+  "score_total": 17,
+  "score_max": 20,
+  "rubric": [
+    {"criterion": "Find and understand amount due and document context", "score": 3, "max": 4, "rationale": "Invoice, supplier, service period, due date, recipient, original amount and credit were readily available. The revised 800 amount was prominent. Paid list still puts 800 under AMOUNT DUE, creating a residual accounting ambiguity."},
+    {"criterion": "Complete approval and credit without guidance", "score": 4, "max": 4, "rationale": "Visible role-specific instructions named the next approvers and the credit role. Credit dialog showed 1,000 minus 200 equals 800 and warned that existing approvals expire. Reference and reason accepted supplied CN-204 details. Completed using app guidance alone."},
+    {"criterion": "Understand why prior approval does or does not authorize payment", "score": 4, "max": 4, "rationale": "Old approvals were marked Expired after CN-204, current approval count reset to 0 of 2, and payment was disabled. Control-check text and recorded result explicitly said the attempted 1,000 under invoice version 1 was rejected and no Test USD moved."},
+    {"criterion": "Interpret final payment and supporting evidence", "score": 3, "max": 4, "rationale": "Evidence automatically opened after payment with a 1,000 - 200 = 800 reconciliation, named approvers, timestamps, versions, credit reference, blocked attempt and confirmed payment links. JSON export worked, but it is the only visible export format and contents were not inspectable through the allowed harness."},
+    {"criterion": "Readability, navigation, accessibility and recovery", "score": 3, "max": 4, "rationale": "Both layouts were coherent with no observed overlaps. Mobile places payment review before the document. Controls had meaningful accessible names; Escape closed payment confirmation and payment could be reopened. Small muted supporting text takes effort, and full keyboard/screen-reader/failure recovery was not established."}
+  ],
+  "journey": [
+    "Opened the single payable as Lena. Invoice showed 1,000 Test USD, service September 2026, issued 24 September, due 8 October, 0 of 2 approvals.",
+    "Switched to Mara and approved 1,000; switched to Jonas and approved 1,000. Status became Ready to pay with both approval events attached to version 1.",
+    "Returned to Lena, opened Apply supplier credit. Default amount was 200; replaced default reference with CN-204 and reason with Accepted service credit. Reviewed 800 new due and explicit expiry warning, then applied.",
+    "Observed New approvals needed, 0 of 2, credit document summary, and both prior approvals marked Expired after CN-204.",
+    "Expanded Demo control check, selected payment operator Alex, and tested previous approval. UI recorded rejection of 1,000 under version 1 with no Test USD moved.",
+    "At 390x844, obtained Mara and Jonas approvals for 800 under version 2. Selected Alex and opened payment confirmation, which showed full recipient and irreversible devnet payment warning.",
+    "Pressed Escape to dismiss confirmation, reopened it, then confirmed 800. UI became Paid and automatically selected Evidence 8.",
+    "Reviewed all eight evidence events. Clicked Export evidence (JSON); browser download reported kontor-NF-2026-041-evidence.json with failure null.",
+    "Reopened Overview: invoice now says Paid 800, summary says Amount paid and Settled amount. Returned to list: Settled this session 800, To pay 0 and Paid 1, but column label remained AMOUNT DUE beside 800 on desktop and mobile."
+  ],
+  "final_accounting_record": {
+    "supplier": "Northform Studio",
+    "invoice": "NF-2026-041",
+    "service": "Product design support, September 2026",
+    "original_invoice_test_usd": 1000,
+    "accepted_credit_test_usd": 200,
+    "credit_reference": "CN-204",
+    "credit_reason": "Accepted service credit",
+    "settled_test_usd": 800,
+    "outstanding_interpretation": "No further payment appears due: Paid status and To pay 0. List heading needs correction to avoid implying 800 remains due.",
+    "authorization": "Mara Weber and Jonas Berg originally approved 1,000 version 1; both expired after credit. Both then approved 800 version 2. Alex Morgan completed payment.",
+    "rejected_attempt": "Earlier 1,000 version 1 payment was recorded as blocked; UI explicitly says no Test USD moved.",
+    "evidence": "Eight chronological events, actor/date/amount information and devnet transaction links; JSON download available.",
+    "accounting_limit": "UI establishes payable reconciliation and payment evidence, not a verified general-ledger posting, tax treatment or account coding. No real money."
+  },
+  "findings": [
+    {"id": "ACC-R2-01", "priority": "P2", "title": "Paid amount remains under Amount due in list", "observed": "After confirmed payment, both desktop and mobile list show Northform Paid 800 Test USD beneath AMOUNT DUE, while To pay is 0 and detail says Amount paid/Settled amount.", "impact": "A finance reader scanning balances can interpret 800 as still outstanding.", "recommendation": "Use Amount with a row-specific Paid label, or present 0 outstanding with a separate paid amount. Keep list and detail semantics aligned.", "evidence": ["accountant-round2-desktop-list.png", "accountant-round2-mobile-list.png"]},
+    {"id": "ACC-R2-02", "priority": "P3", "title": "Expired approval retains present-tense current-version explanation", "observed": "Version 1 approval events say Expired after CN-204, followed immediately by Approval covers this amount, recipient and current invoice version.", "impact": "The expiration label is clear, but the supporting sentence asks the reader to reconcile contradictory tense/current-version language.", "recommendation": "For expired events use historical wording such as Approved 1,000 Test USD for invoice version 1; superseded by CN-204.", "evidence": ["accountant-round2-desktop.png"]},
+    {"id": "ACC-R2-03", "priority": "P3", "type": "enhancement", "title": "Evidence export is technical for an accounting handoff", "observed": "Only Export evidence (JSON) is visible. It downloaded successfully; the on-screen timeline is human-readable.", "impact": "An accountant can review in the app but has no visible print/PDF or spreadsheet export for routine supporting-document handoff.", "recommendation": "Consider a human-readable evidence export preserving invoice, credit, versioned approvals, rejection and payment reconciliation alongside JSON."}
+  ],
+  "visual_observations": [
+    "Desktop separates document and payment review clearly, with dominant 800 amount and visible revised-approval notice.",
+    "Mobile reorders payment review above the invoice and keeps demo-role control accessible at the top; no observed content overlap or horizontal clipping.",
+    "Supporting timestamps, identifiers and pale green text are relatively small/muted; contrast ratios were not measured."
+  ],
+  "limits": [
+    "No source or underlying APIs inspected; statements about chain outcomes are what the app reports.",
+    "Did not independently open devnet explorer transactions or validate downloaded JSON content; harness confirmed filename and no download failure only.",
+    "No network interruption, application crash or ambiguous payment-timeout recovery induced.",
+    "Keyboard check covered Escape dismissal; did not complete a comprehensive focus-trap, screen-reader or WCAG audit.",
+    "Screenshots are full-page captures at requested viewport widths; mobile long-page screenshots may be scaled by the image viewer.",
+    "Single synthetic invoice and one credit tested; no multiple-credit, tax, partial-payment or production-volume assessment."
+  ]
+}

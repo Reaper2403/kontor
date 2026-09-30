@@ -1,0 +1,16 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "PMResponse",
+  "proposalId": "KONTOR-UX-IMPROVEMENT-02",
+  "decision": "REQUEST_FEASIBILITY",
+  "reason": "Accept product priority for the last authorized improvement cycle. ACC-R2-01 is an accounting-semantic defect: a paid 800 beneath Amount due can be read as outstanding despite the otherwise correct settlement. ACC-R2-02 is a related historical-wording contradiction worth correcting in the same small presentation change. The second accountant completed the workflow and understood the credit/approval sequence; its 17/20 score does not establish numerical improvement or independently verify chain transactions. Accept the original UX proposal subject to SDE feasibility. Defer human-readable export ACC-R2-03 and broad visual/accessibility changes.",
+  "constraints": [
+    "Scope only ACC-R2-01 and ACC-R2-02 in src/App.tsx; src/styles.css may change solely for monetary-heading narrow-layout accommodation. No backend, API, program, authority, operation or export-format change.",
+    "For the existing one-invoice workspace, unpaid states show AMOUNT DUE and the current unpaid amount; paid states show AMOUNT PAID and settlement.amount when available, otherwise the existing amount. Both All payables and Paid views must align with To pay zero and the unchanged paid detail at desktop and 390 px. Do not generalize the heading logic to an unsupported mixed-state list.",
+    "For an approval with existing unambiguous earlier-revision/actual-credit linkage, use historical supporting wording in both Activity and Evidence that names its event amount, invoice version and actual superseding credit. Preserve original title, expiry annotation, immutable event detail, signatures, state and JSON. Non-expired or ambiguously linked events keep their description; never infer linkage from amount difference.",
+    "Accept all proposal acceptance criteria. Require typecheck and production build, plus targeted fresh-context browser regression for unpaid/paid monetary semantics and historical/current evidence wording at desktop and 390 px. Preserve the completed record where possible; no extra reset or payment solely for cosmetic verification.",
+    "Printable/PDF/spreadsheet evidence, broad contrast/accessibility redesign and further feature scope remain deferred. Record residual limitations rather than implying they were resolved.",
+    "This is cycle 2 of 2, the last authorized improvement cycle, within the shared $10 ceiling. Parent is sole control-plane writer. SDE feasibility and final PM acceptance precede implementation. Follow-up browser checking is a bounded verification of these changes, not authorization for another improvement cycle.",
+    "Preserve Test USD/no-real-value labels and accurate devnet/rehearsal boundaries. Fresh-context non-isolated usability review remains distinct from source-aware chain proof and cannot be described as production accountant acceptance or technically enforced blindness."
+  ]
+}
