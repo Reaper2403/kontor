@@ -14,8 +14,8 @@ jobs:
       - name: Install pinned Agave tooling
         shell: bash
         run: |
-          curl --fail --location --retry 2 --max-time 180 https://github.com/anza-xyz/agave/releases/download/v2.3.13/solana-release-x86_64-unknown-linux-gnu.tar.bz2 -o /tmp/solana.tar.bz2
-          echo 'c43539ebdf6942472e8b87635d6ea55f428a51e3d0219f7b6f720fc6b19fade0  /tmp/solana.tar.bz2' | sha256sum -c -
+          curl --fail --location --retry 2 --max-time 180 https://github.com/anza-xyz/agave/releases/download/v4.1.2/solana-release-x86_64-unknown-linux-gnu.tar.bz2 -o /tmp/solana.tar.bz2
+          echo '5991d027a686eb419a709a479178b33eb83501e8a2bfbf599a81a286bfcbf770  /tmp/solana.tar.bz2' | sha256sum -c -
           tar -xjf /tmp/solana.tar.bz2 -C /tmp
           echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
       - name: Build actual Solana program
