@@ -1,0 +1,15 @@
+# SDE scoped implementation receipt
+
+Actor /root/repair_sde; decision KONTOR-REPAIR-01 accepted after actual UX → PM → SDE → PM exchange. Parent remains sole control-plane writer. No Git mutations, cloud execution, deployment or chain transactions performed by this actor.
+
+Changed owned files: programs/kontor/src/lib.rs; chain/client.mjs; chain/bootstrap.mjs; chain/API.md; chain/BUILD.md; scripts/chain-selftest.mjs; tests/chain-layout-v2.test.ts; tests/client-rate-limit.test.ts; tests/client-inspect.test.ts. Historical chain/invoice.mjs untouched.
+
+Program: KNTRCFG2 232-byte immutable treasury and owner; KNTROBL2 193-byte immutable recipient and owner; tag5 seven-account signed paid-only fixed treasury full-balance release. Empty release validates all accounts and emits amount0 without CPI. Later donated dust can be swept again. No obligation state mutation during release. Central vault checks shared with payment; recipient and treasury initialized-state checks include frozen rejection.
+
+API: createClient requires treasury; optional treasuryOwner expectation. createScenario accepts recipient defaulting to constructor recipient. Handle-selected recipient is checked against decoded obligation by read. releaseRemainder(handle) returns amountReleased base-unit string from exactly one successful top-level matching program invocation event; no balance estimate. testing.releaseRemainderIx account order executor/config/obligation/vault/mint/treasury/token-program; testing.releaseBalances reports vault/recipient/treasury. Strict v1 rejection. Bootstrap creates registrar-owned treasury ATA and preserves normal no-freeze-authority mint semantics.
+
+Actual local checks: rustfmt 1.98.1 formatted lib.rs; rustfmt --check --edition 2021 passed; node --check on client/bootstrap/selftest passed; 19 scoped Node tests passed; global npm run typecheck passed. Initial formatter attempt lacked compiler dylib and failed before mutation; parent installed checksum-verified matching libraries then formatting succeeded. No Rust compilation or validator run yet by this actor.
+
+Compiled-program selftest prepared, not yet executed here: unpaid release no movement, fixed treasury/mint/owner/program/vault/signature/alias/amount rejection; frozen treasury init and release; frozen/uninitialized/wrong-mint recipient creation, frozen/changed-owner payment rejection; two suppliers one config and substitution rejection; release200, repeat0, independent approver trigger, donated7, overfunded no-credit250, exact supplier balances and retained stale/payment tests. The selftest creates its isolated mint with a freeze authority solely for adversarial coverage and requires fresh test keys if old mint lacks it. Default process evidence output is its external key directory, not product root.
+
+Pending parent-controlled evidence: compiled SBF validator run, full integrated app/recovery/tour suite, fresh v2 devnet deployment and proof, coherent tour refresh, external process persistence and final independent source-aware review. No migration or cancellation claim.

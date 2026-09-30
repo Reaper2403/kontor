@@ -1,0 +1,9 @@
+{
+  "decision": "https://github.com/Reaper2403/kontor/issues/14",
+  "task": "https://github.com/Reaper2403/kontor/issues/15",
+  "acceptedDecision": "project-memory/decisions/KONTOR-REPAIR-01.json",
+  "controller": "/root",
+  "productSource": "92ef2b32d886856081c3b7488038a5625727ec9b",
+  "execution": "Native scoped agents, ordinary product CI and compiled SBF workflow; no HackFleet worker stored on product branch",
+  "reviewBoundary": "Source-aware integration; separate AI persona review instructed browser-only with prior user approval, not enforced isolation"
+}

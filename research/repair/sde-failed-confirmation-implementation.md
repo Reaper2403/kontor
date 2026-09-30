@@ -1,0 +1,11 @@
+# Failed-confirmation repair receipt
+
+Actor /root/repair_sde. Implemented only after PM DecisionRecord KONTOR-FAILED-CONFIRMATION-01 accepted. Write scope: chain/client.mjs, tests/client-failed-confirmation.test.ts and minimal send429 request-count adjustment in tests/client-rate-limit.test.ts. No Rust, service recovery, UI, tour data, proof rewrite, Git, cloud or live-chain action.
+
+After the one application send/confirm attempt throws, broadcast invokes the private existing read-only inspectPrepared against its already-persisted signed identity. Exact matching typed TransactionFailed evidence with matching signature and valid explicit failure metadata joins the existing codeFor / allowFailure path. Successful inspection is deliberately ignored for recovery purposes and remains UnknownOutcome. Missing, altered, unavailable and malformed results also remain unknown, with original signature. Plain-object exceptions get a readable generic message instead of undefined. No fallback call signs or submits.
+
+Failure metadata check accepts enum-name string failures and canonical InstructionError tuples with integer index and enum-name instruction error or u32 Custom object. Invalid types, empty/extra objects, malformed tuples, negative/oversized/noninteger custom codes and unsupported structured variants cannot establish failure. The exact signed transaction/confirmed slot/metadata checks remain in inspectPrepared; logs or exception hints alone do not qualify.
+
+Validation: node --check passed; 55 focused client/transport/recovery tests passed; npm run typecheck passed; full npm test passed all 172 tests. New test file adds 27 checks spanning send and confirm exceptions with exact Custom7002/7003 failures, allowFailure result, successful exact record kept unknown, altered bytes, no record, missing metadata/error/slot, wrong encoding, malformed failure values, unavailable and malformed RPC, durable preparation failure, one send/signature, one blockhash request and unchanged prepared bytes. Existing real-web3 send429 case now asserts one send plus three bounded read attempts rather than conflating reads with mutation retries.
+
+Parent owns any resumed devnet supplemental proof; source tests do not claim live acceptance of this fallback. Previously preserved interrupted receipts remain unchanged.

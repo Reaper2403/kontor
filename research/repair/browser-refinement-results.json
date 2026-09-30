@@ -1,0 +1,124 @@
+[
+  {
+    "surface": "app-readonly-v2-fixture",
+    "width": 1440,
+    "complete": {
+      "active": true,
+      "top": 27.59375,
+      "bottom": 68.09375,
+      "height": 1000,
+      "scroll": 335
+    },
+    "first": {
+      "active": true,
+      "top": 27.59375,
+      "bottom": 68.09375,
+      "height": 1000,
+      "scroll": 335
+    },
+    "repeat": {
+      "active": true,
+      "top": 27.59375,
+      "bottom": 68.09375,
+      "height": 1000,
+      "scroll": 335
+    },
+    "mutations": []
+  },
+  {
+    "surface": "static-v2-tour",
+    "width": 1440,
+    "titles": [
+      "First, agree on the amount.",
+      "One approval. One more to go.",
+      "Approved does not mean paid.",
+      "A small credit changes the decision.",
+      "The old instruction meets a hard stop.",
+      "A fresh amount needs a fresh yes.",
+      "Two approvals, now for 800.",
+      "Check the amount before it leaves.",
+      "800 paid. 200 still reserved.",
+      "The remaining 200 goes home.",
+      "Don’t take the tour’s word for it."
+    ],
+    "focus1": {
+      "active": true,
+      "top": 28.3125,
+      "bottom": 68.8125,
+      "height": 1000,
+      "scroll": 1048
+    },
+    "focus2": {
+      "active": true,
+      "top": 28.3125,
+      "bottom": 68.8125,
+      "height": 1000,
+      "scroll": 1048
+    },
+    "unexpected": [],
+    "errors": [],
+    "paid800Reserve200": true,
+    "return200Reserve0": true
+  },
+  {
+    "surface": "app-readonly-v2-fixture",
+    "width": 390,
+    "complete": {
+      "active": true,
+      "top": 28.34375,
+      "bottom": 65.84375,
+      "height": 1000,
+      "scroll": 1380
+    },
+    "first": {
+      "active": true,
+      "top": 28.34375,
+      "bottom": 65.84375,
+      "height": 1000,
+      "scroll": 1380
+    },
+    "repeat": {
+      "active": true,
+      "top": 28.34375,
+      "bottom": 65.84375,
+      "height": 1000,
+      "scroll": 1380
+    },
+    "mutations": []
+  },
+  {
+    "surface": "static-v2-tour",
+    "width": 390,
+    "titles": [
+      "First, agree on the amount.",
+      "One approval. One more to go.",
+      "Approved does not mean paid.",
+      "A small credit changes the decision.",
+      "The old instruction meets a hard stop.",
+      "A fresh amount needs a fresh yes.",
+      "Two approvals, now for 800.",
+      "Check the amount before it leaves.",
+      "800 paid. 200 still reserved.",
+      "The remaining 200 goes home.",
+      "Don’t take the tour’s word for it."
+    ],
+    "focus1": {
+      "active": true,
+      "top": 28.015625,
+      "bottom": 65.515625,
+      "height": 1000,
+      "scroll": 2712
+    },
+    "focus2": {
+      "active": true,
+      "top": 28.015625,
+      "bottom": 65.515625,
+      "height": 1000,
+      "scroll": 2712
+    },
+    "unexpected": [],
+    "errors": [],
+    "paid800Reserve200": true,
+    "return200Reserve0": true
+  }
+]

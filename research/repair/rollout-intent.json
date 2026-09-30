@@ -1,0 +1,11 @@
+{
+  "protocolVersion": 2,
+  "sourceCommit": "92ef2b32d886856081c3b7488038a5625727ec9b",
+  "proofRun": 36767174261,
+  "newProgramId": "CZvXgXBgFYfNef1uJYixrP86EbAcaRKoZ5sbH7qWPhyP",
+  "status": "awaiting compiled proof before deployment",
+  "network": "Solana devnet",
+  "legacyMigration": false,
+  "spending": "existing free devnet SOL; no real SOL purchase",
+  "controller": "/root"
+}

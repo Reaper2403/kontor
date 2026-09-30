@@ -1,0 +1,50 @@
+[
+  {
+    "width": 1440,
+    "kind": "known",
+    "text": "Reserved in this payable’s vault\n1,000.000001 Test USD\n\nAfter a successful 800 Test USD supplier payment, 200.000001 Test USD would remain for a separate treasury return.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "kind": "unknown",
+    "text": "Reserved in this payable’s vault\nNot recorded\n\nThe vault balance is not recorded here, so a remaining reserve cannot be calculated.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "kind": "underfunded",
+    "text": "Reserved in this payable’s vault\n799.999999 Test USD\n\nInsufficient reserve for the 800 Test USD supplier payment.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 1440,
+    "kind": "pending",
+    "text": "Last confirmed vault reserve\n1,000.000001 Test USD\n\nWait for the current operation to be resolved before reviewing the expected remaining reserve.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 390,
+    "kind": "known",
+    "text": "Reserved in this payable’s vault\n1,000.000001 Test USD\n\nAfter a successful 800 Test USD supplier payment, 200.000001 Test USD would remain for a separate treasury return.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 390,
+    "kind": "unknown",
+    "text": "Reserved in this payable’s vault\nNot recorded\n\nThe vault balance is not recorded here, so a remaining reserve cannot be calculated.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 390,
+    "kind": "underfunded",
+    "text": "Reserved in this payable’s vault\n799.999999 Test USD\n\nInsufficient reserve for the 800 Test USD supplier payment.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  },
+  {
+    "width": 390,
+    "kind": "pending",
+    "text": "Last confirmed vault reserve\n1,000.000001 Test USD\n\nWait for the current operation to be resolved before reviewing the expected remaining reserve.\n\nRehearsal setup simulates funding this reserve; no network tokens move.",
+    "passed": true
+  }
+]

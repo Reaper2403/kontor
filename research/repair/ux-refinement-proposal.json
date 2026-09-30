@@ -1,0 +1,24 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "ChangeProposal",
+  "proposalId": "KONTOR-REPAIR-UX-02",
+  "sourceFinding": "KONTOR-ACCOUNTANT-REPAIR-01",
+  "problem": "Fresh browser-only-instructed AI accountant-persona review reported two minor usability gaps: the initial vault reserve/source is only inferable after settlement, and on a 390 px screen View payment evidence can leave the visible viewport unchanged when the Evidence tab is already selected. The review reported 18/20 with no blockers; it is an AI simulation with instruction-only isolation, not human or enforced-blind research.",
+  "userImpact": "A reviewer should understand what is reserved before payment, distinguish supplier payment from later treasury return, and reliably reach receipt evidence from the paid summary on a phone.",
+  "proposedChange": "Add a concise reserve explanation to the existing payment-review rail before payment: show actual available vaultBalance with six-decimal precision, or Not recorded when null, and distinguish current payable from any reserve left after a successful payment. Describe the fresh demo setup as synthetic Test USD issuance; describe rehearsal as simulated funding, without asserting any funding transaction for a given historical snapshot. Preserve the existing separate paid/return/remaining display. Make View payment evidence and View recorded evidence select Evidence and then focus and scroll its heading into view, including when already selected. Reuse this action for View complete evidence. No new data fields, events, transaction, dashboard or tour snapshot changes.",
+  "acceptanceCriteria": [
+    "Before payment, the review rail shows the actual known reserve with up to six decimals, the supplier amount due, and a conditional expected remainder only when balance is known and sufficient. It never derives reserve from invoice total or credit. Underfunded balances are labeled insufficient rather than negative return amounts.",
+    "Null/unknown historical vault balance remains Not recorded; do not replace it with 1,000 or generate a historical funding event, timestamp, signature or cumulative funding total. Unknown/pending state is labeled as last confirmed where applicable.",
+    "Copy states that demo setup issues synthetic Test USD into the payable vault; rehearsal is explicitly simulated. This describes the setup mechanism and does not assert all current balance originated there or label the reserve as a treasury transfer. Existing payment and return receipts remain separate.",
+    "View payment evidence, View recorded evidence and View complete evidence select the Evidence tab and place focus on its visible heading, even when the tab was already active. At 390 px and desktop, the heading and evidence content are brought into view without being hidden by sticky navigation.",
+    "Preserve treasury-return precision, pending-operation locks, keyboard chapter-five modal behavior, static tour no-mutation boundary and exact historical proof. Changes are confined to src/**; parent retains all tour snapshot/data ownership.",
+    "Validate typecheck and app/tour builds, known/unknown/underfunded balance presentation, and source-aware desktop/390 px evidence-button focus/scroll. Report this verification separately from the originating AI persona review."
+  ],
+  "tradeoffs": [
+    "Source-aware UX proposal from /root/repair_ux responding to parent-supplied AI review findings. Parent remains sole control-plane writer; all process records stay external. One engineering negotiation round maximum.",
+    "A short existing-rail explanation avoids a new accounting dashboard. Conditional remainder is a preview, never confirmation of a treasury return.",
+    "Setup wording is generic provenance of the demonstration mechanism; only actual recorded transaction evidence can establish funding for a particular run.",
+    "Focus and scroll make an already-selected tab action perceptible without removing the useful receipt shortcut or relying on animation."
+  ],
+  "status": "proposed"
+}

@@ -21,7 +21,9 @@
     "Parent /root remains sole control-plane writer. All new process artifacts stay outside product and are persisted canonically by parent. No mainnet, real-fund purchase, generic withdrawal, invoice cancellation, custody redesign, human-certification claim or unrelated UI expansion.",
     "Acceptance requires compiled-program adversarial release/recipient checks, old v1 layout rejection, client/service recovery regressions, Node tests, app/tour builds, cargo fmt check, fresh devnet transfer proof, unchanged legacy evidence hashes, product-tree separation inspection and source-aware desktop/phone tour progression. Report native/source-aware checks and any AI persona review separately from genuinely isolated blind evaluation."
   ],
-  "approvedImplementationTasks": [],
+  "approvedImplementationTasks": [
+    "KONTOR-REPAIR"
+  ],
   "rejectedAlternatives": [
     "Treasury-key-only release trigger: not selected; a signed caller with no control over destination, amount or pre-paid timing avoids unnecessary availability lockup. Treasury-only describes destination authority, not caller identity.",
     "One-shot release flag or reject empty vault: not selected; no-op validation and later dust sweeps prevent future donated tokens being stranded.",

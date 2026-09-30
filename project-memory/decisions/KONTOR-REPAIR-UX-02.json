@@ -1,0 +1,30 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "DecisionRecord",
+  "decisionId": "KONTOR-REPAIR-UX-02",
+  "proposalId": "KONTOR-REPAIR-UX-02",
+  "title": "Clarify prepayment reserve and make evidence shortcuts visibly navigate",
+  "status": "accepted",
+  "date": "2026-09-30",
+  "trigger": "Fresh AI accountant-persona /root/accountant_repair completed rehearsal flow and inspected 390 px, reporting 18/20, no blockers and minor AR-01 reserve/source clarity and AR-02 already-selected Evidence no-op. Parent faithfully transcribed report to external repair/accountant-review.json. Actual UX /root/repair_ux, PM /root/repair_pm and SDE /root/repair_sde exchanged ux-refinement-proposal.json, pm-refinement-triage.json and sde-refinement-feasibility.json. Browser-only instruction is not enforced isolation; this is controller-attested source-aware refinement, not human accountant validation or an isolated browser-worker receipt.",
+  "productRationale": "Use existing rail and state to make reserved funds understandable before payment, with unknown historical balances left unknown and conditional remainder clearly distinct from a completed return. Make all receipt shortcuts visibly reach and focus Evidence even when that tab is already active. These small clarity/navigation changes respond to actual observations while preserving the accepted payment/treasury separation and repair scope.",
+  "engineeringDecision": "Accept feasible original UX proposal under reviewed PM constraints after one engineering round, no counterproposal. Only src/App.tsx and src/styles.css are affected. Use existing balance, due, mode and operation fields with current precision and truthful last-confirmed/unknown/insufficient states. Implement a shared explicit focus request independent of tab changes; after DOM commit focus the Evidence heading with tabIndex=-1 and scroll using sticky-navigation margin while respecting reduced motion. Keep tab keyboard behavior, dialog restoration, snapshots, locks and all chain/service/contracts unchanged. Parent performs source-aware known/null/underfunded/pending and desktop/390 px checks and preserves real AI review separately.",
+  "constraints": [
+    "Confine implementation to src/**: concise prepayment reserve explanation and reliable Evidence shortcuts. No chain, contract, service, snapshot, proof-byte or funding-event changes. Parent alone owns tour snapshot/rollout work; maintain all previously accepted repair constraints.",
+    "Show actual state.chain.vaultBalance with up to six decimals; null remains Not recorded. Label stale/unknown operation balance as last confirmed when applicable. Never infer reserve from original invoice, credit, expected funding or a different historical snapshot. Display expected remaining reserve only when balance is known and at least amount due; insufficient balance is explicit rather than a negative treasury return.",
+    "Describe fresh demonstration setup as synthetic issuance and rehearsal as simulated funding. Such wording is generic mechanism information, not a receipt asserting the origin of a particular balance. Do not imply treasury funded a vault, all deposits came from initial issuance, or any funding transaction exists without exact evidence.",
+    "Previewed remainder is conditional on successful supplier payment and is not a completed treasury return. Preserve paid supplier, actual remainder and separately confirmed treasury return distinctions, exact token precision, pending locks and unknown-outcome guidance.",
+    "View payment evidence, View recorded evidence and View complete evidence must select Evidence then focus and scroll its visible heading even if Evidence was already selected. Keyboard focus must be meaningful and not hidden under sticky navigation at desktop/390 px. Preserve existing chapter-five dialog behavior and static tour no-mutation boundary.",
+    "Validate app/tour builds and typecheck, known/null/underfunded reserve cases, plus source-aware desktop/390 px focus/scroll behavior. Do not create additional chain actions solely to test UI. Distinguish these checks from the originating fresh AI review; the parent will preserve its actual report externally.",
+    "One engineering negotiation round maximum; unresolved material objection escalates to parent. Parent /root is sole control-plane writer; all process artifacts remain external. Same prior devnet-only task/budget authority; no broader redesign or chain change."
+  ],
+  "approvedImplementationTasks": [],
+  "rejectedAlternatives": [
+    "Inferring reserve or original funding from invoice total/credit, or adding synthetic historical funding receipts: unsupported evidence.",
+    "Calling conditional expected remainder an actual treasury return or labeling all current deposits as a treasury transfer: misleading.",
+    "Evidence effect keyed only to selected tab: fails repeated activation when Evidence is already selected.",
+    "Removing receipt navigation entirely or expanding into funding dashboard, chain events, service changes or tour-data repair: unnecessary for these two bounded observations.",
+    "Treating source-aware validation as a fresh AI persona score, human research or enforced blind acceptance: unsupported."
+  ],
+  "negotiationRounds": 1
+}

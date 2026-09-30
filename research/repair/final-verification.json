@@ -1,0 +1,31 @@
+{
+  "sourceCommit": "fbbc8f07ff33abeaecfee050f6383a5b440375bc",
+  "publicTourCommit": "c7c807c5e87a8c705bf196cb6864eefaaf383308",
+  "productChecks": {
+    "run": 36770096223,
+    "conclusion": "success",
+    "tests": 176
+  },
+  "compiledProgram": {
+    "run": 36767174261,
+    "conclusion": "success",
+    "checks": 63,
+    "rustUnchangedSince": "92ef2b32d886856081c3b7488038a5625727ec9b"
+  },
+  "pagesDeployment": {
+    "run": 36770116536,
+    "conclusion": "success"
+  },
+  "devnetProgram": "CZvXgXBgFYfNef1uJYixrP86EbAcaRKoZ5sbH7qWPhyP",
+  "demo": {
+    "paid": 800,
+    "treasuryReturned": 200,
+    "vault": 0
+  },
+  "multiRecipientProof": true,
+  "legacyEvidenceHashesPreserved": true,
+  "hostedBrowserRecheck": "Blocked: browser security policy verification unavailable. Not bypassed. GitHub deployment succeeded; local source and built tour browser checks passed.",
+  "expense": "No paid services or real SOL purchased. Existing$10 total authority; conservative compute envelope remains below$0.25 using previous configured rate, provider invoice not inspected. Public standard Actions used.",
+  "legacy": "V1 data not migrated; historical200 remains untouched.",
+  "processLocation": "Dedicated process branch and external worktree; no process files on main. Future ignored paths and CI check added."
+}

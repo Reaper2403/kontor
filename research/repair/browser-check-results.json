@@ -1,0 +1,56 @@
+[
+  {
+    "surface": "rehearsal",
+    "width": 1440,
+    "passed": true,
+    "overflow": {
+      "window": 1440,
+      "scroll": 1440
+    },
+    "settlement": 800,
+    "treasuryReturn": 200,
+    "errors": []
+  },
+  {
+    "surface": "rehearsal",
+    "width": 390,
+    "passed": true,
+    "overflow": {
+      "window": 390,
+      "scroll": 390
+    },
+    "settlement": 800,
+    "treasuryReturn": 200,
+    "errors": []
+  },
+  {
+    "surface": "tour",
+    "width": 1440,
+    "passed": true,
+    "reviewInitiallyClosed": true,
+    "escapeRestoresFocus": true,
+    "closeRestoresFocus": true,
+    "keyboardProgression": true,
+    "requests": [],
+    "errors": [],
+    "overflow": {
+      "window": 1440,
+      "scroll": 1440
+    }
+  },
+  {
+    "surface": "tour",
+    "width": 390,
+    "passed": true,
+    "reviewInitiallyClosed": true,
+    "escapeRestoresFocus": true,
+    "closeRestoresFocus": true,
+    "keyboardProgression": true,
+    "requests": [],
+    "errors": [],
+    "overflow": {
+      "window": 390,
+      "scroll": 390
+    }
+  }
+]

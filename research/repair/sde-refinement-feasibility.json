@@ -1,0 +1,23 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "FeasibilityResponse",
+  "proposalId": "KONTOR-REPAIR-UX-02",
+  "feasibility": "feasible",
+  "implementation": "Independent SDE /root/repair_sde reviewed actual UX proposal, PM triage and current App/CSS. Implement entirely in src/** using existing state.chain.vaultBalance, amountDue, mode and operation fields. Show known reserve with existing up-to-six-decimal token formatter, null as Not recorded, pending/unknown as last confirmed; render expected remaining reserve only for known sufficient funds and label it conditional on successful payment, otherwise show insufficient balance. Keep synthetic setup wording generic and rehearsal explicitly simulated; do not infer any historical funding receipt or source of all deposits. Add one shared evidence-shortcut action that selects Evidence and requests focus/scroll independently of whether tab state changes; after DOM commit focus a tabIndex=-1 evidence heading and scroll it into view with sticky-header scroll margin. A request counter or equivalent ensures repeated clicks while the tab is selected work. Preserve normal tab keyboard behavior, modal restoration, separate payment/return evidence, precision and mutation locks. This has no protocol, service, contract, snapshot or live-chain impact.",
+  "affectedAreas": [
+    "src/App.tsx",
+    "src/styles.css"
+  ],
+  "risks": [
+    "An effect depending only on tab will not run when Evidence is already active; use an explicit navigation request and focus after the target mounts.",
+    "Automatic focus plus scrolling must account for the static tour's sticky navigation and reduced-motion preference; verify actual desktop and 390 px positions.",
+    "Vault balance is a state snapshot and may be stale during unresolved operations; last-confirmed wording is required, with no fabricated refresh or funding claim.",
+    "JavaScript displayed token values must retain current six-decimal precision; conditionally shown remainder is a preview, never a treasury-return receipt."
+  ],
+  "taskSplit": [
+    "UX assigned implementer updates existing rail copy and shared Evidence shortcut/focus target in src/** only.",
+    "Parent verifies known/null/underfunded/pending reserve presentation, existing app/tour typecheck and builds, plus source-aware desktop and 390 px focus/scroll for all three shortcuts including repeated activation.",
+    "Parent records this source-aware verification separately from the originating 18/20 AI accountant-persona review and retains sole tour-data/control-plane ownership."
+  ],
+  "counterProposal": null
+}

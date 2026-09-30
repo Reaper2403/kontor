@@ -1,0 +1,31 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "DecisionRecord",
+  "decisionId": "KONTOR-FAILED-CONFIRMATION-01",
+  "proposalId": "KONTOR-FAILED-CONFIRMATION-01",
+  "title": "Classify an exact confirmed failed transaction after transport confirmation throws",
+  "status": "accepted",
+  "date": "2026-09-30",
+  "trigger": "Parent observed a devnet negative-path confirmation exception represented as a plain object; client currently classifies every send/confirmation exception UnknownOutcome. Actual SDE /root/repair_sde independently assessed exact failed-transaction inspection in external repair/sde-confirmation-failure-assessment.md, including one independently inspected AlreadyPaid failure. PM /root/repair_pm reviewed that assessment and relevant broadcast/inspectPrepared source. Parent reports another stale-replay symptom; this PM record does not independently establish its chain outcome. This is a bounded technical-constraint update, not a new UX proposal or fabricated full UX-to-PM-to-SDE round.",
+  "productRationale": "The existing product distinguishes proven failure from uncertainty. When exact signed bytes are independently available as confirmed failed, keeping the result falsely unknown obscures expected negative proof and may lock an action unnecessarily. Accept only the narrow refinement from unknown to proven failure; successful or otherwise uncertain transport outcomes must retain the existing conservative behavior. No new success-recovery capability, changed business authority or new UI is accepted.",
+  "engineeringDecision": "Accept SDE feasible bounded fix to chain/client.mjs and dedicated transport tests. After a send/confirm exception, use the existing read-only inspectPrepared on the exact prepared identity persisted before the original send. Only its typed TransactionFailed with matching signature, confirmation failed and explicit valid non-null failure metadata may enter the existing failed-result/error mapping path. Preserve allowFailure behavior for expected negative checks. All other inspection results and exceptions remain UnknownOutcome with the original signature. Use readable generic original-error wording when no string message exists. No resubmission, replacement signing, protocol, service, Rust, UI or tour-data change. PM implementation acceptance is conditional on the required focused tests; parent owns proof continuation and canonical persistence.",
+  "constraints": [
+    "Identity must remain the exact prepared signed bytes, hash, signature and blockhash already used for this broadcast. Inspection checks exact confirmed returned transaction bytes and confirmed slot/metadata. Exception-object hints, error strings or logs alone cannot establish a failed transaction.",
+    "Promote only a matching typed failed result with explicit valid non-null transaction failure metadata. Missing, undefined, malformed or unavailable metadata, bytes/signature mismatch, absent record, unavailable RPC, successful confirmed record and every other result remain UnknownOutcome. Do not clear a successful unknown action or treat read success as payment success.",
+    "One application send attempt only: no new sendRawTransaction invocation, replay, replacement signing or new transaction from this fallback. Retain the prepared journal and original known signature. Inspection uses bounded existing paced read-only RPC behavior and its configured retry limits only.",
+    "Known failure uses the existing AlreadyPaid/StaleRevision/etc mapping and allowFailure contract; it cannot fabricate successful settlement, treasury return, approval, cancellation or compensation. Failed chain transactions commit no business token/state effects, but do not claim fees are refunded.",
+    "Write scope is chain/client.mjs, tests/client-failed-confirmation.test.ts and minimal transport request-count adjustment in tests/client-rate-limit.test.ts. No on-chain layout/instruction, service recovery, UI, tour snapshot or existing evidence rewrite.",
+    "Tests must cover exact AlreadyPaid/StaleRevision failure, allowFailure return, send and plain-object confirm exceptions, successful exact record remaining unknown, altered bytes, missing record/metadata/slot, malformed/unavailable RPC, log-only hints, durable preparation preservation, readable fallback error and no additional mutation/signing across branches. Count mutating sends separately from bounded read requests.",
+    "Run scoped transport/recovery regressions and typecheck before continuing supplemental proof. Parent preserves original failure evidence and resumes only the authorized devnet proof after results; no claim that the coherent 800/200 recorded scenario must be repeated.",
+    "Parent /root remains sole control-plane writer. Existing devnet-only authority, budget, evidence preservation and process-branch separation remain. This decision has one engineering assessment and PM acceptance, not a full UX negotiation or completed verification claim."
+  ],
+  "approvedImplementationTasks": [],
+  "rejectedAlternatives": [
+    "Promoting any inspected successful transaction after send/confirmation failure: expands success recovery and is outside this repair.",
+    "Trusting Custom error text or logs without exact confirmed transaction identity and failure metadata: insufficient evidence.",
+    "Resending or signing a replacement to obtain a clearer result: risks duplicate execution and changes transaction identity.",
+    "Catching all errors as known failure or clearing unknown locks based on RPC availability: unsafe and untruthful.",
+    "Broad service/UI recovery or on-chain changes: unnecessary for preserving the existing failure contract."
+  ],
+  "negotiationRounds": 1
+}

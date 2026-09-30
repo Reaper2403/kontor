@@ -1,0 +1,16 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "PMResponse",
+  "proposalId": "KONTOR-REPAIR-UX-02",
+  "decision": "ACCEPT",
+  "reason": "Actual PM /root/repair_pm accepts implementation after genuine UX proposal and SDE /root/repair_sde feasible response in one engineering round. Existing-state reserve clarity and explicit evidence focus requests address both minor observations without chain or broader product changes. No counterproposal or unresolved objection remains. This accepts bounded implementation and required source-aware validation, not a new usability score or completed deployment.",
+  "constraints": [
+    "Confine implementation to src/**: concise prepayment reserve explanation and reliable Evidence shortcuts. No chain, contract, service, snapshot, proof-byte or funding-event changes. Parent alone owns tour snapshot/rollout work; maintain all previously accepted repair constraints.",
+    "Show actual state.chain.vaultBalance with up to six decimals; null remains Not recorded. Label stale/unknown operation balance as last confirmed when applicable. Never infer reserve from original invoice, credit, expected funding or a different historical snapshot. Display expected remaining reserve only when balance is known and at least amount due; insufficient balance is explicit rather than a negative treasury return.",
+    "Describe fresh demonstration setup as synthetic issuance and rehearsal as simulated funding. Such wording is generic mechanism information, not a receipt asserting the origin of a particular balance. Do not imply treasury funded a vault, all deposits came from initial issuance, or any funding transaction exists without exact evidence.",
+    "Previewed remainder is conditional on successful supplier payment and is not a completed treasury return. Preserve paid supplier, actual remainder and separately confirmed treasury return distinctions, exact token precision, pending locks and unknown-outcome guidance.",
+    "View payment evidence, View recorded evidence and View complete evidence must select Evidence then focus and scroll its visible heading even if Evidence was already selected. Keyboard focus must be meaningful and not hidden under sticky navigation at desktop/390 px. Preserve existing chapter-five dialog behavior and static tour no-mutation boundary.",
+    "Validate app/tour builds and typecheck, known/null/underfunded reserve cases, plus source-aware desktop/390 px focus/scroll behavior. Do not create additional chain actions solely to test UI. Distinguish these checks from the originating fresh AI review; the parent will preserve its actual report externally.",
+    "One engineering negotiation round maximum; unresolved material objection escalates to parent. Parent /root is sole control-plane writer; all process artifacts remain external. Same prior devnet-only task/budget authority; no broader redesign or chain change."
+  ]
+}
