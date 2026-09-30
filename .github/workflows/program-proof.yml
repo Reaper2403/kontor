@@ -7,7 +7,7 @@ permissions:
 jobs:
   prove:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -21,14 +21,21 @@ jobs:
           echo '5991d027a686eb419a709a479178b33eb83501e8a2bfbf599a81a286bfcbf770  /tmp/solana.tar.bz2' | sha256sum -c -
           tar -xjf /tmp/solana.tar.bz2 -C /tmp
           echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
-      - name: Retrieve the exact compiled program
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Check Rust formatting and build this exact revision
         run: |
-          gh run download 36752025220 --repo Reaper2403/kontor --name kontor-sbf --dir artifacts
-          sha256sum -c artifacts/binary-sha256.txt
+          cargo fmt --manifest-path programs/kontor/Cargo.toml -- --check
+          cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts -- --locked
+          git rev-parse HEAD > artifacts/source-sha.txt
+          sha256sum artifacts/kontor.so > artifacts/binary-sha256.txt
+      - name: Check product tree
+        run: node scripts/check-product-tree.mjs
       - name: Install client dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Test service and build both interfaces
+        run: |
+          npm test
+          npm run build
+          npm run build:tour
       - name: Execute actual SBF against a disposable validator
         shell: bash
         run: |
@@ -50,6 +57,7 @@ jobs:
         with:
           name: kontor-program-proof
           path: |
+            artifacts/kontor.so
             artifacts/program-proof.json
             artifacts/test-source-sha.txt
             artifacts/source-sha.txt

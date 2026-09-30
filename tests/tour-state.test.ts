@@ -80,12 +80,12 @@ test('tour renders real workbench without live mutation controls or API export p
   }
 });
 
-test('payment review describes a historical record and only offers a local replay callback', () => {
+test('payment review is opt-in and never blocks arrival with an automatic dialog', () => {
   const step = scene('payment-review');
   const html = renderToStaticMarkup(createElement<{ tour?: TourPresentation }>(App, { tour: { ...step, evidenceHref: recordedEvidenceHref, onShowRecordedPayment: () => {} } }));
-  assert.ok(html.includes('Review the recorded payment'));
-  assert.ok(html.includes('no new payment is sent'));
-  assert.ok(html.includes('Show recorded payment result'));
+  assert.ok(html.includes('Inspect recorded payment review'));
+  assert.ok(!html.includes('<dialog'));
+  assert.ok(!html.includes('Show recorded payment result'));
   assert.ok(!html.includes('Confirm 800 Test USD'));
   assert.ok(!html.includes('This sends test tokens'));
 });

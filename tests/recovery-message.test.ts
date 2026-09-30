@@ -11,7 +11,7 @@ function base58(bytes:Buffer){const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZa
 async function fixture(){
  const keys:any=Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(role=>[role,Keypair.generate()]));
  const programId=Keypair.generate().publicKey,mint=Keypair.generate().publicKey,recipient=Keypair.generate().publicKey;
- const client=createClient({rpcUrl:'http://127.0.0.1:1',programId,keys,mint,recipient,onPrepared:undefined,onSubmitted:undefined});
+ const client=createClient({treasury:Keypair.generate().publicKey,rpcUrl:'http://127.0.0.1:1',programId,keys,mint,recipient,onPrepared:undefined,onSubmitted:undefined});
  const a=client.addresses({id:'42'},0),handle={id:'42',config:String(a.config),obligation:String(a.obligation),revisionAddress:String(a.revision),vault:String(a.vault),mint:String(mint),recipient:String(recipient)};
  const before=initialState();before.mode='devnet';before.asset={symbol:'Test USD',decimals:6,mint:String(mint),cluster:'devnet'};before.invoice.recipient=String(recipient);before.revision=2;before.credit=200;before.amountDue=800;before.creditNote={reference:'CN-REC',reason:'Service credit',amount:200,at:new Date().toISOString()};before.chain={programId:String(programId),obligation:handle.obligation,vault:handle.vault,recipientBalance:0,vaultBalance:1000};
  const action={type:'approve' as const,actor:'approver-a' as const,expectedRevision:2,idempotencyKey:'recovery-exact-fixture'};

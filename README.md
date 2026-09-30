@@ -58,14 +58,10 @@ Run service/client tests with `npm test`, and the UI/typecheck with `npm run bui
 - Unknown network outcomes block further actions. For an approval with a durable saved transaction, **Check status** verifies the exact confirmed bytes, actor, invoice revision and resulting state, then records that approval once without resending it. Uncertain payments, credits, resets and control-check attempts require operator assistance; the app does not retry or unlock them automatically. `scripts/chain-reconcile.mjs` provides read-only investigation.
 - The program has not been independently security audited.
 
-## Fleet and review provenance
-
-Independent PM, UX, engineering and integration agents contributed through HackFleet. Decisions and tasks are canonical GitHub issues; [research/build](research/build) preserves the actual submissions. Accountant agents use fresh contexts and browser-only instructions under the user's approved boundary; the runtime does not enforce filesystem isolation.
-
 ## Public guided tour
 
 The separate guided tour reuses the workbench UI with read-only historical snapshots. It sends no transactions and needs no wallet or backend. Six chapters show original approvals, the credit, obsolete-instruction rejection, fresh approvals, payment review and the recorded receipt. Each approval is shown separately.
 
-Build with `npm run build:tour`. Only the audited `dist-tour/` directory is intended for public hosting; never publish this private source tree or `.local/`. The reviewed evidence uses one recorded scenario and labels its reconstructed intermediate screens. Existing live app commands remain unchanged.
+Build with `npm run build:tour`. Only the audited `dist-tour/` directory is intended for public hosting; never publish `.local/` signing keys. This application source repository is public. The reviewed evidence uses one recorded scenario and labels its reconstructed intermediate screens. Existing live app commands remain unchanged.
 
-Tour research, independent review and publication provenance are retained in `research/tour/`. Open the [public guided tour](https://reaper2403.github.io/kontor-tour/). Its [publication repository](https://github.com/Reaper2403/kontor-tour) contains static assets only; the application repository remains private.
+Open the [public guided tour](https://reaper2403.github.io/kontor-tour/). Its [publication repository](https://github.com/Reaper2403/kontor-tour) contains static assets only.

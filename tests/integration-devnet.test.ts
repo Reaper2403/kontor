@@ -17,7 +17,7 @@ const zero=Buffer.alloc(32);
 async function fixture(t:any, options:{invoiceHash?:string;revised?:boolean;badHandle?:string}={}) {
   const directory=await mkdtemp(join(tmpdir(),'kontor-adapter-test-'));
   const keys:any=await loadOrCreateKeys(join(directory,'keys'));
-  const program=Keypair.generate().publicKey, mint=Keypair.generate().publicKey, recipient=Keypair.generate().publicKey;
+  const program=Keypair.generate().publicKey, mint=Keypair.generate().publicKey, recipient=Keypair.generate().publicKey, treasury=Keypair.generate().publicKey;
   const config=PublicKey.findProgramAddressSync([Buffer.from('config'),keys.registrar.publicKey.toBuffer()],program)[0];
   const obligation=PublicKey.findProgramAddressSync([Buffer.from('obligation'),config.toBuffer(),u64(42)],program)[0];
   const vault=PublicKey.findProgramAddressSync([Buffer.from('vault'),obligation.toBuffer()],program)[0];
@@ -26,8 +26,8 @@ async function fixture(t:any, options:{invoiceHash?:string;revised?:boolean;badH
   const creditDocument={reference:'CN-LINK',amount:200}, reason='Confirmed service shortfall';
   const creditHash=hash(JSON.stringify(creditDocument)),reasonHash=hash(reason);
   const revised=!!options.revised;
-  const obligationData=Buffer.concat([Buffer.from('KNTROBL1'),config.toBuffer(),u64(42),u64(1_000_000_000),invoice,u64(revised?1:0),Buffer.from([0]),vault.toBuffer()]);
-  const configData=Buffer.concat([Buffer.from('KNTRCFG1'),...['registrar','reviewer','approverA','approverB'].map(role=>keys[role].publicKey.toBuffer()),mint.toBuffer(),recipient.toBuffer(),keys.recipientOwner.publicKey.toBuffer()]);
+  const obligationData=Buffer.concat([Buffer.from('KNTROBL2'),config.toBuffer(),u64(42),u64(1_000_000_000),invoice,u64(revised?1:0),Buffer.from([0]),vault.toBuffer(),recipient.toBuffer(),keys.recipientOwner.publicKey.toBuffer()]);
+  const configData=Buffer.concat([Buffer.from('KNTRCFG2'),...['registrar','reviewer','approverA','approverB'].map(role=>keys[role].publicKey.toBuffer()),mint.toBuffer(),treasury.toBuffer(),keys.registrar.publicKey.toBuffer()]);
   function revisionData(index:number) {
     const credited=index===1;
     const evidence=credited?createHash('sha256').update(Buffer.concat([invoice,creditHash,reasonHash,u64(200_000_000),u64(800_000_000)])).digest():invoice;
@@ -45,7 +45,7 @@ async function fixture(t:any, options:{invoiceHash?:string;revised?:boolean;badH
   const handle:any={id:'42',config:config.toBase58(),obligation:obligation.toBase58(),revisionAddress:revision(0).toBase58(),vault:vault.toBase58(),mint:mint.toBase58(),recipient:recipient.toBase58()};
   if(options.badHandle)handle[options.badHandle]=Keypair.generate().publicKey.toBase58();
   const file=join(directory,'manifest.json');
-  await writeFile(file,JSON.stringify({rpcUrl:'https://api.devnet.solana.com',programId:program.toBase58(),mint:mint.toBase58(),recipient:recipient.toBase58(),handle,keyDir:join(directory,'keys')}));
+  await writeFile(file,JSON.stringify({rpcUrl:'https://api.devnet.solana.com',programId:program.toBase58(),mint:mint.toBase58(),recipient:recipient.toBase58(),treasury:treasury.toBase58(),handle,keyDir:join(directory,'keys')}));
   const state=initialState();
   if(revised){state.revision=2;state.amountDue=800;state.credit=200;state.creditNote={...creditDocument,reason,at:new Date().toISOString()};}
   return {file,state};
@@ -67,7 +67,7 @@ test('adapter refuses to export canonical invoice as committed when chain digest
 for(const field of ['obligation','vault','mint','recipient','config','revisionAddress']){
   test(`adapter rejects noncanonical persisted handle ${field}`,async t=>{
     const {file,state}=await fixture(t,{badHandle:field});
-    await assert.rejects(async()=>{const adapter=await devnetAdapter(file);await adapter.link(state);},/account mismatch/i);
+    await assert.rejects(async()=>{const adapter=await devnetAdapter(file);await adapter.link(state);},/account mismatch|Noncanonical obligation/i);
   });
 }
 

@@ -19,7 +19,9 @@ jobs:
           tar -xjf /tmp/solana.tar.bz2 -C /tmp
           echo '/tmp/solana-release/bin' >> "$GITHUB_PATH"
       - name: Build actual Solana program
-        run: cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts -- --locked
+        run: |
+          cargo fmt --manifest-path programs/kontor/Cargo.toml -- --check
+          cargo build-sbf --manifest-path programs/kontor/Cargo.toml --sbf-out-dir artifacts -- --locked
       - name: Record provenance
         run: |
           git rev-parse HEAD > artifacts/source-sha.txt

@@ -16,13 +16,13 @@ function base58(bytes:Buffer){const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZa
 
 async function fixture(t:any){
  const dir=await mkdtemp(join(tmpdir(),'kontor-recovery-adapter-')),keys:any=await loadOrCreateKeys(join(dir,'keys'));
- const program=Keypair.generate().publicKey,mint=Keypair.generate().publicKey,recipient=Keypair.generate().publicKey;
+ const program=Keypair.generate().publicKey,mint=Keypair.generate().publicKey,recipient=Keypair.generate().publicKey, treasury=Keypair.generate().publicKey;
  const config=PublicKey.findProgramAddressSync([Buffer.from('config'),keys.registrar.publicKey.toBuffer()],program)[0];
  const obligation=PublicKey.findProgramAddressSync([Buffer.from('obligation'),config.toBuffer(),u64(42)],program)[0];
  const vault=PublicKey.findProgramAddressSync([Buffer.from('vault'),obligation.toBuffer()],program)[0];
  const revision=(i:number)=>PublicKey.findProgramAddressSync([Buffer.from('revision'),obligation.toBuffer(),u64(i)],program)[0];
  const handle={id:'42',config:String(config),obligation:String(obligation),vault:String(vault),revisionAddress:String(revision(0)),mint:String(mint),recipient:String(recipient)};
- const before=initialState();before.mode='devnet';before.revision=2;before.credit=200;before.amountDue=800;before.creditNote={reference:'CN-RECOVERY',reason:'Service shortfall',amount:200,at:new Date().toISOString()};before.asset={symbol:'Test USD',decimals:6,mint:String(mint),cluster:'devnet'};before.invoice.recipient=String(recipient);before.chain={programId:String(program),obligation:String(obligation),vault:String(vault),recipientBalance:0,vaultBalance:1000};
+ const before=initialState();before.mode='devnet';before.revision=2;before.credit=200;before.amountDue=800;before.creditNote={reference:'CN-RECOVERY',reason:'Service shortfall',amount:200,at:new Date().toISOString()};before.asset={symbol:'Test USD',decimals:6,mint:String(mint),cluster:'devnet'};before.invoice.recipient=String(recipient);before.chain={programId:String(program),obligation:String(obligation),vault:String(vault),recipientBalance:0,vaultBalance:1000,treasury:String(treasury),treasuryBalance:0};
  const action={type:'approve' as const,actor:'approver-a' as const,expectedRevision:2,idempotencyKey:'adapter-recovery-request'};
  const model=new Engine();await model.replaceState(before);const after=await model.act(action);
  const ix=new TransactionInstruction({programId:program,keys:[{pubkey:keys.approverA.publicKey,isSigner:true,isWritable:false},{pubkey:config,isSigner:false,isWritable:false},{pubkey:obligation,isSigner:false,isWritable:true},{pubkey:revision(1),isSigner:false,isWritable:true}],data:Buffer.concat([Buffer.from([2]),u64(1)])});
@@ -35,8 +35,8 @@ async function fixture(t:any){
  (Connection.prototype as any).getAccountInfo=async(address:PublicKey,context:any)=>{
   if(recording){contexts.push(context);readCalls++;}
   let data:Buffer;
-  if(address.equals(config))data=Buffer.concat([Buffer.from('KNTRCFG1'),...['registrar','reviewer','approverA','approverB'].map(role=>keys[role].publicKey.toBuffer()),mint.toBuffer(),recipient.toBuffer(),keys.recipientOwner.publicKey.toBuffer()]);
-  else if(address.equals(obligation))data=Buffer.concat([Buffer.from('KNTROBL1'),config.toBuffer(),u64(42),u64(1_000_000_000),invoice,u64(state.revision),Buffer.from([Number(state.paid)]),vault.toBuffer()]);
+  if(address.equals(config))data=Buffer.concat([Buffer.from('KNTRCFG2'),...['registrar','reviewer','approverA','approverB'].map(role=>keys[role].publicKey.toBuffer()),mint.toBuffer(),treasury.toBuffer(),keys.registrar.publicKey.toBuffer()]);
+  else if(address.equals(obligation))data=Buffer.concat([Buffer.from('KNTROBL2'),config.toBuffer(),u64(42),u64(1_000_000_000),invoice,u64(state.revision),Buffer.from([Number(state.paid)]),vault.toBuffer(),recipient.toBuffer(),keys.recipientOwner.publicKey.toBuffer()]);
   else if(address.equals(revision(0))||address.equals(revision(1))){const i=address.equals(revision(1))?1:0;const evidence=state.badEvidence?zero:hash(Buffer.concat([invoice,credit,reason,u64(200_000_000),u64(800_000_000)]));data=Buffer.concat([Buffer.from('KNTRREV1'),obligation.toBuffer(),u64(i),u64(i?state.amount:1_000_000_000),u64(i?200_000_000:0),i?evidence:invoice,i?(state.badCredit?zero:credit):zero,i?reason:zero,u64(state.expiry),Buffer.from([i?state.mask:3]),u64(Math.floor(Date.now()/1000)),u64(0),i?keys.reviewer.publicKey.toBuffer():zero]);}
   else throw Error('Unexpected account read');
   return {data,owner:program,executable:false,lamports:1,rentEpoch:0};
@@ -47,7 +47,7 @@ async function fixture(t:any){
  const rpcMethods:string[]=[];
  globalThis.fetch=async(_url:any,options:any)=>{const q=JSON.parse(options.body);rpcMethods.push(q.method);assert.equal(q.method,'getTransaction');return new Response(JSON.stringify({jsonrpc:'2.0',id:q.id,result:{slot:700,transaction:[intent.prepared!.transactionBase64,'base64'],meta:{err:null,logMessages:[],fee:5000,preTokenBalances:[],postTokenBalances:[]}}}),{status:200});};
  t.after(async()=>{Connection.prototype.getAccountInfo=originalAccount;Connection.prototype.getTokenAccountBalance=originalBalance;Connection.prototype.sendRawTransaction=originalSend;Transaction.prototype.sign=originalSign;globalThis.fetch=originalFetch;await rm(dir,{recursive:true,force:true});});
- const manifest=join(dir,'manifest.json');await writeFile(manifest,JSON.stringify({rpcUrl:'https://api.devnet.solana.com',programId:String(program),mint:String(mint),recipient:String(recipient),keyDir:join(dir,'keys'),handle}));
+ const manifest=join(dir,'manifest.json');await writeFile(manifest,JSON.stringify({rpcUrl:'https://api.devnet.solana.com',programId:String(program),mint:String(mint),recipient:String(recipient),treasury:String(treasury),keyDir:join(dir,'keys'),handle}));
  const adapter=await devnetAdapter(manifest);recording=true;
  return{adapter,intent,state,contexts,rpcMethods,dir,reads:()=>readCalls};
 }

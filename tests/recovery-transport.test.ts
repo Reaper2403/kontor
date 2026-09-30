@@ -18,7 +18,7 @@ function fixture(t:any,onPrepared:any=undefined){
  const original=globalThis.fetch;
  globalThis.fetch=async(_url:any,init:any)=>{const body=JSON.parse(init.body);requests.push(body);assert.equal(body.method,'getTransaction','recovery may not submit, sign, simulate or request replacement blockhash');return new Response(JSON.stringify(httpStatus===200?{jsonrpc:'2.0',id:body.id,result}:{error:'synthetic unavailable'}),{status:httpStatus,headers:{'content-type':'application/json','retry-after':'0'}});};
  t.after(()=>{globalThis.fetch=original;});
- const client=createClient({rpcUrl:`http://127.0.0.1:${++port}`,programId:program,keys,mint:Keypair.generate().publicKey,recipient:Keypair.generate().publicKey,onPrepared,onSubmitted:undefined});
+ const client=createClient({treasury:Keypair.generate().publicKey,rpcUrl:`http://127.0.0.1:${++port}`,programId:program,keys,mint:Keypair.generate().publicKey,recipient:Keypair.generate().publicKey,onPrepared,onSubmitted:undefined});
  // Any accidental high-level write is an immediate independent failure.
  (client.connection as any).sendRawTransaction=async()=>{throw Error('Forbidden send during reconciliation');};
  return {client,prepared,record,requests,setResult:(value:any)=>{result=value;},setStatus:(value:number)=>{httpStatus=value;}};

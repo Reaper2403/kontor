@@ -9,7 +9,7 @@ async function fixture(){
  const previousFetch=globalThis.fetch;let result:any=null;const calls:any[]=[];
  globalThis.fetch=async(_url:any,options:any)=>{const request=JSON.parse(options.body);calls.push(request);assert.equal(request.method,'getTransaction');return new Response(JSON.stringify({jsonrpc:'2.0',id:request.id,result}),{status:200,headers:{'content-type':'application/json'}});};
  const keys=Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(role=>[role,Keypair.generate()]));
- let client:any;try{client=createClient({rpcUrl:`http://127.0.0.1:1/inspect-${endpointId++}`,programId:Keypair.generate().publicKey,mint:Keypair.generate().publicKey,recipient:Keypair.generate().publicKey,keys,onPrepared:undefined,onSubmitted:undefined});}finally{globalThis.fetch=previousFetch;}
+ let client:any;try{client=createClient({rpcUrl:`http://127.0.0.1:1/inspect-${endpointId++}`,programId:Keypair.generate().publicKey,mint:Keypair.generate().publicKey,recipient:Keypair.generate().publicKey,treasury:Keypair.generate().publicKey,keys,onPrepared:undefined,onSubmitted:undefined});}finally{globalThis.fetch=previousFetch;}
  client.connection.getLatestBlockhash=async()=>({blockhash:Keypair.generate().publicKey.toBase58(),lastValidBlockHeight:12345});
  const signed=await client.testing.signed(client.testing.approveIx({id:'77'},keys.approverA,1),keys.approverA);
  const bytes=signed.tx.serialize();

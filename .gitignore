@@ -13,3 +13,11 @@ test-results/
 target/
 artifacts/
 dist-tour/
+
+# Orchestration belongs on the process branch, never in the product tree.
+.hackfleet/
+research/
+tasks/
+project-memory/
+AGENTS.md
+hackfleet.yaml

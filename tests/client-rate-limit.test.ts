@@ -39,13 +39,13 @@ test('transport rejection releases the endpoint queue without retrying',async()=
 
 function fixture(rpcUrl:string,onPrepared?:any){
  const keys=Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(k=>[k,Keypair.generate()]));
- const programId=Keypair.generate().publicKey,mint=Keypair.generate().publicKey,recipient=Keypair.generate().publicKey;
- const client=createClient({rpcUrl,programId,keys,mint,recipient,onPrepared,onSubmitted:undefined});
+ const programId=Keypair.generate().publicKey,mint=Keypair.generate().publicKey,recipient=Keypair.generate().publicKey,treasury=Keypair.generate().publicKey;
+ const client=createClient({rpcUrl,programId,keys,mint,recipient,treasury,onPrepared,onSubmitted:undefined});
  const handle={id:'44'},a=client.addresses(handle),integer=(n:number)=>{const b=Buffer.alloc(8);b.writeBigUInt64LE(BigInt(n));return b;};
  const invoice=Buffer.alloc(32,1),zero=Buffer.alloc(32);
- const obligation=Buffer.concat([Buffer.from('KNTROBL1'),a.config.toBuffer(),integer(44),integer(1_000_000_000),invoice,integer(0),Buffer.from([0]),a.vault.toBuffer()]);
+ const obligation=Buffer.concat([Buffer.from('KNTROBL2'),a.config.toBuffer(),integer(44),integer(1_000_000_000),invoice,integer(0),Buffer.from([0]),a.vault.toBuffer(),recipient.toBuffer(),Keypair.generate().publicKey.toBuffer()]);
  const revision=Buffer.concat([Buffer.from('KNTRREV1'),a.obligation.toBuffer(),integer(0),integer(1_000_000_000),integer(0),invoice,zero,zero,integer(Math.floor(Date.now()/1000)+3600),Buffer.from([3]),Buffer.alloc(16),zero]);
- const config=Buffer.concat([Buffer.from('KNTRCFG1'),keys.registrar.publicKey.toBuffer(),keys.reviewer.publicKey.toBuffer(),keys.approverA.publicKey.toBuffer(),keys.approverB.publicKey.toBuffer(),mint.toBuffer(),recipient.toBuffer(),Keypair.generate().publicKey.toBuffer()]);
+ const config=Buffer.concat([Buffer.from('KNTRCFG2'),keys.registrar.publicKey.toBuffer(),keys.reviewer.publicKey.toBuffer(),keys.approverA.publicKey.toBuffer(),keys.approverB.publicKey.toBuffer(),mint.toBuffer(),treasury.toBuffer(),keys.registrar.publicKey.toBuffer()]);
  const accountData=new Map([[a.obligation.toBase58(),obligation],[a.revision.toBase58(),revision],[a.config.toBase58(),config]]);
  const reads:any[]=[];
  const connection=client.connection as any;

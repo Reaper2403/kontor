@@ -7,7 +7,7 @@ import {createClient} from '../chain/client.mjs';
 // and deliberately provide no evidence about an executed Solana program.
 function fixture(onPrepared: (value:any) => Promise<void> = async () => {}) {
   const keys = Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(role => [role, Keypair.generate()]));
-  const client = createClient({rpcUrl:'http://127.0.0.1:1', programId:Keypair.generate().publicKey,
+  const client = createClient({treasury:Keypair.generate().publicKey,rpcUrl:'http://127.0.0.1:1', programId:Keypair.generate().publicKey,
     keys, mint:Keypair.generate().publicKey, recipient:Keypair.generate().publicKey,
     onPrepared, onSubmitted:undefined});
   const connection = client.connection as any;

@@ -16,9 +16,10 @@ export async function bootstrapTokens({rpcUrl,keys,directory}) {
   const mint=keys.mint.publicKey;
   try {await getMint(connection,mint);}catch(error){const exists=await connection.getAccountInfo(mint);if(exists)throw error;await createMint(connection,keys.registrar,keys.registrar.publicKey,null,6,keys.mint,undefined,undefined);}
   const recipient=await getOrCreateAssociatedTokenAccount(connection,keys.registrar,mint,keys.recipientOwner.publicKey);
+  const treasury=await getOrCreateAssociatedTokenAccount(connection,keys.registrar,mint,keys.registrar.publicKey);
   const transfers=[];for(const role of ['reviewer','approverA','approverB','executor']){const balance=await connection.getBalance(keys[role].publicKey);if(balance<10_000_000)transfers.push(SystemProgram.transfer({fromPubkey:keys.registrar.publicKey,toPubkey:keys[role].publicKey,lamports:30_000_000-balance}));}
   if(transfers.length)await sendAndConfirmTransaction(connection,new Transaction().add(...transfers),[keys.registrar],{commitment:'confirmed'});
-  const manifest={rpcUrl,mint:mint.toBase58(),recipient:recipient.address.toBase58(),recipientOwner:keys.recipientOwner.publicKey.toBase58(),roles:Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(role=>[role,keys[role].publicKey.toBase58()])),asset:'Test USD',decimals:6};
+  const manifest={rpcUrl,mint:mint.toBase58(),recipient:recipient.address.toBase58(),recipientOwner:keys.recipientOwner.publicKey.toBase58(),treasury:treasury.address.toBase58(),treasuryOwner:keys.registrar.publicKey.toBase58(),roles:Object.fromEntries(['registrar','reviewer','approverA','approverB','executor'].map(role=>[role,keys[role].publicKey.toBase58()])),asset:'Test USD',decimals:6};
   if(directory)await writeFile(join(directory,'public-tokens.json'),JSON.stringify(manifest,null,2));return manifest;
 }
 export async function fundScenario({client,handle,keys,amount=1_000_000_000n}) {
