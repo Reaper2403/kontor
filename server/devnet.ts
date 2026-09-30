@@ -62,7 +62,7 @@ export async function devnetAdapter(manifestPath:string){
     if(!state.treasuryReturn||!result?.signature||!/^\d+$/.test(result.amountReleased))throw new DomainError('CONFIRMATION_UNKNOWN','The treasury return requires operator verification. Supplier payment remains confirmed.');
     const amount=Number(result.amountReleased)/1e6;
     state.treasuryReturn={...state.treasuryReturn,amount,signature:result.signature,treasury:c.treasury,mode:'devnet'};
-    if(last){last.amount=amount;last.title=`${amount.toLocaleString('en-US')} Test USD returned to treasury`;}
+    if(last){last.amount=amount;last.title=`${amount.toLocaleString('en-US',{maximumFractionDigits:6})} Test USD returned to treasury`;}
    }
    if(result){const nextProofs=[...proofs,{action:a.type,scenarioId:before.scenarioId,signature:result.signature,confirmation:result.confirmation,evidence:result.evidence??null,recordedAt:new Date().toISOString()}];await atomic(proofPath,nextProofs);proofs=nextProofs;}
    if(lastPrepared)await atomic(join(directory,'journal',lastPrepared.signature+'.json'),{...lastPrepared,status:result?.confirmation??'confirmed',at:new Date().toISOString()});
