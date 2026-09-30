@@ -1,0 +1,58 @@
+{
+  "result": {
+    "apiVersion": "hackfleet/v1",
+    "kind": "StructuredResult",
+    "taskId": "KONTOR-UI",
+    "status": "PASS",
+    "summary": "Document-centred workbench completed; fresh accountant continuation scored 19/20 and completed actual 800 Test USD payment after approval recovery.",
+    "filesChanged": [
+      "src/App.tsx",
+      "src/styles.css",
+      "src/main.tsx"
+    ],
+    "verification": [
+      {
+        "command": "npm test",
+        "status": "PASS",
+        "evidence": "109 tests passed, including 65 independent recovery cases; research/testing/recovery-result.json"
+      },
+      {
+        "command": "npm run typecheck",
+        "status": "PASS",
+        "evidence": "Independent integration tester verified full application typecheck."
+      },
+      {
+        "command": "Fresh browser accountant review",
+        "status": "PASS",
+        "evidence": "19/20; recovered saved approval, completed second approval and 800 Test USD settlement; desktop and mobile reviewed."
+      },
+      {
+        "command": "Read-only final evidence validation",
+        "status": "PASS",
+        "evidence": "One recovery proof, one successful payment, actual token deltas +/-800 Test USD; stale attempt moved zero."
+      }
+    ],
+    "scopeViolations": [],
+    "assumptions": [
+      "Controller-attested native Codex work, not a hosted coding worker receipt.",
+      "Fresh browser-only-by-instruction review without enforced isolation, explicitly approved by user.",
+      "Legacy pending approval was bound from exact saved journal by controller before browser recovery; separate evidence retained."
+    ],
+    "knownRisks": [
+      "Custom Test USD and server-held demonstration keys; trusted upgrade authority; no security audit.",
+      "Automatic recovery is approval-only; other uncertain operations remain locked for operator assistance.",
+      "Minor accessible link-name and secondary-text readability improvements deferred.",
+      "Final browser review began after credit application; not a fresh full-journey comparative score."
+    ],
+    "artifacts": [
+      "research/build/accountant-round4.json",
+      "research/build/final-review.json",
+      "evidence/browser-recovery-export.json"
+    ]
+  },
+  "artifacts": [
+    "research/build/accountant-round4.json",
+    "research/build/final-review.json",
+    "evidence/browser-recovery-export.json"
+  ]
+}

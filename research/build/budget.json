@@ -10,6 +10,14 @@
   "runs": [
     {
       "conclusion": "success",
+      "id": 36758931988,
+      "name": "hf-deterministic/f500341f-a9f2-4f3c-8031-870962cbe6c8",
+      "run_started_at": "2026-09-30T18:29:23Z",
+      "status": "completed",
+      "updated_at": "2026-09-30T18:30:09Z"
+    },
+    {
+      "conclusion": "success",
       "id": 36754639968,
       "name": "hf-deterministic/42fce642-7ba4-4901-93a5-d6f97bc2ce25",
       "run_started_at": "2026-09-30T17:53:31Z",
@@ -65,8 +73,8 @@
       "updated_at": "2026-09-30T17:29:53Z"
     }
   ],
-  "observedRoundedRunMinutes": 12,
-  "estimatedComputeUSD": 0.072,
+  "observedRoundedRunMinutes": 13,
+  "estimatedComputeUSD": 0.078,
   "additionalPaidModelAPIUSD": 0,
   "purchasedServicesUSD": 0,
   "funding": "5 free devnet SOL received; no real SOL purchased",
