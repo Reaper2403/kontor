@@ -1,0 +1,24 @@
+{
+  "kind": "product-review-addendum",
+  "protocolStatus": "Controller-attested product triage within the accepted KONTOR-TOUR-01 scope; not a new ABU-11/17 receipt or a fabricated engineering negotiation round.",
+  "parentDecision": "KONTOR-TOUR-01",
+  "actor": "/root/tour_pm",
+  "date": "2026-09-30",
+  "inputs": ["research/tour/accountant-review.json", "research/tour/integration-results.md", "research/tour/ux-focus-fix.md", "research/tour/decision.json"],
+  "productDisposition": "Accept bounded corrections; publication acceptance remains conditional on final checks.",
+  "acceptedChanges": [
+    "Remove sticky footer overlay using normal-flow tour navigation, satisfying the existing focused-element visibility criterion.",
+    "Correct final Restart helper to describe returning to the first recorded state."
+  ],
+  "why": "Independent accountant understood the principal narrative and disclosed proof limits; integration identified a concrete acceptance failure that must be repaired. The helper copy is inaccurate but cheap to correct in the same narrow iteration. Other two minor findings describe optional accessibility of technical verification and scrolling cost, not an observed failure to understand or complete the workflow.",
+  "chronology": "UX already changed only navigation CSS under accepted scope. The reviewed served baseline remained unchanged. This addendum does not certify that source correction or imply it preceded implementation. PM approves carrying that correction and final helper fix through rebuild and independent verification.",
+  "deferred": ["New accountant-friendly evidence verification reader", "Mobile evidence timeline restructuring", "Unrelated features or polish"],
+  "passConditions": [
+    "Parent rebuilds an identified artifact; source-aware integration reproduces previously hidden controls with no focus occlusion at desktop and 390 px, including forward/reverse keyboard paths.",
+    "Restart helper/action, native dialog focus/Escape, coherent navigation, no horizontal overflow and no live-action transport remain correct; build/typecheck passes.",
+    "A fresh-context browser-only-by-instruction final review of the changed artifact finds no unresolved material usability or truthfulness problem and demonstrates core causal/replay understanding. Record its limitations and do not turn a score increase into the acceptance criterion.",
+    "Parent records results and only then proceeds with existing authorized asset-only publication and hosted smoke check."
+  ],
+  "nonClaims": ["17/20 is not an improvement measurement or an objective release gate", "The baseline accountant did not independently inspect external Explorer transactions", "Source-aware integration is not blind evaluation", "No new engineering negotiation round or protocol gate is claimed"],
+  "scopeOwner": "Parent /root remains sole control-plane writer; PM made no code or control-plane mutations."
+}

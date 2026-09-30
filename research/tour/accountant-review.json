@@ -1,0 +1,91 @@
+{
+  "reviewer": "Fresh first-time accountant persona",
+  "isolation": "Browser-only by instruction; no source, repository files, live API, prior history or other reviews inspected. Only own report written and own browser screenshots viewed.",
+  "url": "http://127.0.0.1:5174/kontor-tour/",
+  "actions": [
+    "Opened landing page; set desktop viewport 1440x1000.",
+    "Followed payment; read original invoice and approval route.",
+    "Tested Tab navigation with visible focus and Enter to show Mara first approval.",
+    "Visited Credit, Block and Reapprove chapters and inspected changed totals, expired approvals and recorded rejection link.",
+    "Opened Pay chapter, read payment review dialog and showed recorded payment result.",
+    "Opened Evidence chapter and read the eight-event timeline and three evidence cards.",
+    "Clicked external rejection link; harness kept current page. Direct browser navigation to the observed Explorer URL was blocked by harness restriction, so external transaction was not independently verified.",
+    "Set mobile viewport 390x844; inspected evidence layout and payment review dialog. Escape closed dialog.",
+    "Opened user-visible recorded-evidence.json URL in browser and read disclosure, provenance and portions of recorded proof."
+  ],
+  "explanation": {
+    "problem": "An approved invoice can change before payment; the saved old payment instruction must not remain usable.",
+    "control": "Two distinct approvals cover amount, recipient and invoice version. A 200 supplier credit reduces 1,000 to 800 and expires both old approvals. The obsolete 1,000 instruction is rejected; fresh approvals permit the recorded 800 payment.",
+    "what_happened": "I navigated reconstructed historical snapshots; I did not approve or pay anything myself. The page reports a prior Solana devnet run and links the failed old instruction and successful corrected settlement.",
+    "what_is_real": "The site presents the product workbench and event-linked recorded devnet proofs. Synthetic invoice and Test USD have no monetary value. UI disclosure says server-held demo role keys, trusted upgrade authority, unaudited program, protection limited to program-controlled payable and vault, and no established production custody/accounting readiness.",
+    "evidence": "Readable timeline preserves original approvals as expired, credit CN-204, blocked attempt, fresh approvals and final 800 payment. JSON discloses one approval was reconciled from a saved historical transaction journal, and display states are reconstructed rather than fresh chain observations."
+  },
+  "findings": [
+    {
+      "severity": "strength",
+      "finding": "Clear accountant-facing causal explanation; original invoice, credit, approval expiry and corrected payable remain linked. I can explain why 800 must be reapproved."
+    },
+    {
+      "severity": "strength",
+      "finding": "Repeated static replay, recorded, synthetic and no-transaction language makes demonstration limits difficult to miss, including inside payment dialog."
+    },
+    {
+      "severity": "minor",
+      "finding": "Evidence ends in transaction explorer links and raw JSON, with no concise accountant-friendly instruction for independently checking the rejection reason and amount movement. The visible timeline explains the claim well but verifying it remains technical."
+    },
+    {
+      "severity": "minor",
+      "finding": "Mobile evidence page is long, with payment review followed by the complete eight-event timeline. It is readable and stacked without observed clipping, but reaching the detailed record requires substantial scrolling."
+    },
+    {
+      "severity": "minor",
+      "finding": "Final restart action retains the generic helper text Show the next recorded state, which is inaccurate at the end of the tour."
+    },
+    {
+      "severity": "harness-limitation",
+      "finding": "Exact role/name click for next action matched duplicate top/bottom navigation buttons. Keyboard and chapter navigation worked; this is not classified as an end-user click failure."
+    }
+  ],
+  "scores": {
+    "understand_problem_and_control": {
+      "score": 4,
+      "max": 4,
+      "reason": "Can explain the changing invoice and version-bound approvals with exact amounts."
+    },
+    "journey_and_navigation": {
+      "score": 3,
+      "max": 4,
+      "reason": "Clear chapters and explicit next actions; six chapters versus ten snapshots adds a small amount of orientation overhead, and final next-state helper is stale."
+    },
+    "distinguish_replay_real_outcomes_and_limits": {
+      "score": 4,
+      "max": 4,
+      "reason": "Replay and synthetic asset disclosures are prominent throughout; limitations are concrete."
+    },
+    "evidence_understanding": {
+      "score": 3,
+      "max": 4,
+      "reason": "Timeline and proof categories are clear. Independent verification steps require technical interpretation; external evidence could not be checked in this harness."
+    },
+    "responsive_and_keyboard_clarity": {
+      "score": 3,
+      "max": 4,
+      "reason": "Mobile stacking and dialog fit observed; visible desktop focus, Enter navigation and mobile Escape worked. Long mobile record and incomplete exhaustive keyboard coverage limit confidence."
+    }
+  },
+  "total": 17,
+  "maximum": 20,
+  "limits": [
+    "Browser-only review, not security, accounting correctness, or chain audit.",
+    "External Explorer destinations could not be inspected because harness permits only tour preview URLs.",
+    "No new transaction executed; no live application mutation attempted.",
+    "Reviewed selected keyboard paths, not exhaustive accessibility testing.",
+    "Screenshots were full-page; mobile screenshots were scaled for display.",
+    "Read user-visible JSON through browser, not source or filesystem; did not independently validate all signatures, hashes or chain balances."
+  ],
+  "screenshots": [
+    ".kontor-control/accountant-desktop.png",
+    ".kontor-control/accountant-mobile-evidence.png",
+    ".kontor-control/accountant-mobile-modal.png"
+  ]
+}

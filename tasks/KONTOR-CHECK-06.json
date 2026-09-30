@@ -1,0 +1,76 @@
+{
+  "apiVersion": "hackfleet/v1",
+  "kind": "Task",
+  "metadata": {
+    "id": "KONTOR-CHECK-06",
+    "title": "Verify final tour with explicit Pages marker artifact",
+    "parent": "KONTOR-TOUR-01"
+  },
+  "spec": {
+    "objective": "Verify final source after focus-occlusion fix. Previous commands passed, but scope gate correctly rejected generated dotfile absent from manifest. Explicitly permit only the intended dist-tour/.nojekyll Pages marker; retain all source protections.",
+    "role": {
+      "profession": "Integration tester",
+      "memoryProfile": "task"
+    },
+    "runtime": {
+      "preference": "github-actions",
+      "allowed": [
+        "github-actions"
+      ]
+    },
+    "capabilities": {
+      "required": [
+        "shell",
+        "node",
+        "deterministic",
+        "tests",
+        "build"
+      ],
+      "optional": []
+    },
+    "context": {
+      "include": [],
+      "dependencySummaries": []
+    },
+    "skills": [],
+    "writeScope": {
+      "allowed": [
+        "node_modules/**",
+        "dist/**",
+        "dist-tour/**",
+        "dist-tour/.nojekyll"
+      ],
+      "forbidden": [
+        "src/**",
+        "server/**",
+        "chain/**",
+        "programs/**",
+        "tests/**",
+        ".github/**",
+        "tour/**"
+      ]
+    },
+    "acceptance": [
+      "All independent service/client tests pass",
+      "UI typecheck and production bundle succeed",
+      "Exact source commit and genuine worker receipt retained"
+    ],
+    "verification": {
+      "commands": [
+        "npm ci --ignore-scripts --no-audit --no-fund --cache /tmp/kontor-npm-cache",
+        "npm --cache /tmp/kontor-npm-cache test",
+        "npm --cache /tmp/kontor-npm-cache run build",
+        "npm --cache /tmp/kontor-npm-cache run build:tour",
+        "node -e \"require('node:fs').rmSync('node_modules',{recursive:true,force:true})\""
+      ]
+    },
+    "deliverables": [
+      "result-json"
+    ],
+    "limits": {
+      "executionMinutes": 15,
+      "retries": 1,
+      "maxModelTurns": 1
+    }
+  }
+}
